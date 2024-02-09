@@ -9,7 +9,7 @@ read -p "Press [ENTER] if YES ...or [ctrl+c] to exit"
 
 
 echo " "
-echo "This script will download and install all packages form the internet"
+echo "This script will download and install all packages from the internet"
 echo " "
 echo "   #####################################"
 echo "   ## Make sure extroot is enabled... ##"
@@ -29,9 +29,9 @@ echo " "
 read -p "Press [ENTER] if YES... or [ctrl+c] to exit"
 
 echo " "
-echo "   ########################################################"
-echo "   ## Make sure you've got a stable Internet connection! ##"
-echo "   ########################################################"
+echo "   ######################################################"
+echo "   ## Make sure you have a stable Internet connection! ##"
+echo "   ######################################################"
 echo " "
 read -p "Press [ENTER] to Continue ...or [ctrl+c] to exit"
 
@@ -75,15 +75,7 @@ opkg update && opkg install git-http unzip htop gcc patch;
 
 opkg install python3 python3-pip python3-cffi python3-dev python3-greenlet python3-jinja2 python3-markupsafe;
 pip install --upgrade pip;
-pip install python-can configparser
-
-echo "Cloning 250k baud pyserial"
-git clone https://github.com/pyserial/pyserial /root/pyserial;
-cd /root/pyserial
-python /root/pyserial/setup.py install;
-cd /root/
-rm -rf /root/pyserial;
-
+pip install python-can configparser pyserial
 
 echo " "
 echo "##############################"
@@ -119,10 +111,10 @@ echo "###############"
 echo " "
 
 echo "Cloning Klipper..."
-git clone https://github.com/KevinOConnor/klipper.git /root/klipper;
+git clone https://github.com/Klipper3d/klipper.git /root/klipper;
 
 echo "Creating klipper service..."
-wget https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/Services/klipper -P /etc/init.d/;
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/Services/klipper -P /etc/init.d/;
 chmod 755 /etc/init.d/klipper;
 /etc/init.d/klipper enable;
 
@@ -136,12 +128,12 @@ echo "#################"
 echo " "
 
 git clone https://github.com/Arksine/moonraker.git /root/moonraker;
-git -C /root/moonraker checkout 06279d0e10ae4e0349f7b415756821d7ca38774b
-wget https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/Services/moonraker -P /etc/init.d/
+git -C /root/moonraker checkout d549af915fe50c2e274dc99ac0b772ae0276646e
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/Services/moonraker -P /etc/init.d/
 chmod 755 /etc/init.d/moonraker
 /etc/init.d/moonraker enable
-wget https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/nginx/upstreams.conf -P /etc/nginx/conf.d/
-wget https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/nginx/common_vars.conf -P /etc/nginx/conf.d/
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/upstreams.conf -P /etc/nginx/conf.d/
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/common_vars.conf -P /etc/nginx/conf.d/
 /etc/init.d/nginx enable
 
 
@@ -172,9 +164,9 @@ choose(){
 	   echo " "
 	   mkdir /root/fluidd;
 	   wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
-	   wget -q -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/moonraker/fluidd_moonraker.conf;
-	   wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/nginx/fluidd.conf;
-     wget https://github.com/ihrapsa/KlipperWrt/raw/main/klipper_config/fluidd.cfg -P /root/printer_data/config/
+	   wget -q -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/moonraker/fluidd_moonraker.conf;
+	   wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/fluidd.conf;
+     wget https://github.com/shivajiva101/KlipperWrt/raw/main/klipper_config/fluidd.cfg -P /root/printer_data/config/
      
 	   
 	   echo "***************************"
@@ -192,9 +184,9 @@ choose(){
 	   echo " "
 	   mkdir /root/mainsail;
 	   wget -q -O /root/mainsail/mainsail.zip https://github.com/mainsail-crew/mainsail/releases/latest/download/mainsail.zip && unzip /root/mainsail/mainsail.zip -d /root/mainsail/ && rm /root/mainsail/mainsail.zip;
-	   wget -q -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/moonraker/mainsail_moonraker.conf;
-	   wget -q -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/nginx/mainsail.conf;
-     wget https://github.com/ihrapsa/KlipperWrt/raw/main/klipper_config/mainsail.cfg -P /root/printer_data/config/
+	   wget -q -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/moonraker/mainsail_moonraker.conf;
+	   wget -q -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/mainsail.conf;
+     wget https://github.com/shivajiva101/KlipperWrt/raw/main/klipper_config/mainsail.cfg -P /root/printer_data/config/
 	   
 	   echo "***************************"
 	   echo "**         Done          **"
@@ -219,7 +211,7 @@ echo " "
 
 echo "Installing mjpg-streamer..."
 opkg install v4l-utils;
-opkg install mjpg-streamer-input-uvc mjpg-streamer-output-http mjpg-streamer-www;
+opkg install mjpg-streamer-input-uvc mjpg-streamer-output-http mjpg-streamer-www ffmpeg;
 
 rm /etc/config/mjpg-streamer;
 cat << "EOF" > /etc/config/mjpg-streamer
@@ -262,34 +254,8 @@ echo " "
 
 opkg install wget-ssl;
 
-rm -rf /tmp/opkg-lists 
-
-echo "Installing ffmpeg offline pacakges..."
-mkdir /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/Packages -P /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/Packages.gz -P /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/Packages.manifest -P /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/Packages.sig -P /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/alsa-lib_1.2.4-1_mipsel_24kc.ipk -P /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/fdk-aac_2.0.1-4_mipsel_24kc.ipk -P /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/ffmpeg_4.3.2-1_mipsel_24kc.ipk -P /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/ffprobe_4.3.2-1_mipsel_24kc.ipk -P /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/libatomic1_8.4.0-3_mipsel_24kc.ipk -P /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/libbz21.0_1.0.8-1_mipsel_24kc.ipk -P /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/libffmpeg-full_4.3.2-1_mipsel_24kc.ipk -P /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/libgmp10_6.2.1-1_mipsel_24kc.ipk -P /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/libgnutls_3.7.2-1_mipsel_24kc.ipk -P /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/libnettle8_3.6-1_mipsel_24kc.ipk -P /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/libx264_2020-10-26-1_mipsel_24kc.ipk -P /root/ffmpeg;
-wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/ffmpeg/shine_3.1.1-1_mipsel_24kc.ipk -P /root/ffmpeg;
-
-
-opkg install /root/ffmpeg/*ipk --force-overwrite;
-rm -rf /root/ffmpeg;
-
-
 echo "Installing Timelapse packages..."
-git clone https://github.com/ihrapsa/moonraker-timelapse.git /root/moonraker-timelapse;
+git clone https://github.com/shivajiva101/moonraker-timelapse.git /root/moonraker-timelapse;
 /root/moonraker-timelapse/install.sh;
 
 echo " "
