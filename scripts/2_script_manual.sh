@@ -63,6 +63,10 @@ mount -o remount,size=256M /tmp
 exit 0
 EOF
 
+echo "Updating distfeeds.conf"
+rm /etc/opkg/distfeeds.conf;
+wget https://github.com/shivajiva101/OctoWrt/raw/23.05.2-137/openwrt/distfeeds.conf -P /etc/opkg
+
 echo " "
 echo "############################"
 echo "### Klipper dependencies ###"
