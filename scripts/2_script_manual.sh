@@ -115,7 +115,7 @@ echo "###############"
 echo " "
 
 echo "Cloning Klipper..."
-git clone https://github.com/Klipper3d/klipper.git /root/klipper;
+git clone --depth 1 https://github.com/Klipper3d/klipper.git /root/klipper;
 
 echo "Creating klipper service..."
 wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/Services/klipper -P /etc/init.d/;
