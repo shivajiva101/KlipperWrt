@@ -17,11 +17,11 @@
  - OpenWrt is so much more efficient than other linux distros.   
  - On a single core 580MHz cpu (with moonraker, klippy, nginx and mjpg-streamer) I get ~20-25% cpu load while idle/not printing and max 35-40% cpu load while printing and watching stream (640x480 30fps mjpeg). 
 
-![alt text](https://github.com/ihrapsa/KlipperWrt/blob/main/screenshots/top_idle_moonraker_klippy_nginx_mjpg_streamer.png)
-![alt text](https://github.com/ihrapsa/KlipperWrt/blob/main/screenshots/htop_idle.png)
-![alt text](https://github.com/ihrapsa/KlipperWrt/blob/main/screenshots/test_print.png)  
-![alt text](https://github.com/ihrapsa/KlipperWrt/blob/main/screenshots/stream.png)  
-![alt text](https://github.com/ihrapsa/KlipperWrt/blob/main/screenshots/test_print.jpg)
+![alt text](https://github.com/shivajiva101/KlipperWrt/blob/main/screenshots/top_idle_moonraker_klippy_nginx_mjpg_streamer.png)
+![alt text](https://github.com/shivajiva101/KlipperWrt/blob/main/screenshots/htop_idle.png)
+![alt text](https://github.com/shivajiva101/KlipperWrt/blob/main/screenshots/test_print.png)  
+![alt text](https://github.com/shivajiva101/KlipperWrt/blob/main/screenshots/stream.png)  
+![alt text](https://github.com/shivajiva101/KlipperWrt/blob/main/screenshots/test_print.jpg)
   * I've tried octoprint on this box as well but unfortunately it was too resource intensive. Test prints speak for themselves.
 
 </details>
@@ -109,7 +109,7 @@
 
 ###  :clapper: Check out the [video](https://youtu.be/0y3qt8cvtKY) tutorial [Kruze17](https://github.com/Kruze17) has made on his [Hyper Makes](https://www.youtube.com/channel/UCrCxVyN2idCxPNOwCwK6qtQ) YouTube channel.
 
-### :exclamation: Open issues or join the [<img align="center" width="30" height="30" src="https://github.com/ihrapsa/KlipperWrt/blob/main/img/discord.png" alt="discord_icon">](https://discord.gg/ZGrCMVs35H) [server](https://discord.gg/ZGrCMVs35H) for extra support.
+### :exclamation: Open issues or join the [<img align="center" width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/discord.png" alt="discord_icon">](https://discord.gg/ZGrCMVs35H) [server](https://discord.gg/ZGrCMVs35H) for extra support.
 
 
 --------------------------------------------------------------------------
@@ -142,7 +142,7 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
 
 >
     cd ~
-    wget https://github.com/ihrapsa/KlipperWrt/raw/main/scripts/1_format_extroot.sh
+    wget https://github.com/shivajiva101/KlipperWrt/raw/main/scripts/1_format_extroot.sh
     chmod +x 1_format_extroot.sh
     ./1_format_extroot.sh
 
@@ -152,7 +152,7 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
 
 >
     cd ~
-    wget https://github.com/ihrapsa/KlipperWrt/raw/main/scripts/2_script_manual.sh
+    wget https://github.com/shivajiva101/KlipperWrt/raw/main/scripts/2_script_manual.sh
     chmod +x 2_script_manual.sh
     ./2_script_manual.sh
     
@@ -176,7 +176,7 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
 `[include mainsail.cfg]` 
 `[include timelapse.cfg]` 
 
-- Under `[mcu]` block change your serial port path according to [this](https://github.com/ihrapsa/KlipperWrt/issues/8)[Optional]
+- Under `[mcu]` block change your serial port path according to [this](https://github.com/shivajiva101/KlipperWrt/issues/8)[Optional]
 - Build your `klippper.bin` mainboard firmware using a linux desktop/VM (follow `printer.cfg` header for instructions)
 - Flash your mainboard according to the `printer.cfg` header
 - Do a `FIRMWARE RESTART` inside fluidd/Mainsail
@@ -201,8 +201,8 @@ Untarrs an already working image(outdated).
 <details>
   <summary>Click for STEPS!</summary>
   
-This uses the preinstalled extroot filesystem archives I've uploaded to [Releases](https://github.com/ihrapsa/KlipperWrt/releases/tag/v1.0).  
-They come preinstalled with either <img width="20" height="20" src="https://github.com/ihrapsa/KlipperWrt/blob/main/img/fluidd.png" alt="fluidd_icon"> **fluidd**  OR <img width="20" height="20" src="https://github.com/ihrapsa/KlipperWrt/blob/main/img/mainsail.png" alt="mainsail_icon"> **Mainsail** and **Klipper**, **Moonraker**, **mjpg-streamer** (for webcam stream) and Fry's **timelapse component** (for taking frames and rendering the video).
+This uses the preinstalled extroot filesystem archives I've uploaded to [Releases](https://github.com/shivajiva101/KlipperWrt/releases/tag/v1.0).  
+They come preinstalled with either <img width="20" height="20" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/fluidd.png" alt="fluidd_icon"> **fluidd**  OR <img width="20" height="20" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/mainsail.png" alt="mainsail_icon"> **Mainsail** and **Klipper**, **Moonraker**, **mjpg-streamer** (for webcam stream) and Fry's **timelapse component** (for taking frames and rendering the video).
  
  
 #### STEPS:
@@ -218,7 +218,7 @@ They come preinstalled with either <img width="20" height="20" src="https://gith
 
 >
     cd ~
-    wget https://github.com/ihrapsa/KlipperWrt/raw/main/scripts/KlipperWrt_install.sh
+    wget https://github.com/shivajiva101/KlipperWrt/raw/main/scripts/KlipperWrt_install.sh
     chmod +x KlipperWrt_install.sh
     ./KlipperWrt_install.sh
 
@@ -242,7 +242,7 @@ They come preinstalled with either <img width="20" height="20" src="https://gith
 `[include mainsail.cfg]` 
 `[include timelapse.cfg]` 
 
-- Under `[mcu]` block change your serial port path according to [this](https://github.com/ihrapsa/KlipperWrt/issues/8)[Optional]
+- Under `[mcu]` block change your serial port path according to [this](https://github.com/shivajiva101/KlipperWrt/issues/8)[Optional]
 - Build your `klippper.bin` mainboard firmware using a linux desktop/VM (follow `printer.cfg` header for instructions)
 - Flash your mainboard according to the `printer.cfg` header
 - Do a `FIRMWARE RESTART` inside fluidd/Mainsail
@@ -265,7 +265,7 @@ _____________________________________________
   <summary>Click to expand!</summary>
 
 
-### OpenWrt <img align="left" width="30" height="34" src="https://github.com/ihrapsa/KlipperWrt/blob/main/img/OpenWrt.png" alt="openwrt_icon">
+### OpenWrt <img align="left" width="30" height="34" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/OpenWrt.png" alt="openwrt_icon">
 
 <details>
   <summary>Click for STEPS!</summary>
@@ -367,7 +367,7 @@ put this inside /etc/rc.local above exit so that swap is enabled at boot:
 </details>
 
 
-### fluidd <img align="left" width="30" height="30" src="https://github.com/ihrapsa/KlipperWrt/blob/main/img/fluidd.png" alt="fluidd_icon"> / <img width="30" height="30" src="https://github.com/ihrapsa/KlipperWrt/blob/main/img/mainsail.png" alt="mainsail_icon"> Mainsail 
+### fluidd <img align="left" width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/fluidd.png" alt="fluidd_icon"> / <img width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/mainsail.png" alt="mainsail_icon"> Mainsail 
 
 <details>
   <summary>Click for STEPS!</summary>
@@ -403,7 +403,7 @@ put this inside /etc/rc.local above exit so that swap is enabled at boot:
 
 >
 	cd ~
-	git clone https://github.com/ihrapsa/pyserial
+	git clone https://github.com/shivajiva101/pyserial
 	cd pyserial
 	python setup.py install
 	rm -rf /root/pyserial
@@ -411,7 +411,7 @@ put this inside /etc/rc.local above exit so that swap is enabled at boot:
 <details>
   <summary>Note!</summary>	
 	
-_ The official `pyserial` python package is not configured to work with `250000 baud` on `MIPS` platforms (only `230400` max). Luckly someone fixed that in a fork and used his work to bring the [repo](https://github.com/ihrapsa/pyserial.git) up to date_
+_ The official `pyserial` python package is not configured to work with `250000 baud` on `MIPS` platforms (only `230400` max). Luckly someone fixed that in a fork and used his work to bring the [repo](https://github.com/shivajiva101/pyserial.git) up to date_
 	
 </details>
 	
@@ -446,7 +446,7 @@ _Those can be found inside `Packages` as a single `*ipk` file. I cross-compiled 
 >
 
 	cd ~
-	wget https://github.com/ihrapsa/KlipperWrt/raw/main/packages/python3-lmdb%2Bstreaming-form-data_packages_1.0-1_mipsel_24kc.ipk
+	wget https://github.com/shivajiva101/KlipperWrt/raw/main/packages/python3-lmdb%2Bstreaming-form-data_packages_1.0-1_mipsel_24kc.ipk
 	opkg install python3-lmdb%2Bstreaming-form-data_packages_1.0-1_mipsel_24kc.ipk
 
 * Install nginx with `opkg install nginx-ssl`
@@ -464,7 +464,7 @@ _Those can be found inside `Packages` as a single `*ipk` file. I cross-compiled 
 - **6.2 Use provided klipper service and place inside `/etc/init.d/`**
 	
 >
-	wget -q -O /etc/init.d/klipper https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/Services/klipper
+	wget -q -O /etc/init.d/klipper https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/Services/klipper
 	chmod 755 /etc/init.d/klipper
 
 - **6.3 Enable klipper service:** 
@@ -564,7 +564,7 @@ _Those can be found inside `Packages` as a single `*ipk` file. I cross-compiled 
 - **6.5 Restart klipper** - do `service klipper restart` or `/etc/init.d/klipper restart`
 - **6.6 Build `klipper.bin` file**  
             - Building is not mandatory to be done on the device that hosts klippy. To build it on this box you would need a lot of dependencies that are not available for OpenWrt so I just used my pc running ubuntu: On a different computer running linux (or VM or live USB) -> Clone klipper just like you did before -> `cd klipper` -> `make menuconfig` -> use the configurations specific to your mainboard (Check the header inside your `printer.cfg` file for details).  
-:exclamation: use custom baud: `230400`. By default 250000 is selected. If you want/need that baud, remove the `python-pyserial` package and install this version of [pyserial](https://github.com/ihrapsa/pyserial) instead - check `Requirements` directory for details about installation process.    
+:exclamation: use custom baud: `230400`. By default 250000 is selected. If you want/need that baud, remove the `python-pyserial` package and install this version of [pyserial](https://github.com/shivajiva101/pyserial) instead - check `Requirements` directory for details about installation process.    
 -> once configured run `make` -> if succesfull the firmware will be inside `./out/klipper.bin` -> flash the mainboard:(check header of `printer.cfg` again - some mainboards need the `.bin` file renamed a certain way) copy the `.bin` file on a sd card -> plug the card with the printer off -> turn printer on and wait a minute -> Done (Depending on your mainboard/printer/lcd you will probably not have a sign that the mainboard got flashed so don't worry) - if at the end of this guide the client cannot connect to the klipper firmware usually the problem is with the `.bin` file building or flashing process.
 </details> 
  
@@ -584,8 +584,8 @@ _Those can be found inside `Packages` as a single `*ipk` file. I cross-compiled 
 >
 	mkdir ~/fluidd
 	wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip
-	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/moonraker/fluidd_moonraker.conf 
-	wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/nginx/fluidd.conf
+	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/moonraker/fluidd_moonraker.conf 
+	wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/fluidd.conf
 	
 
 **For Mainsail:**
@@ -593,8 +593,8 @@ _Those can be found inside `Packages` as a single `*ipk` file. I cross-compiled 
 >
 	mkdir ~/mainsail
 	wget -q -O /root/mainsail/mainsail.zip https://github.com/meteyou/mainsail/releases/latest/download/mainsail.zip && unzip /root/mainsail/mainsail.zip -d /root/mainsail/ && rm /root/mainsail/mainsail.zip
-	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/moonraker/mainsail_moonraker.conf 
-	wget -q -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/nginx/mainsail.conf
+	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/moonraker/mainsail_moonraker.conf 
+	wget -q -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/mainsail.conf
 	
 Note: _The `[update_manager]` plugin was commented out since this is curently only supported for `debian` distros only. For now, updating `moonraker`, `klipper`, `fluidd` or `mainsail` should be done manaully._  
 	
@@ -602,7 +602,7 @@ Don't forget to edit(if necessary) the `moonraker.conf` file you copied inside `
 - **7.3 Use provided moonraker service and place inside `/etc/init.d/`** 
 
 >
-	wget -q -O /etc/init.d/moonraker https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/Services/moonraker
+	wget -q -O /etc/init.d/moonraker https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/Services/moonraker
 	chmod 755 /etc/init.d/moonraker
 	/etc/init.d/moonraker enable
 	/etc/init.d/moonraker restart 
@@ -610,8 +610,8 @@ Don't forget to edit(if necessary) the `moonraker.conf` file you copied inside `
 - **7.4 Download the rest of the nginx files inside `/etc/nginx/conf.d`***  
  
 >
-	wget -q -O /etc/nginx/conf.d/upstreams.conf https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/nginx/upstreams.conf
-	wget -q -O /etc/nginx/conf.d/common_vars.conf https://raw.githubusercontent.com/ihrapsa/KlipperWrt/main/nginx/common_vars.conf
+	wget -q -O /etc/nginx/conf.d/upstreams.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/upstreams.conf
+	wget -q -O /etc/nginx/conf.d/common_vars.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/common_vars.conf
 	
  Inside `/etc/nginx/conf.d`you should have `fluidd.conf` OR `mainsail.conf` alongside `common_vars.conf` AND `upstreams.conf` (those 2 files are common for mainsail and fluidd)  
 **Note!**  
@@ -664,7 +664,7 @@ It's ok to keep both client directories inside `/root/` as these are static file
 </details>
 
 
-### duet-web-control <img align="left" width="30" height="30" src="https://github.com/ihrapsa/KlipperWrt/blob/main/img/dwc.png" alt="dwc_icon"> 
+### duet-web-control <img align="left" width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/dwc.png" alt="dwc_icon"> 
 
 <details>
   <summary>Click for STEPS!</summary>
@@ -691,7 +691,7 @@ It's ok to keep both client directories inside `/root/` as these are static file
 * Do `opkg update`  
  :exclamation: If you get `wrong signature` errors, comment the `option check_signature` line under `/etc/opkg.conf` - you can uncomment this after finishing with `v19.07 distfeeds`  
 * After you add the v19.07 `distfeeds.conf` -> install python2 packages: with `opkg install python python-pip python-cffi python-pyserial python-dev gcc`.   
- :exclamation: __The official `pyserial` python package is not configured to work with `250000 baud` on `MIPS` platforms (only `230400` max). If you want/need 250k baud, install this version of [pyserial](https://github.com/ihrapsa/pyserial) and install it with `python2 setup.py install`__  
+ :exclamation: __The official `pyserial` python package is not configured to work with `250000 baud` on `MIPS` platforms (only `230400` max). If you want/need 250k baud, install this version of [pyserial](https://github.com/shivajiva101/pyserial) and install it with `python2 setup.py install`__  
 * With pip install: `pip install greenlet==0.4.15 jinja2 python-can=3.3.4`  
 * Switch back to original `distfeeds.conf`, `opkg update` -> install python3 and packages: `opkg install python3 python3-pip python3-tornado`.
  
@@ -712,7 +712,7 @@ It's ok to keep both client directories inside `/root/` as these are static file
 - **6.5 Restart klipper** - do `service klipper restart` or `/etc/init.d/klipper restart`
 - **6.6 Build `klipper.bin` file**
             - Building is not mandatory to be done on the device that hosts klippy. To build it on this box you would need a lot of dependencies that are not available for OpenWrt so I just used my pc running ubuntu: On a different computer running linux (or VM or live USB) -> Clone klipper just like you did before -> `cd klipper` -> `make menuconfig` -> use the configurations specific to your mainboard (Check the header inside your `printer.cfg` file for details).  
-:exclamation: use custom baud: `230400`. By default 250000 is selected. If you want/need that baud, remove the `python-pyserial` package and install this version of [pyserial](https://github.com/ihrapsa/pyserial.git) instead - check `Requirements` directory for details about installation process.
+:exclamation: use custom baud: `230400`. By default 250000 is selected. If you want/need that baud, remove the `python-pyserial` package and install this version of [pyserial](https://github.com/shivajiva101/pyserial.git) instead - check `Requirements` directory for details about installation process.
 -> once configured run `make` -> if succesfull the firmware will be inside `./out/klipper.bin` -> flash the mainboard:(check header of `printer.cfg` again - some mainboards need the `.bin` file renamed a certain way) copy the `.bin` file on a sd card -> plug the card with the printer off -> turn printer on and wait a minute -> Done (Depending on your mainboard/printer/lcd you will probably not have a sign that the mainboard got flashed so don't worry) - if at the end of this guide the client cannot connect to the klipper firmware usually the problem is with the `.bin` file building or flashing process.
 
 </details>
@@ -852,7 +852,7 @@ Enable it: `/etc/init.d/dwc enable`
  
 - If enabling the services returns an error, do: `ls -l` inside `/etc/init.d/` and check if the service has executable permissions (x flag). If not do: `chmod 755 service` - replace `service` accordingly.
 
-- I didn't manage to get the printer to communicate on 250000 baudrate (Official version of pyserial is unable to set a custom nonstandard baudrate - I found a fix by [ckielstra](https://github.com/pyserial/pyserial/pull/496) in a PR that is not yet merged. I've added his changes to my [forked](https://github.com/ihrapsa/pyserial) pyserial as well which is updated more often. If you don't want to use 250k baudrate I solved this issue by using 230400 instead (you need to change this both while building the mcu klipper firmware AND inside printer.cfg under [mcu]:  
+- I didn't manage to get the printer to communicate on 250000 baudrate (Official version of pyserial is unable to set a custom nonstandard baudrate - I found a fix by [ckielstra](https://github.com/pyserial/pyserial/pull/496) in a PR that is not yet merged. I've added his changes to my [forked](https://github.com/shivajiva101/pyserial) pyserial as well which is updated more often. If you don't want to use 250k baudrate I solved this issue by using 230400 instead (you need to change this both while building the mcu klipper firmware AND inside printer.cfg under [mcu]:  
 `[mcu]`  
 `baud: 230400`  
 
