@@ -142,7 +142,7 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
 
 >
     cd ~
-    wget https://github.com/shivajiva101/KlipperWrt/raw/main/scripts/1_format_extroot.sh
+    wget https://github.com/shivajiva101/KlipperWrt/raw/dev/scripts/1_format_extroot.sh
     chmod +x 1_format_extroot.sh
     ./1_format_extroot.sh
 
@@ -152,7 +152,7 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
 
 >
     cd ~
-    wget https://github.com/shivajiva101/KlipperWrt/dev/raw/main/scripts/2_script_manual.sh
+    wget https://github.com/shivajiva101/KlipperWrt/raw/dev/scripts/2_script_manual.sh
     chmod +x 2_script_manual.sh
     ./2_script_manual.sh
     
