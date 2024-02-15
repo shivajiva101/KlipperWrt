@@ -107,8 +107,6 @@
 
 --------------------------------------------------------------------------
 
-###  :clapper: Check out the [video](https://youtu.be/0y3qt8cvtKY) tutorial [Kruze17](https://github.com/Kruze17) has made on his [Hyper Makes](https://www.youtube.com/channel/UCrCxVyN2idCxPNOwCwK6qtQ) YouTube channel.
-
 ### :exclamation: Open issues or join the [<img align="center" width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/discord.png" alt="discord_icon">](https://discord.gg/ZGrCMVs35H) [server](https://discord.gg/ZGrCMVs35H) for extra support.
 
 
@@ -140,22 +138,24 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
 - ❗  Access the terminal tab (`Services` -> `Terminal`) ❗ If terminal tab is not working go to `Config` tab and change `Interface` to the interface you are connecting through the box (your wireless router SSID for example) -> `Save & Apply`.
 - Download and execute the `1_format_extroot.sh` script:
 
->
-    cd ~
-    wget https://github.com/shivajiva101/KlipperWrt/raw/dev/scripts/1_format_extroot.sh
-    chmod +x 1_format_extroot.sh
-    ./1_format_extroot.sh
+```
+cd ~
+wget https://github.com/shivajiva101/KlipperWrt/raw/dev/scripts/1_format_extroot.sh
+chmod +x 1_format_extroot.sh
+./1_format_extroot.sh
 
+```
 - You'll be prompted to reboot: type `reboot`
 
 - Download and execute the `2_script_manual.sh` script:
 
->
+```
     cd ~
     wget https://github.com/shivajiva101/KlipperWrt/raw/dev/scripts/2_script_manual.sh
     chmod +x 2_script_manual.sh
     ./2_script_manual.sh
-    
+
+```  
 - Follow the prompted instructions and wait for everything to be installed
 - remove the scripts when done: `rm -rf /root/*.sh`
 - Done!
@@ -216,13 +216,12 @@ They come preinstalled with either <img width="20" height="20" src="https://gith
 - ❗  Access the terminal tab (`Services` -> `Terminal`) ❗ If terminal tab is not working go to `Config` tab and change `Interface` to the interface you are connecting through the box (your wireless router SSID for example) -> `Save & Apply`.
 - Download and execute the install script:
 
->
-    cd ~
-    wget https://github.com/shivajiva101/KlipperWrt/raw/main/scripts/KlipperWrt_install.sh
-    chmod +x KlipperWrt_install.sh
-    ./KlipperWrt_install.sh
+``` cd ~
+wget https://github.com/shivajiva101/KlipperWrt/raw/main/scripts/KlipperWrt_install.sh
+chmod +x KlipperWrt_install.sh
+./KlipperWrt_install.sh
 
-
+```
 - Follow the script prompts to install either `fluidd` or `Mainsail` automatically
 - Wait until it prompts you to reboot
 - remove the script when done: `rm -rf /root/*.sh`
@@ -871,8 +870,8 @@ Enable it: `/etc/init.d/dwc enable`
 3. Put it on a FAT32 formatted USB stick (NOT sd card)
 4. Insert it in the box while off
 5. Press and hold the reset button
-6. Power on the box while still holding the reset button for about 6-10 sec.
-7. Release the button and wait for a couple of minutes. After a couple of seconds you should find the KlipperWrt AP. You should be able to ssh into it through ethernet or connected to it's wifi (`ssh root@192.168.1.1`) 
+6. Power on the box while still holding the reset button until you see the first flash of the flashdrive being read then immediately release the reset(~10 seconds)
+7. The process, if correctly executed will check the image on the flash drive and reset before flashing it, then it will reset again and boot before creating a wireless AP on 192.168.1.1
 
 </details>
 
@@ -886,8 +885,8 @@ Enable it: `/etc/init.d/dwc enable`
 3. Put it on a FAT32 formatted USB stick (NOT sd card)
 4. Insert it in the box while off
 5. Press and hold the reset button
-6. Power on the box while still holding the reset button for about 6-10 sec.
-7. Release the button and wait for a couple of minutes. After a few seconds you should find it on network.
+6. Power on the box while still holding the reset button until you see the first flash of the flashdrive being read then immediately release the reset(~10 seconds)
+7. The process, if correctly executed will check the image on the flash drive and reset before flashing it, then it will reset again and boot before appearing on the network.
 
 </details>
 
@@ -903,11 +902,7 @@ Enable it: `/etc/init.d/dwc enable`
   - Stephan3 - for [dwc socket](https://github.com/Stephan3/dwc2-for-klipper-socket)
   - Duet3D - for [DuetWebControl](https://github.com/Duet3D/DuetWebControl)
 * the fine tuning: andryblack - for the OpenWrt Klipper [service](https://github.com/andryblack/openwrt-build/tree/master/packages/klipper/files)
-* the encouragement: [Tom Hensel](https://github.com/gretel)- for supporting me into this
+* the encouragement: [Tom Hensel](https://github.com/gretel)- for supporting Ihrapsa
 
 --------------------------------------------------------------------------
 
-You can find me on:  
-
-💬 discord: jonah1024#4422  or join the [server](https://discord.gg/ZGrCMVs35H)  
-:email: email: hrapsaiona@gmail.com  
