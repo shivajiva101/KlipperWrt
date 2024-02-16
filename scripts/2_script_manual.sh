@@ -73,9 +73,16 @@ echo "Installing klipper dependencies..."
 
 opkg update && opkg install git-http unzip htop gcc patch;
 
-opkg install python3 python3-pip python3-cffi python3-dev python3-greenlet python3-jinja2 python3-markupsafe python3-msgpack python3-pyserial;
+opkg install python3 python3-pip python3-cffi python3-dev python3-greenlet python3-jinja2 python3-markupsafe python3-msgpack;
 pip install --upgrade pip;
 pip install python-can configparser
+
+echo "Cloning 250k baud pyserial"
+git clone https://github.com/pyserial/pyserial /root/pyserial;
+cd /root/pyserial
+python /root/pyserial/setup.py install;
+cd /root/
+rm -rf /root/pyserial;
 
 echo " "
 echo "##############################"
