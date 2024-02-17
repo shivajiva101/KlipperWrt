@@ -253,7 +253,7 @@ echo " "
 opkg install wget-ssl;
 
 echo "Installing Timelapse packages..."
-git clone https://github.com/ihrapsa/moonraker-timelapse.git /root/moonraker-timelapse;
+git clone https://github.com/shivajiva101/moonraker-timelapse.git /root/moonraker-timelapse;
 /root/moonraker-timelapse/install.sh;
 
 echo " "
