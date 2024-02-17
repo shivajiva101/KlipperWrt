@@ -19,8 +19,6 @@ read -p "Press [ENTER] to check if extroot is enabled ...or [ctrl+c] to exit"
 
 df -h;
 
-
-
 echo " "
 echo "   ############################################"
 echo "   ## Is /dev/mmcblk0p1 mounted on /overlay? ##"
@@ -90,7 +88,6 @@ echo "### Moonraker dependencies ###"
 echo "##############################"
 echo " "
 
-
 echo "Installing moonraker python3 packages..."
 opkg install python3-tornado python3-pillow python3-distro python3-curl python3-zeroconf python3-paho-mqtt python3-yaml python3-requests ip-full libsodium;
 
@@ -127,7 +124,6 @@ chmod 755 /etc/init.d/klipper;
 
 mkdir -p /root/printer_data/config;
 
-
 echo " "
 echo "#################"
 echo "### Moonraker ###"
@@ -141,7 +137,6 @@ chmod 755 /etc/init.d/moonraker
 wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/upstreams.conf -P /etc/nginx/conf.d/
 wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/common_vars.conf -P /etc/nginx/conf.d/
 /etc/init.d/nginx enable
-
 
 echo " "
 echo "#################"
@@ -170,9 +165,9 @@ choose(){
 	   echo " "
 	   mkdir /root/fluidd;
 	   wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
-	   wget -q -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/moonraker/fluidd_moonraker.conf;
-	   wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/fluidd.conf;
-	wget https://github.com/shivajiva101/KlipperWrt/raw/main/klipper_config/fluidd.cfg -P /root/printer_data/config/
+	   wget -q -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/dev/moonraker/fluidd_moonraker.conf;
+	   wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/dev/nginx/fluidd.conf;
+	wget https://github.com/shivajiva101/KlipperWrt/raw/dev/klipper_config/fluidd.cfg -P /root/printer_data/config/
      
 	   
 	   echo "***************************"
@@ -190,9 +185,9 @@ choose(){
 	   echo " "
 	   mkdir /root/mainsail;
 	   wget -q -O /root/mainsail/mainsail.zip https://github.com/mainsail-crew/mainsail/releases/latest/download/mainsail.zip && unzip /root/mainsail/mainsail.zip -d /root/mainsail/ && rm /root/mainsail/mainsail.zip;
-	   wget -q -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/moonraker/mainsail_moonraker.conf;
-	   wget -q -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/mainsail.conf;
-	wget https://github.com/shivajiva101/KlipperWrt/raw/main/klipper_config/mainsail.cfg -P /root/printer_data/config/
+	   wget -q -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/dev/moonraker/mainsail_moonraker.conf;
+	   wget -q -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/dev/nginx/mainsail.conf;
+	wget https://github.com/shivajiva101/KlipperWrt/raw/dev/klipper_config/mainsail.cfg -P /root/printer_data/config/
 	   
 	   echo "***************************"
 	   echo "**         Done          **"
@@ -207,7 +202,6 @@ choose(){
 }
 
 choose;
-
 
 echo " "
 echo "#################"
@@ -256,12 +250,10 @@ echo "### Timelapse ###"
 echo "#################"
 echo " "
 
-
-
 opkg install wget-ssl;
 
 echo "Installing Timelapse packages..."
-git clone https://github.com/shivajiva101/moonraker-timelapse.git /root/moonraker-timelapse;
+git clone https://github.com/ihrapsa/moonraker-timelapse.git /root/moonraker-timelapse;
 /root/moonraker-timelapse/install.sh;
 
 echo " "
