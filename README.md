@@ -127,7 +127,7 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
 
 #### STEPS:
  
-- Make sure you've flahsed/sysupgraded latest `.bin` file from `/Firmware/OpenWrt_snapshot/` or from latest release.
+- Make sure you've flashed/sysupgraded latest `.bin` file from `/Firmware/OpenWrt_snapshot/` or from latest release.
 - Connect to the `OpenWrt` access point
 - Access LuCi web interface and log in on `192.168.1.1:81`
 - _(**optional** but recommended)_ Add a password to the `OpenWrt` access point: `Wireless` -> Under wireless overview `EDIT` the `OpenWrt` interface -> `Wireless Security` -> Choose an encryption -> set a password -> `Save` -> `Save & Apply`
@@ -189,72 +189,6 @@ _____________________________________________
 </details>
 
 --------------------------------------------------------------------------
-	
-
-<details>
-  <summary>OR</summary>
-
-
-### Cloning script method 
-Untarrs an already working image(outdated). 
-
-<details>
-  <summary>Click for STEPS!</summary>
-  
-This uses the preinstalled extroot filesystem archives I've uploaded to [Releases](https://github.com/shivajiva101/KlipperWrt/releases/tag/v1.0).  
-They come preinstalled with either <img width="20" height="20" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/fluidd.png" alt="fluidd_icon"> **fluidd**  OR <img width="20" height="20" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/mainsail.png" alt="mainsail_icon"> **Mainsail** and **Klipper**, **Moonraker**, **mjpg-streamer** (for webcam stream) and Fry's **timelapse component** (for taking frames and rendering the video).
- 
- 
-#### STEPS:
-- Make sure you've flahsed/sysupgraded latest `.bin` file from `/Firmware/OpenWrt_snapshot/` or from latest release.
-- Connect to the `KlipperWrt` access point
-- Access LuCi web interface and log in on `192.168.1.1:81`
-- _(**optional** but recommended)_ Add a password to the `KlipperWrt` access point: `Wireless` -> Under wireless overview `EDIT` the `KlipperWrt` interface -> `Wireless Security` -> Choose an encryption -> set a password -> `Save` -> `Save & Apply`
-- _(**optional** but recommended)_ Add a password: `System` -> `Administration` -> `Router Password`
-- Connect as a client to your Internet router: `Network` -> `Wireless` -> `SCAN` -> `Join Network` -> check `Lock to BSSID` -> `Create/Assign Firewall zone` then under `custom` type `wwan` enter -> `Submit` -> `Save` -> `Save & Apply`
-- Connect back to your router and either find the new box's ip inside the `DHCP` list.
-- ❗  Access the terminal tab (`Services` -> `Terminal`) ❗ If terminal tab is not working go to `Config` tab and change `Interface` to the interface you are connecting through the box (your wireless router SSID for example) -> `Save & Apply`.
-- Download and execute the install script:
-
-``` cd ~
-wget https://github.com/shivajiva101/KlipperWrt/raw/main/scripts/KlipperWrt_install.sh
-chmod +x KlipperWrt_install.sh
-./KlipperWrt_install.sh
-
-```
-- Follow the script prompts to install either `fluidd` or `Mainsail` automatically
-- Wait until it prompts you to reboot
-- remove the script when done: `rm -rf /root/*.sh`
-- When done and rebooted use `http://klipperwrt.local` or `http://box-ip`to access the Klipper client
-- Done!
-
-
-#### Setting up your `printer.cfg`
-- put your `printer.cfg` inside `/root/klipper_config`
-- delete these blocks from your `printer.cfg`: `[virtual_sdcard]`, `[display_status]`, `[pause_resume]` since they're included inside `fluidd.cfg`/ `mainsail.cfg`
-- add these lines inside your `printer.cfg` depending on your klipper client (mainsail/fluidd):   
-- **Fluidd:** 
-`[include fluidd.cfg]` 
-`[include fluidd_macros.cfg] # include your macros inside this file` 
-
-- **Mainsail:** 
-`[include mainsail.cfg]` 
-`[include timelapse.cfg]` 
-
-- Under `[mcu]` block change your serial port path according to [this](https://github.com/shivajiva101/KlipperWrt/issues/8)[Optional]
-- Build your `klippper.bin` mainboard firmware using a linux desktop/VM (follow `printer.cfg` header for instructions)
-- Flash your mainboard according to the `printer.cfg` header
-- Do a `FIRMWARE RESTART` inside fluidd/Mainsail
-- Done
-_____________________________________________
-*Notes:*
--  If the box doesn't connect back to your router wirelessly connect to it with an ethernet cable and setup/troubleshoot wifi.
--  Check [here](https://github.com/mainsail-crew/moonraker-timelapse/blob/main/docs/configuration.md) for how to configure timelapse inside Mainsail dashboard and slicer. Fluidd currently requires editing the moonraker.conf variables since it doesn't have a UI for that component yet.
- 
-  </details>
-  
-
-</details>
 
 </details>
 
