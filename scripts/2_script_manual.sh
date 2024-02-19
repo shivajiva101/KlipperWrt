@@ -76,7 +76,7 @@ pip install --upgrade pip;
 pip install python-can configparser
 
 echo "Cloning 250k baud pyserial"
-git clone https://github.com/pyserial/pyserial /root/pyserial;
+git clone --depth 1 https://github.com/pyserial/pyserial /root/pyserial;
 cd /root/pyserial
 python /root/pyserial/setup.py install;
 cd /root/
@@ -130,12 +130,12 @@ echo "### Moonraker ###"
 echo "#################"
 echo " "
 
-git clone https://github.com/Arksine/moonraker.git /root/moonraker;
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/Services/moonraker -P /etc/init.d/
+git clone --depth 1 https://github.com/Arksine/moonraker.git /root/moonraker;
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/Services/moonraker -P /etc/init.d/
 chmod 755 /etc/init.d/moonraker
 /etc/init.d/moonraker enable
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/upstreams.conf -P /etc/nginx/conf.d/
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/common_vars.conf -P /etc/nginx/conf.d/
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/nginx/upstreams.conf -P /etc/nginx/conf.d/
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/nginx/common_vars.conf -P /etc/nginx/conf.d/
 /etc/init.d/nginx enable
 
 echo " "
@@ -165,9 +165,9 @@ choose(){
 	   echo " "
 	   mkdir /root/fluidd;
 	   wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
-	   wget -q -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/dev/moonraker/fluidd_moonraker.conf;
-	   wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/dev/nginx/fluidd.conf;
-	wget https://github.com/shivajiva101/KlipperWrt/raw/dev/klipper_config/fluidd.cfg -P /root/printer_data/config/
+	   wget -q -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/moonraker/fluidd_moonraker.conf;
+	   wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/3.0/nginx/fluidd.conf;
+       wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/klipper_config/fluidd.cfg -P /root/printer_data/config/
      
 	   
 	   echo "***************************"
@@ -185,9 +185,9 @@ choose(){
 	   echo " "
 	   mkdir /root/mainsail;
 	   wget -q -O /root/mainsail/mainsail.zip https://github.com/mainsail-crew/mainsail/releases/latest/download/mainsail.zip && unzip /root/mainsail/mainsail.zip -d /root/mainsail/ && rm /root/mainsail/mainsail.zip;
-	   wget -q -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/dev/moonraker/mainsail_moonraker.conf;
-	   wget -q -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/dev/nginx/mainsail.conf;
-	wget https://github.com/shivajiva101/KlipperWrt/raw/dev/klipper_config/mainsail.cfg -P /root/printer_data/config/
+	   wget -q -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/moonraker/mainsail_moonraker.conf;
+	   wget -q -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/3.0/nginx/mainsail.conf;
+       wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/klipper_config/mainsail.cfg -P /root/printer_data/config/
 	   
 	   echo "***************************"
 	   echo "**         Done          **"
@@ -263,7 +263,7 @@ echo "########################"
 echo " "
 
 echo "Install tty hotplug rule..."
-opkg update && opkg install usbutils;
+opkg install usbutils;
 cat << "EOF" > /etc/hotplug.d/usb/22-tty-symlink
 # Description: Action executed on boot (bind) and with the system on the fly
 PRODID="1a86/7523/264" #change here according to "PRODUCT=" from grep command 

@@ -34,9 +34,9 @@
 [![creality_wb](img/creality_wb.jpg)](https://www.creality.com/goods-detail/creality-box-3d-printer)   
 - A router box device released by Creality in 2020 meant to add cloud based remote control to your printer. Creality Cloud App is a contraption between social media and 3d printing that you have to use to be able to print and monitor.  
 	
-	Sounded like a good ideea. Unfortunately, the unpolished idea was not very well received by the public. Creality recently (July 2021) added **Cura integration** and **custom gcode upload**. Webcam support finally got released but it seems to only work with their new **proprietary webcam**. Everything is still **cloud based** and you **can't use it offline**. This raised a lot of concerns in terms of privacy and transparency. Putting all your trust in a company is not necesarily the best idea and although they seemed to have improved the app and user experience the full control is not in the user's hands yet.  
+	Sounded like a good idea. Unfortunately, the unpolished idea was not very well received by the public. Creality recently (July 2021) added **Cura integration** and **custom gcode upload**. Webcam support finally got released but it seems to only work with their new **proprietary webcam**. Everything is still **cloud based** and you **can't use it offline**. This raised a lot of concerns in terms of privacy and transparency. Putting all your trust in a company is not necesarily the best idea and although they seemed to have improved the app and user experience the full control is not in the user's hands yet.  
 	
-	It's hard to please everybody when creating a product/service but actually listening to the public's feedback is a good start. People need privacy, full control and reliability to actually consider using the product over the alternatives. **Klipper** and it's UI clients come as **open source** and **100% transaprent** alternatives to remote printing. 
+	It's hard to please everybody when creating a product/service but actually listening to the public's feedback is a good start. People need privacy, full control and reliability to actually consider using the product over the alternatives. **Klipper** and it's UI clients come as **open source** and **100% transparent** alternatives to remote printing. 
 
  <details>
    <summary>Specifications (Click to expand!)</summary>
@@ -118,16 +118,16 @@
   <summary>Click to expand!</summary>
 
 ### Installing Script method
-Installs everything fresh and up to date. Possibly unstable, sometimes new dependencies are added and I might not have updated the script by then.  
+Installs everything fresh and up to date. Possibly unstable, sometimes new dependencies are added and the script may not have been updated at that point.  
 
 <details>
   <summary>Click for STEPS!</summary>
 
-This method uses 2 scripts to foramt an sd card and make it extroot and another one that installes everything from the internet.
+This method uses 2 scripts to foramt an sd card and make it extroot and another one that installs everything from the internet.
 
 #### STEPS:
  
-- Make sure you've flashed/sysupgraded latest `.bin` file from `/Firmware/OpenWrt_snapshot/` or from latest release.
+- Make sure you've flahsed/sysupgraded latest `.bin` file from `/Firmware/OpenWrt_snapshot/` or from latest release.
 - Connect to the `OpenWrt` access point
 - Access LuCi web interface and log in on `192.168.1.1:81`
 - _(**optional** but recommended)_ Add a password to the `OpenWrt` access point: `Wireless` -> Under wireless overview `EDIT` the `OpenWrt` interface -> `Wireless Security` -> Choose an encryption -> set a password -> `Save` -> `Save & Apply`
@@ -138,24 +138,22 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
 - ❗  Access the terminal tab (`Services` -> `Terminal`) ❗ If terminal tab is not working go to `Config` tab and change `Interface` to the interface you are connecting through the box (your wireless router SSID for example) -> `Save & Apply`.
 - Download and execute the `1_format_extroot.sh` script:
 
-```
-cd ~
-wget https://github.com/shivajiva101/KlipperWrt/raw/dev/scripts/1_format_extroot.sh
-chmod +x 1_format_extroot.sh
-./1_format_extroot.sh
+>
+    cd ~
+    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/scripts/1_format_extroot.sh
+    chmod +x 1_format_extroot.sh
+    ./1_format_extroot.sh
 
-```
 - You'll be prompted to reboot: type `reboot`
 
 - Download and execute the `2_script_manual.sh` script:
 
-```
+>
     cd ~
-    wget https://github.com/shivajiva101/KlipperWrt/raw/dev/scripts/2_script_manual.sh
+    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/scripts/2_script_manual.sh
     chmod +x 2_script_manual.sh
     ./2_script_manual.sh
-
-```  
+    
 - Follow the prompted instructions and wait for everything to be installed
 - remove the scripts when done: `rm -rf /root/*.sh`
 - Done!
@@ -176,7 +174,7 @@ chmod +x 1_format_extroot.sh
 `[include mainsail.cfg]` 
 `[include timelapse.cfg]` 
 
-- Under `[mcu]` block change your serial port path according to [this](https://github.com/shivajiva101/KlipperWrt/issues/8)[Optional]
+- Under `[mcu]` block change your serial port path according to [this](https://github.com/ihrapsa/KlipperWrt/issues/8)[Optional]
 - Build your `klippper.bin` mainboard firmware using a linux desktop/VM (follow `printer.cfg` header for instructions)
 - Flash your mainboard according to the `printer.cfg` header
 - Do a `FIRMWARE RESTART` inside fluidd/Mainsail
@@ -187,10 +185,8 @@ _____________________________________________
 -  Check [here](https://github.com/mainsail-crew/moonraker-timelapse/blob/main/docs/configuration.md#slicer-setup) for how to set your `TIMELAPSE_TAKE_FRAME` macro inside your slicer layer change.
 
 </details>
-
---------------------------------------------------------------------------
-
 </details>
+--------------------------------------------------------------------------
 
 # Manual Steps:
 
@@ -203,7 +199,8 @@ _____________________________________________
 <details>
   <summary>Click for STEPS!</summary>
 
-#### 1. Build OpenWrt image
+:exclamation: Although this is an OpenWrt snapshot (Device is not officially supported) it works seamlessly, as long as the core package feed points at the correct tag for the firmware version.
+#### 1. Build OpenWrt image(optional)
 
 <details>
   <summary>Click to expand!</summary>
@@ -211,11 +208,7 @@ _____________________________________________
 * Only neccesary until the [port](https://github.com/openwrt/openwrt/pull/3802) gets merged and officially supported.
   * I recommend following figgyc's [post](https://github.com/figgyc/figgyc.github.io/blob/source/posts.org#compiling-openwrt-for-the-creality-wb-01-tips-and-tricks). You'll find there his experience and a guide to compile OpenWrt. Here is his OpenWrt [branch](https://github.com/figgyc/openwrt/tree/wb01) with support for the Creality Wi-Fi Box and the [PR](https://github.com/openwrt/openwrt/pull/3802) pending to merge to main OpenWrt.
   
-  * :exclamation: This is an OpenWrt snapshot (aka not officially supported) and kernel modules can't be installed with opkg. You NEED to choose some required kmods inside `make menuconfig`:  
-  `kmod-fs-ext4` `kmod-usb-storage` `kmod-usb-ohci` `kmod-usb-uhci` `kmod-usb-serial` `kmod-usb-serial-ch341`*  `kmod-video-core` `kmod-video-uvc`  
-  *(chose this because my printer has the ch341 serial usb convertor. You might want to choose `kmod-usb-serial-fttdi` if your mainboard uses that - check this before building/compiling) 
-  
-  **OR use the provided image I built located inside `Firmware/OpenWrt_snapshot` - Be aware though  that this was built with only the `kmod-usb-serial-ch431` - if your mainboard is different -> use the above instructions to compile.**
+  * 
   
   </details>
 #### 2. Install OpenWrt to the device
@@ -235,7 +228,7 @@ Flashing:
 <details>
   <summary>Click to expand!</summary>
  
-* If the flashing was successful you should be able to ssh to the box through ethernet. Plug it in your PC (prefered way) or router and do `ssh root@192.168.1.1` in `Windows PowerShell` or any `unix terminal` or use `putty`.  
+* If the flashing was successful you should be able to ssh into the box through ethernet. Plug it in your PC (prefered way) or router and do `ssh root@192.168.1.1` in `Windows PowerShell` or any `unix terminal` or use `putty`.  
 * Edit `/etc/config/network`, `/etc/config/wireless` and `/etc/config/firewall`. I've uploaded these to follow as a model (inside `Wi-Fi`).
 * Use `iw dev wlan0 scan` to scan for near wi-fi networks and look for the bssid specific to your 2.4Ghz SSID.
 
@@ -248,52 +241,60 @@ Flashing:
  
 
 - **Extroot**
+```
+opkg update && opkg install block-mount kmod-fs-ext4 kmod-usb-storage kmod-usb-ohci kmod-usb-uhci e2fsprogs fdisk
+DEVICE="$(sed -n -e "/\s\/overlay\s.*$/s///p" /etc/mtab)"
+uci -q delete fstab.rwm
+uci set fstab.rwm="mount
+uci set fstab.rwm.device="${DEVICE}
+uci set fstab.rwm.target="/rwm
+uci commit fstab
+mkfs.ext4 /dev/mmcblk0p1
+DEVICE="/dev/mmcblk0p1"
+eval $(block info "${DEVICE}" | grep -o -e "UUID=\S*")
+uci -q delete fstab.overlay
+uci set fstab.overlay="mount"
+uci set fstab.overlay.uuid="${UUID}"
+uci set fstab.overlay.target="/overlay"
+uci commit fstab
+mount /dev/mmcblk0p1 /mnt
+cp -f -a /overlay/. /mnt
+umount /mnt
+reboot
 
-`opkg update && opkg install block-mount kmod-fs-ext4 kmod-usb-storage kmod-usb-ohci kmod-usb-uhci e2fsprogs fdisk`  
-`DEVICE="$(sed -n -e "/\s\/overlay\s.*$/s///p" /etc/mtab)"`  
-`uci -q delete fstab.rwm`  
-`uci set fstab.rwm="mount"`  
-`uci set fstab.rwm.device="${DEVICE}"`  
-`uci set fstab.rwm.target="/rwm"`  
-`uci commit fstab`  
-
-`mkfs.ext4 /dev/mmcblk0p1`  
-
-`DEVICE="/dev/mmcblk0p1"`  
-`eval $(block info "${DEVICE}" | grep -o -e "UUID=\S*")`  
-`uci -q delete fstab.overlay`  
-`uci set fstab.overlay="mount"`  
-`uci set fstab.overlay.uuid="${UUID}"`  
-`uci set fstab.overlay.target="/overlay"`  
-`uci commit fstab`  
-`mount /dev/mmcblk0p1 /mnt`  
-`cp -f -a /overlay/. /mnt`  
-`umount /mnt`  
-`reboot`  
-
+```
 
 - **swap** (though the existing 128mb RAM seemed more than enough)
 
 run this once:  
 
 >
+```
+opkg update && opkg install swap-utils
+dd if=/dev/zero of=/overlay/swap.page bs=1M count=512
+mkswap /overlay/swap.page 
+swapon /overlay/swap.page
+mount -o remount,size=256M /tmp
 
-    opkg update && opkg install swap-utils
+```
+update /etc/rc.local so that swap is enabled at boot:  
 
-    dd if=/dev/zero of=/overlay/swap.page bs=1M count=512
-    mkswap /overlay/swap.page 
-    swapon /overlay/swap.page
-    mount -o remount,size=256M /tmp 
+```
+rm /etc/rc.local;
+cat << "EOF" > /etc/rc.local
+# Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
 
-put this inside /etc/rc.local above exit so that swap is enabled at boot:  
+###activate the swap file on the SD card  
+swapon /overlay/swap.page  
 
->
+###expand /tmp space  
+mount -o remount,size=256M /tmp
 
-    ###activate the swap file on the SD card  
-    swapon /overlay/swap.page  
+exit 0
+EOF
 
-    ###expand /tmp space  
-    mount -o remount,size=256M /tmp  
+```
 
 </details>
 
@@ -312,39 +313,6 @@ put this inside /etc/rc.local above exit so that swap is enabled at boot:
  
 * for Klipper and moonraker - check the `requirements` folder. 
 * Install`git-http` with `opkg update && opkg install git-http gcc unzip htop`
-* :exclamation: Python2 packages are not available by default for this `snapshot` A workaround I found was to use the v19.07 OpenWrt release feeds (this version still has python2 packages) for the same target (_ramips/mt76x8_) and cpu architecture (_mipsel_24kc_) as the box. I make a backup of the original `/etc/opkg/distfeeds.conf` and create another `distfeeds.conf`file with the v19.07 url feeds. Don't forget to run `opkg update` everytime you make modifications to that file. After finishing with installing the packages that are only available for the v19.07 and below (like python2 packages) I switch back to the backup `distfeeds.conf` file. 
-
-* The `distfeeds.conf` file with openwrt v19.07 feeds should look something like this:
-
- >
-
-	src/gz openwrt_core https://downloads.openwrt.org/releases/19.07.7/targets/ramips/mt76x8/packages
-	src/gz openwrt_base https://downloads.openwrt.org/releases/19.07.7/packages/mipsel_24kc/base
-	src/gz openwrt_luci https://downloads.openwrt.org/releases/19.07.7/packages/mipsel_24kc/luci
-	src/gz openwrt_packages https://downloads.openwrt.org/releases/19.07.7/packages/mipsel_24kc/packages
-	src/gz openwrt_routing https://downloads.openwrt.org/releases/19.07.7/packages/mipsel_24kc/routing
-	src/gz openwrt_telephony https://downloads.openwrt.org/releases/19.07.7/packages/mipsel_24kc/telephony  
-
- * Do `opkg update`  
- :exclamation: If you get `wrong signature` errors, comment the `option check_signature` line under `/etc/opkg.conf` - you can uncomment this after finishing with `v19.07 distfeeds`  
-* After you add the v19.07 `distfeeds.conf` -> install python2 packages:
-
- >
- 
-    opkg install python python-pip python-cffi python-dev
-* Install `250k` baud `pyserial`:
-
->
-	cd ~
-	git clone https://github.com/shivajiva101/pyserial
-	cd pyserial
-	python setup.py install
-	rm -rf /root/pyserial
-	
-<details>
-  <summary>Note!</summary>	
-	
-_ The official `pyserial` python package is not configured to work with `250000 baud` on `MIPS` platforms (only `230400` max). Luckly someone fixed that in a fork and used his work to bring the [repo](https://github.com/shivajiva101/pyserial.git) up to date_
 	
 </details>
 	
@@ -393,7 +361,7 @@ _Those can be found inside `Packages` as a single `*ipk` file. I cross-compiled 
   <summary>Click to expand!</summary>
  
 - **6.1 Clone Klipper inside** `~/`  
-           - `git clone https://github.com/KevinOConnor/klipper.git`. 
+           - `git clone --depth 1 https://github.com/Klipper3D/klipper.git`. 
 - **6.2 Use provided klipper service and place inside `/etc/init.d/`**
 	
 >
@@ -609,25 +577,7 @@ It's ok to keep both client directories inside `/root/` as these are static file
  
 * for Klipper - check the `requirements.txt` file. 
 
-* :exclamation: Python2 packages are not available by default for this `snapshot` A workaround I found was to use the v19.07 OpenWrt release feeds (this version still has python2 packages) for the same target (_ramips/mt76x8_) and cpu architecture (_mipsel_24kc_) as the box. I make a backup of the original `/etc/opkg/distfeeds.conf` and create another `distfeeds.conf`file with the v19.07 url feeds. Don't forget to run `opkg update` everytime you make modifications to that file. After finishing with installing the packages that are only available for the v19.07 and below (like python2 packages) I switch back to the backup `distfeeds.conf` file. 
 
-* The `distfeeds.conf` file with openwrt v19.07 feeds should look something like this:
-> 
-
-	src/gz openwrt_core https://downloads.openwrt.org/releases/19.07.7/targets/ramips/mt76x8/packages
-	src/gz openwrt_base https://downloads.openwrt.org/releases/19.07.7/packages/mipsel_24kc/base
-	src/gz openwrt_luci https://downloads.openwrt.org/releases/19.07.7/packages/mipsel_24kc/luci
-	src/gz openwrt_packages https://downloads.openwrt.org/releases/19.07.7/packages/mipsel_24kc/packages
-	src/gz openwrt_routing https://downloads.openwrt.org/releases/19.07.7/packages/mipsel_24kc/routing
-	src/gz openwrt_telephony https://downloads.openwrt.org/releases/19.07.7/packages/mipsel_24kc/telephony  
-
-* Do `opkg update`  
- :exclamation: If you get `wrong signature` errors, comment the `option check_signature` line under `/etc/opkg.conf` - you can uncomment this after finishing with `v19.07 distfeeds`  
-* After you add the v19.07 `distfeeds.conf` -> install python2 packages: with `opkg install python python-pip python-cffi python-pyserial python-dev gcc`.   
- :exclamation: __The official `pyserial` python package is not configured to work with `250000 baud` on `MIPS` platforms (only `230400` max). If you want/need 250k baud, install this version of [pyserial](https://github.com/shivajiva101/pyserial) and install it with `python2 setup.py install`__  
-* With pip install: `pip install greenlet==0.4.15 jinja2 python-can=3.3.4`  
-* Switch back to original `distfeeds.conf`, `opkg update` -> install python3 and packages: `opkg install python3 python3-pip python3-tornado`.
- 
  </details>
 
 #### 6. Install Klipper
@@ -636,7 +586,7 @@ It's ok to keep both client directories inside `/root/` as these are static file
   <summary>Click to expand!</summary>
  
 - **6.1 Clone Klipper inside** `~/`  
-           - do `opkg install git-http unzip` then  `git clone https://github.com/KevinOConnor/klipper.git`. 
+           - do `opkg install git-http unzip` then  `git clone --depth 1 https://github.com/KevinOConnor/klipper.git`. 
 - **6.2 Use provided klipper service and place inside `/etc/init.d/`**  - find it inside `Services -> klipper`
 - **6.3 Enable klipper service:** Everytime you create a service file you need to give it executable permissions before enabling it. For klipper do `chmod 755 klipper`. You can enable it now by `/etc/init.d/klipper enable`
 - **6.4 Prepare your `printer.cfg` file**
@@ -645,7 +595,7 @@ It's ok to keep both client directories inside `/root/` as these are static file
 - **6.5 Restart klipper** - do `service klipper restart` or `/etc/init.d/klipper restart`
 - **6.6 Build `klipper.bin` file**
             - Building is not mandatory to be done on the device that hosts klippy. To build it on this box you would need a lot of dependencies that are not available for OpenWrt so I just used my pc running ubuntu: On a different computer running linux (or VM or live USB) -> Clone klipper just like you did before -> `cd klipper` -> `make menuconfig` -> use the configurations specific to your mainboard (Check the header inside your `printer.cfg` file for details).  
-:exclamation: use custom baud: `230400`. By default 250000 is selected. If you want/need that baud, remove the `python-pyserial` package and install this version of [pyserial](https://github.com/shivajiva101/pyserial.git) instead - check `Requirements` directory for details about installation process.
+:exclamation: use custom baud: `230400`. By default 250000 is selected. If you want/need that baud, remove the `python-pyserial` package and install this version of [pyserial](https://github.com/pyserial/pyserial.git) instead - check `Requirements` directory for details about installation process.
 -> once configured run `make` -> if succesfull the firmware will be inside `./out/klipper.bin` -> flash the mainboard:(check header of `printer.cfg` again - some mainboards need the `.bin` file renamed a certain way) copy the `.bin` file on a sd card -> plug the card with the printer off -> turn printer on and wait a minute -> Done (Depending on your mainboard/printer/lcd you will probably not have a sign that the mainboard got flashed so don't worry) - if at the end of this guide the client cannot connect to the klipper firmware usually the problem is with the `.bin` file building or flashing process.
 
 </details>
@@ -804,8 +754,8 @@ Enable it: `/etc/init.d/dwc enable`
 3. Put it on a FAT32 formatted USB stick (NOT sd card)
 4. Insert it in the box while off
 5. Press and hold the reset button
-6. Power on the box while still holding the reset button until you see the first flash of the flashdrive being read then immediately release the reset(~10 seconds)
-7. The process, if correctly executed will check the image on the flash drive and reset before flashing it, then it will reset again and boot before creating a wireless AP on 192.168.1.1
+6. Power on the box while still holding the reset button for about 6-10 sec.
+7. Release the button and wait for a couple of minutes. After a couple of seconds you should find the KlipperWrt AP. You should be able to ssh into it through ethernet or connected to it's wifi (`ssh root@192.168.1.1`) 
 
 </details>
 
@@ -819,14 +769,14 @@ Enable it: `/etc/init.d/dwc enable`
 3. Put it on a FAT32 formatted USB stick (NOT sd card)
 4. Insert it in the box while off
 5. Press and hold the reset button
-6. Power on the box while still holding the reset button until you see the first flash of the flashdrive being read then immediately release the reset(~10 seconds)
-7. The process, if correctly executed will check the image on the flash drive and reset before flashing it, then it will reset again and boot before appearing on the network.
+6. Power on the box while still holding the reset button for about 6-10 sec.
+7. Release the button and wait for a couple of minutes. After a few seconds you should find it on network.
 
 </details>
 
 --------------------------------------------------------------------------
 ### Credits:
-* the ideea: Hackaday.com - for the [article](https://hackaday.com/2020/12/28/teardown-creality-wifi-box) that set me on this journey
+* the idea: Hackaday.com - for the [article](https://hackaday.com/2020/12/28/teardown-creality-wifi-box) that set me on this journey
 * the hard part: figgyc - for porting [OpenWrt](https://github.com/figgyc/openwrt/tree/wb01) to the Creality Wi-Fi Box
 * the essentials: 
   - Kevin O'Connor - for [Klipper](https://github.com/KevinOConnor/klipper)
@@ -836,7 +786,11 @@ Enable it: `/etc/init.d/dwc enable`
   - Stephan3 - for [dwc socket](https://github.com/Stephan3/dwc2-for-klipper-socket)
   - Duet3D - for [DuetWebControl](https://github.com/Duet3D/DuetWebControl)
 * the fine tuning: andryblack - for the OpenWrt Klipper [service](https://github.com/andryblack/openwrt-build/tree/master/packages/klipper/files)
-* the encouragement: [Tom Hensel](https://github.com/gretel)- for supporting Ihrapsa
+* the encouragement: [Tom Hensel](https://github.com/gretel)- for supporting me into this
 
 --------------------------------------------------------------------------
 
+You can find me on:  
+
+💬 discord: jonah1024#4422  or join the [server](https://discord.gg/ZGrCMVs35H)  
+:email: email: hrapsaiona@gmail.com  
