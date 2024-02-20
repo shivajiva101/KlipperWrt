@@ -67,17 +67,9 @@ echo "############################"
 echo "### Correction packages ###"
 echo "############################"
 echo " "
- cat distfeeds.conf
-rm /etc/opkg/
-wget 
-src/gz openwrt_core https://downloads.openwrt.org/snapshots/targets/ramips/mt76x8/packages
-src/gz openwrt_base https://downloads.openwrt.org/releases/23.05.2/packages/mipsel_24kc/base
-src/gz openwrt_luci https://downloads.openwrt.org/releases/23.05.2/packages/mipsel_24kc/luci
-src/gz openwrt_packages https://downloads.openwrt.org/releases/23.05.2/packages/mipsel_24kc/packages
-src/gz openwrt_routing https://downloads.openwrt.org/releases/23.05.2/packages/mipsel_24kc/routing
-src/gz openwrt_telephony https://downloads.openwrt.org/releases/23.05.2/packages/mipsel_24kc/telephony
 
-
+rm /etc/opkg/distfeeds.conf;
+wget https://github.com/aguamemnon/KlipperWrt/blob/main/packages%20/distfeeds.conf -P /etc/opkg/;
 
 echo " "
 echo "############################"
@@ -85,11 +77,9 @@ echo "### Install GCC ###"
 echo "############################"
 echo " "
 
-cd /tmp
-wget https://downloads.openwrt.org/snapshots/targets/ramips/mt76x8/packages/libstdcpp6_12.3.0-4_mipsel_24kc.ipk
-opkg install libstdcpp6_12.3.0-4_mipsel_24kc.ipk
-opkg install gcc
-
+cd /tmp;
+wget https://downloads.openwrt.org/snapshots/targets/ramips/mt76x8/packages/libstdcpp6_12.3.0-4_mipsel_24kc.ipk;
+opkg install libstdcpp6_12.3.0-4_mipsel_24kc.ipk;
 
 
 echo " "
