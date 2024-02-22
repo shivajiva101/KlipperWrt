@@ -130,7 +130,7 @@ echo "### Moonraker ###"
 echo "#################"
 echo " "
 
-git clone --depth 1 https://github.com/Arksine/moonraker.git /root/moonraker;
+git clone https://github.com/Arksine/moonraker.git /root/moonraker;
 wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/Services/moonraker -P /etc/init.d/
 chmod 755 /etc/init.d/moonraker
 /etc/init.d/moonraker enable
