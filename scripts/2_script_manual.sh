@@ -76,7 +76,7 @@ pip install --upgrade pip;
 pip install python-can configparser
 
 echo "Cloning 250k baud pyserial"
-git clone --depth 1 https://github.com/pyserial/pyserial /root/pyserial;
+git clone https://github.com/pyserial/pyserial /root/pyserial;
 cd /root/pyserial
 python /root/pyserial/setup.py install;
 cd /root/
@@ -165,9 +165,9 @@ choose(){
 	   echo " "
 	   mkdir /root/fluidd;
 	   wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
-	   wget -q -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/moonraker/fluidd_moonraker.conf;
-	   wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/3.0/nginx/fluidd.conf;
-       wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/klipper_config/fluidd.cfg -P /root/printer_data/config/
+	   wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/moonraker/fluidd_moonraker.conf;
+	   wget -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/nginx/fluidd.conf;
+       wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/klipper_config/fluidd.cfg -P /root/printer_data/config/
      
 	   
 	   echo "***************************"
@@ -185,9 +185,9 @@ choose(){
 	   echo " "
 	   mkdir /root/mainsail;
 	   wget -q -O /root/mainsail/mainsail.zip https://github.com/mainsail-crew/mainsail/releases/latest/download/mainsail.zip && unzip /root/mainsail/mainsail.zip -d /root/mainsail/ && rm /root/mainsail/mainsail.zip;
-	   wget -q -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/moonraker/mainsail_moonraker.conf;
-	   wget -q -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/3.0/nginx/mainsail.conf;
-       wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/klipper_config/mainsail.cfg -P /root/printer_data/config/
+	   wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/moonraker/mainsail_moonraker.conf;
+	   wget -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/nginx/mainsail.conf;
+       wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/klipper_config/mainsail.cfg -P /root/printer_data/config/
 	   
 	   echo "***************************"
 	   echo "**         Done          **"
