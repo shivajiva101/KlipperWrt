@@ -3,6 +3,8 @@
  
  A guide to get _**Klipper**_ with _**fluidd**,_ _**Mainsail**_ or _**Duet-Web-Control**_ on OpenWrt embeded devices like the _Creality Wi-Fi Box_.
  
+ **IMPORTANT: Switch to the tag of the version you want to install BEFORE downloading the firmware to ensure you are syncronised to the core packages, scripts and instructions!**
+
  ---------------------------------------------------------------------------------
 ### Before starting...
 
@@ -118,8 +120,7 @@
   <summary>Click to expand!</summary>
 
 ### Installing Script method
-Installs everything fresh and up to date. Possibly unstable, sometimes new dependencies are added and the script may not have been updated at that point.  
-
+Installs everything fresh and current. Possibly unstable if a new dependency is added to the applications stack before the script is updated.
 <details>
   <summary>Click for STEPS!</summary>
 
@@ -786,11 +787,6 @@ Enable it: `/etc/init.d/dwc enable`
   - Stephan3 - for [dwc socket](https://github.com/Stephan3/dwc2-for-klipper-socket)
   - Duet3D - for [DuetWebControl](https://github.com/Duet3D/DuetWebControl)
 * the fine tuning: andryblack - for the OpenWrt Klipper [service](https://github.com/andryblack/openwrt-build/tree/master/packages/klipper/files)
-* the encouragement: [Tom Hensel](https://github.com/gretel)- for supporting me into this
-
+* the encouragement: [Tom Hensel](https://github.com/gretel)- for supporting Ihrapsa into creating this
 --------------------------------------------------------------------------
 
-You can find me on:  
-
-💬 discord: jonah1024#4422  or join the [server](https://discord.gg/ZGrCMVs35H)  
-:email: email: hrapsaiona@gmail.com  
