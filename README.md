@@ -109,6 +109,8 @@
 
 --------------------------------------------------------------------------
 
+###  :clapper: Check out the latest [video](https://youtu.be/LCJYF-7xleM) tutorial by [Kruze17](https://github.com/Kruze17) on his [Hyper Makes](https://www.youtube.com/channel/UCrCxVyN2idCxPNOwCwK6qtQ) YouTube channel.
+
 ### :exclamation: Open issues or join the [<img align="center" width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/discord.png" alt="discord_icon">](https://discord.gg/ZGrCMVs35H) [server](https://discord.gg/ZGrCMVs35H) for extra support.
 
 
