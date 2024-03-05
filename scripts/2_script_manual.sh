@@ -34,9 +34,9 @@ echo " "
 read -p "Press [ENTER] to Continue ...or [ctrl+c] to exit"
 
 echo " "
-echo "#################"
-echo "###   SWAP    ###"
-echo "#################"
+echo "   #################"
+echo "   ###   SWAP    ###"
+echo "   #################"
 echo " "
 
 echo "Creating swap file"
@@ -62,9 +62,9 @@ exit 0
 EOF
 
 echo " "
-echo "############################"
-echo "### Klipper dependencies ###"
-echo "############################"
+echo "   ############################"
+echo "   ### Klipper dependencies ###"
+echo "   ############################"
 echo " "
 
 echo "Installing klipper dependencies..."
@@ -73,6 +73,7 @@ opkg update && opkg install git-http unzip htop gcc patch;
 
 opkg install python3 python3-pip python3-cffi python3-dev python3-greenlet python3-jinja2 python3-markupsafe python3-msgpack;
 pip install --upgrade pip;
+pip install --upgrade setuptools;
 pip install python-can configparser
 
 echo "Cloning 250k baud pyserial"
@@ -83,51 +84,45 @@ cd /root/
 rm -rf /root/pyserial;
 
 echo " "
-echo "##############################"
-echo "### Moonraker dependencies ###"
-echo "##############################"
+echo "   ##############################"
+echo "   ### Moonraker dependencies ###"
+echo "   ##############################"
 echo " "
 
-echo "Installing moonraker python3 packages..."
+echo "Installing moonraker dependencies..."
 opkg install python3-tornado python3-pillow python3-distro python3-curl python3-zeroconf python3-paho-mqtt python3-yaml python3-requests ip-full libsodium;
 
-echo "Upgrading setuptools..."
-pip install --upgrade setuptools;
-
-echo "Installing pip3 packages..."
 pip install pyserial-asyncio lmdb streaming-form-data inotify-simple libnacl preprocess-cancellation apprise ldap3 dbus-next;
 
-#--use-pep517
-
 echo " "
-echo "###############"
-echo "###  Nginx  ###"
-echo "###############"
+echo "   ###############"
+echo "   ###  Nginx  ###"
+echo "   ###############"
 echo " "
 
 echo "Installing nginx..."
 opkg install nginx-ssl;
 
 echo " "
-echo "###############"
-echo "### Klipper ###"
-echo "###############"
+echo "   ###############"
+echo "   ### Klipper ###"
+echo "   ###############"
 echo " "
 
 echo "Cloning Klipper..."
 git clone --depth 1 https://github.com/Klipper3d/klipper.git /root/klipper;
 
 echo "Creating klipper service..."
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/Services/klipper -P /etc/init.d/;
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/Services/klipper -P /etc/init.d/;
 chmod 755 /etc/init.d/klipper;
 /etc/init.d/klipper enable;
 
 mkdir -p /root/printer_data/config;
 
 echo " "
-echo "#################"
-echo "### Moonraker ###"
-echo "#################"
+echo "   #################"
+echo "   ### Moonraker ###"
+echo "   #################"
 echo " "
 
 git clone https://github.com/Arksine/moonraker.git /root/moonraker;
@@ -139,9 +134,9 @@ wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/nginx/common
 /etc/init.d/nginx enable
 
 echo " "
-echo "#################"
-echo "###  Client   ###"
-echo "#################"
+echo "   #################"
+echo "   ###  Client   ###"
+echo "   #################"
 echo " "
 
 choose(){
@@ -155,58 +150,58 @@ choose(){
 		read n
 		case $n in
 		1)
-    		echo "You chose Fluidd"
-		   	echo "Installing Fluidd..."
-		   	echo " "
-		   	echo "***************************"
-		   	echo "**     Downloading...    **"
-		   	echo "***************************"
-		   	echo " "
-		   	mkdir /root/fluidd;
-		   	wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
-		  	wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/moonraker/fluidd_moonraker.conf;
-		   	wget -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/nginx/fluidd.conf;
+    	echo "You chose Fluidd"
+		  echo "Installing Fluidd..."
+		  echo " "
+		  echo "   ***************************"
+		  echo "   **     Downloading...    **"
+		  echo "   ***************************"
+		  echo " "
+		  mkdir /root/fluidd;
+		  wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
+		  wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/moonraker/fluidd_moonraker.conf;
+		  wget -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/nginx/fluidd.conf;
 			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/klipper_config/fluidd.cfg -P /root/printer_data/config/
-	     	echo "***************************"
-			echo "**         Done!         **"
-			echo "***************************"
+	    echo "   ***************************"
+			echo "   **         Done!         **"
+			echo "   ***************************"
 			echo " "
-     		break
+     	break
 			;;
 		2) 
 			echo "You chose Mainsail"
 			echo "Installing Mainsail..."
 			echo " "
-			echo "***************************"
-			echo "**     Downloading...    **"
-			echo "***************************"
+			echo "   ***************************"
+			echo "   **     Downloading...    **"
+			echo "   ***************************"
 			echo " "
 			mkdir /root/mainsail;
 			wget -q -O /root/mainsail/mainsail.zip https://github.com/mainsail-crew/mainsail/releases/latest/download/mainsail.zip && unzip /root/mainsail/mainsail.zip -d /root/mainsail/ && rm /root/mainsail/mainsail.zip;
 			wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/moonraker/mainsail_moonraker.conf;
 			wget -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/nginx/mainsail.conf;
 			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/klipper_config/mainsail.cfg -P /root/printer_data/config/
-			echo "***************************"
-			echo "**         Done          **"
-			echo "***************************"
+			echo "   ***************************"
+			echo "   **         Done          **"
+			echo "   ***************************"
 			echo " "
-     		break
+     	break
 			;;
 		3) 
-			echo "Quitting..."
-     		exit;
+		  echo "Quitting..."
+     	exit
 			;;
 		*) echo "Choose a valid option!";;
 		esac
-  	done
+  done
 }
 
 choose;
 
 echo " "
-echo "#################"
-echo "###  Webcam   ###"
-echo "#################"
+echo "   #################"
+echo "   ###  Webcam   ###"
+echo "   #################"
 echo " "
 
 echo "Installing mjpg-streamer..."
@@ -236,18 +231,18 @@ EOF
 ln -s /etc/init.d/mjpg-streamer /etc/init.d/webcamd;
 
 echo " "
-echo "###################"
-echo "### Hostname/ip ###"
-echo "###################"
+echo "   ###################"
+echo "   ### Hostname/ip ###"
+echo "   ###################"
 echo " "
 
 echo "Using hostname instead of ip..."
 opkg install avahi-daemon-service-ssh avahi-daemon-service-http;
 
 echo " "
-echo "#################"
-echo "### Timelapse ###"
-echo "#################"
+echo "   #################"
+echo "   ### Timelapse ###"
+echo "   #################"
 echo " "
 
 opkg install wget-ssl;
@@ -257,9 +252,9 @@ git clone https://github.com/shivajiva101/moonraker-timelapse.git /root/moonrake
 /root/moonraker-timelapse/install.sh;
 
 echo " "
-echo "########################"
-echo "### tty hotplug rule ###"
-echo "########################"
+echo "   ########################"
+echo "   ### tty hotplug rule ###"
+echo "   ########################"
 echo " "
 
 echo "Install tty hotplug rule..."
@@ -305,9 +300,9 @@ fi
 EOF
 
 echo " "
-echo "########################"
-echo "###  Fixing logs...  ###"
-echo "########################"
+echo "   ########################"
+echo "   ###  Fixing logs...  ###"
+echo "   ########################"
 echo " "
 echo "Creating system.log..."
 
@@ -360,9 +355,9 @@ cat << "EOF" > /etc/logrotate.d/moonraker
 EOF
 
 echo " "
-echo "#################"
-echo "###   Done!   ###"
-echo "#################"
+echo "   #################"
+echo "   ###   Done!   ###"
+echo "   #################"
 echo " "
 
 echo "Please reboot for changes to take effect...";

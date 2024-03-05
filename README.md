@@ -143,7 +143,7 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
 
 >
     cd ~
-    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/scripts/1_format_extroot.sh
+    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/scripts/1_format_extroot.sh
     chmod +x 1_format_extroot.sh
     ./1_format_extroot.sh
 
@@ -153,7 +153,7 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
 
 >
     cd ~
-    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/scripts/2_script_manual.sh
+    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/scripts/2_script_manual.sh
     chmod +x 2_script_manual.sh
     ./2_script_manual.sh
     
@@ -197,7 +197,7 @@ _____________________________________________
   <summary>Click to expand!</summary>
 
 
-### OpenWrt <img align="left" width="30" height="34" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/OpenWrt.png" alt="openwrt_icon">
+### OpenWrt <img align="left" width="30" height="34" src="https://github.com/shivajiva101/KlipperWrt/blob/v3.1/img/OpenWrt.png" alt="openwrt_icon">
 
 <details>
   <summary>Click for STEPS!</summary>
@@ -211,7 +211,7 @@ _____________________________________________
 * Only neccesary until the [port](https://github.com/openwrt/openwrt/pull/3802) gets merged and officially supported.
   * I recommend following figgyc's [post](https://github.com/figgyc/figgyc.github.io/blob/source/posts.org#compiling-openwrt-for-the-creality-wb-01-tips-and-tricks). You'll find there his experience and a guide to compile OpenWrt. Here is his OpenWrt [branch](https://github.com/figgyc/openwrt/tree/wb01) with support for the Creality Wi-Fi Box and the [PR](https://github.com/openwrt/openwrt/pull/3802) pending to merge to main OpenWrt.
   
-  * 
+
   
   </details>
 #### 2. Install OpenWrt to the device
@@ -304,7 +304,7 @@ EOF
 </details>
 
 
-### fluidd <img align="left" width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/fluidd.png" alt="fluidd_icon"> / <img width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/mainsail.png" alt="mainsail_icon"> Mainsail 
+### fluidd <img align="left" width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/v3.1/img/fluidd.png" alt="fluidd_icon"> / <img width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/v3.1/img/mainsail.png" alt="mainsail_icon"> Mainsail
 
 <details>
   <summary>Click for STEPS!</summary>
@@ -320,38 +320,12 @@ EOF
 </details>
 	
  >
-    pip install greenlet==0.4.15 jinja2 python-can==3.3.4  
- 
-* :exclamation: **Switch back to original `distfeeds.conf`, `opkg update` -> install python3 and packages:** 
- >            
- 
-    opkg install python3 python3-pip python3-pyserial python3-pillow python3-tornado python3-distro libsodium --force-overwrite 
-    
-* Update `setuptools`package to latest version otherwise `inotify-simple` will fail installing.	
- 
- >
-    cd ~
-    git clone https://github.com/pypa/setuptools.git
-    cd setuptools
-    python3 setup.py install
-    rm -rf /root/setuptools
-	
-    pip3 install inotify-simple python-jose libnacl paho-mqtt==1.5.1
-
-*Install `lmdb` and `streaming-form-data` 
-
-<details>
-  <summary>Note!</summary>
-	
-_Those can be found inside `Packages` as a single `*ipk` file. I cross-compiled them while building the OpenWrt image as I couldn't install it with `pip` (they need gcc>=8.4 which is not available for OpenWrt yet)._
-	
-</details>
-	
->
-
-	cd ~
-	wget https://github.com/shivajiva101/KlipperWrt/raw/main/packages/python3-lmdb%2Bstreaming-form-data_packages_1.0-1_mipsel_24kc.ipk
-	opkg install python3-lmdb%2Bstreaming-form-data_packages_1.0-1_mipsel_24kc.ipk
+    opkg install python3 python3-pip python3-cffi python3-dev python3-greenlet python3-jinja2 python3-markupsafe python3-msgpack;
+    pip install --upgrade pip;
+    pip install --upgrade setuptools;
+    pip install python-can configparser;
+    opkg install python3-tornado python3-pillow python3-distro python3-curl python3-zeroconf python3-paho-mqtt python3-yaml python3-requests ip-full libsodium;
+    pip install pyserial-asyncio lmdb streaming-form-data inotify-simple libnacl preprocess-cancellation apprise ldap3 dbus-next;
 
 * Install nginx with `opkg install nginx-ssl`
 
@@ -368,7 +342,7 @@ _Those can be found inside `Packages` as a single `*ipk` file. I cross-compiled 
 - **6.2 Use provided klipper service and place inside `/etc/init.d/`**
 	
 >
-	wget -q -O /etc/init.d/klipper https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/Services/klipper
+	wget -q -O /etc/init.d/klipper https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/Services/klipper
 	chmod 755 /etc/init.d/klipper
 
 - **6.3 Enable klipper service:** 
@@ -385,90 +359,13 @@ _Those can be found inside `Packages` as a single `*ipk` file. I cross-compiled 
 - Locate your `.cfg` file inside `~/klipper/config/` copy it to `~/klipper_config` and rename it to `printer.cfg`
 	
 - Inside `printer.cfg` under `[mcu]` replace  serial line with `serial: /dev/ttyUSB0`
-- Add these lines at the end of the file:
-	
->
 
-    [virtual_sdcard]
-    # for gcode upload
-    path: /root/gcode_files
-
-    [display_status]
-    # for display messages in status panel
-
-    [pause_resume]
-    # for pause/resume functionality. 
-    # Mainsail/fluidd needs gcode macros for `PAUSE`, `RESUME` and `CANCEL_PRINT` to make the buttons work.
-
-	[gcode_macro CANCEL_PRINT]
-	description: Cancel the actual running print
-	rename_existing: CANCEL_PRINT_BASE
-	gcode:
-		TURN_OFF_HEATERS
-		CANCEL_PRINT_BASE
-
-	[gcode_macro PAUSE]
-	description: Pause the actual running print
-	rename_existing: PAUSE_BASE
-	# change this if you need more or less extrusion
-	variable_extrude: 1.0
-	gcode:
-		##### read E from pause macro #####
-		{% set E = printer["gcode_macro PAUSE"].extrude|float %}
-		##### set park positon for x and y #####
-		# default is your max posion from your printer.cfg
-		{% set x_park = printer.toolhead.axis_maximum.x|float - 5.0 %}
-		{% set y_park = printer.toolhead.axis_maximum.y|float - 5.0 %}
-		##### calculate save lift position #####
-		{% set max_z = printer.toolhead.axis_maximum.z|float %}
-		{% set act_z = printer.toolhead.position.z|float %}
-		{% if act_z < (max_z - 2.0) %}
-			{% set z_safe = 2.0 %}
-		{% else %}
-			{% set z_safe = max_z - act_z %}
-		{% endif %}
-		##### end of definitions #####
-		PAUSE_BASE
-		G91
-		{% if printer.extruder.can_extrude|lower == 'true' %}
-		  G1 E-{E} F2100
-		{% else %}
-		  {action_respond_info("Extruder not hot enough")}
-		{% endif %}
-		{% if "xyz" in printer.toolhead.homed_axes %}
-		  G1 Z{z_safe} F900
-		  G90
-		  G1 X{x_park} Y{y_park} F6000
-		{% else %}
-		  {action_respond_info("Printer not homed")}
-		{% endif %} 
-		
-	[gcode_macro RESUME]
-	description: Resume the actual running print
-	rename_existing: RESUME_BASE
-	gcode:
-		##### read E from pause macro #####
-		{% set E = printer["gcode_macro PAUSE"].extrude|float %}
-		#### get VELOCITY parameter if specified ####
-		{% if 'VELOCITY' in params|upper %}
-		  {% set get_params = ('VELOCITY=' + params.VELOCITY)  %}
-		{%else %}
-		  {% set get_params = "" %}
-		{% endif %}
-		##### end of definitions #####
-		{% if printer.extruder.can_extrude|lower == 'true' %}
-		  G91
-		  G1 E{E} F2100
-		{% else %}
-		  {action_respond_info("Extruder not hot enough")}
-		{% endif %}  
-		RESUME_BASE {get_params}
-
+- Add either `[include mainsail.cfg]` or `[include fluidd.cfg]` to the top of the `printer.cfg` file depending on which front end you chose
            
 - **6.5 Restart klipper** - do `service klipper restart` or `/etc/init.d/klipper restart`
 - **6.6 Build `klipper.bin` file**  
             - Building is not mandatory to be done on the device that hosts klippy. To build it on this box you would need a lot of dependencies that are not available for OpenWrt so I just used my pc running ubuntu: On a different computer running linux (or VM or live USB) -> Clone klipper just like you did before -> `cd klipper` -> `make menuconfig` -> use the configurations specific to your mainboard (Check the header inside your `printer.cfg` file for details).  
-:exclamation: use custom baud: `230400`. By default 250000 is selected. If you want/need that baud, remove the `python-pyserial` package and install this version of [pyserial](https://github.com/shivajiva101/pyserial) instead - check `Requirements` directory for details about installation process.    
+:exclamation: use custom baud: `230400`. By default 250000 is selected. If you want/need that baud, remove the `python-pyserial` package and install this version of [pyserial](https://github.com/pyserial/pyserial) instead - check `Requirements` directory for details about installation process.
 -> once configured run `make` -> if succesfull the firmware will be inside `./out/klipper.bin` -> flash the mainboard:(check header of `printer.cfg` again - some mainboards need the `.bin` file renamed a certain way) copy the `.bin` file on a sd card -> plug the card with the printer off -> turn printer on and wait a minute -> Done (Depending on your mainboard/printer/lcd you will probably not have a sign that the mainboard got flashed so don't worry) - if at the end of this guide the client cannot connect to the klipper firmware usually the problem is with the `.bin` file building or flashing process.
 </details> 
  
@@ -488,8 +385,8 @@ _Those can be found inside `Packages` as a single `*ipk` file. I cross-compiled 
 >
 	mkdir ~/fluidd
 	wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip
-	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/moonraker/fluidd_moonraker.conf 
-	wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/fluidd.conf
+	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/moonraker/fluidd_moonraker.conf
+	wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/nginx/fluidd.conf
 	
 
 **For Mainsail:**
@@ -497,27 +394,28 @@ _Those can be found inside `Packages` as a single `*ipk` file. I cross-compiled 
 >
 	mkdir ~/mainsail
 	wget -q -O /root/mainsail/mainsail.zip https://github.com/meteyou/mainsail/releases/latest/download/mainsail.zip && unzip /root/mainsail/mainsail.zip -d /root/mainsail/ && rm /root/mainsail/mainsail.zip
-	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/moonraker/mainsail_moonraker.conf 
-	wget -q -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/mainsail.conf
+	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/moonraker/mainsail_moonraker.conf
+	wget -q -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/nginx/mainsail.conf
 	
 Note: _The `[update_manager]` plugin was commented out since this is curently only supported for `debian` distros only. For now, updating `moonraker`, `klipper`, `fluidd` or `mainsail` should be done manaully._  
 	
 Don't forget to edit(if necessary) the `moonraker.conf` file you copied inside `~/klipper_config` under `trusted_clients:` with your client ip or ip range (_client meaning the device you want to access fluidd/mainsail from_). Check the moonraker [configuration](https://github.com/Arksine/moonraker/blob/master/docs/configuration.md#authorization) doc for details.
-- **7.3 Use provided moonraker service and place inside `/etc/init.d/`** 
+- **7.3 Use provided moonraker service and place inside `/etc/init.d/`**
 
 >
-	wget -q -O /etc/init.d/moonraker https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/Services/moonraker
+	wget -q -O /etc/init.d/moonraker https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/Services/moonraker
 	chmod 755 /etc/init.d/moonraker
 	/etc/init.d/moonraker enable
-	/etc/init.d/moonraker restart 
+	/etc/init.d/moonraker restart
 	
 - **7.4 Download the rest of the nginx files inside `/etc/nginx/conf.d`***  
  
 >
-	wget -q -O /etc/nginx/conf.d/upstreams.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/upstreams.conf
-	wget -q -O /etc/nginx/conf.d/common_vars.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/main/nginx/common_vars.conf
+	wget -q -O /etc/nginx/conf.d/upstreams.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/nginx/upstreams.conf
+	wget -q -O /etc/nginx/conf.d/common_vars.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.1/nginx/common_vars.conf
 	
- Inside `/etc/nginx/conf.d`you should have `fluidd.conf` OR `mainsail.conf` alongside `common_vars.conf` AND `upstreams.conf` (those 2 files are common for mainsail and fluidd)  
+ Inside `/etc/nginx/conf.d` you should have `fluidd.conf` OR `mainsail.conf` alongside `common_vars.conf` AND `upstreams.conf` (those 2 files are common for mainsail and fluidd)
+
 **Note!**  
 You need to use either `fluidd.conf` or `mainsail.conf` file depending on your chosen client. Don't use both `.conf` files inside `/etc/nginx/conf.d/`. If you want to test both clients and easly switch between them check the **! How to switch between fluidd and mainsail:** below.
 
@@ -528,8 +426,8 @@ It's ok to keep both client directories inside `/root/` as these are static file
 - **7.6 Restart nginx** with `service nginx restart` and check browser if `http://your-ip` brings you the client interface (fluidd or mainsail).
 
 :exclamation: **How to switch between fluidd and mainsail:**
-   1. switch between `mainsail.conf`and `fluidd.conf` file inside `/etc/nginx/conf.d` (make sure the other one gets renamed to a different `extension`. eg: `*.conf_off` or moved to a different fodler.)
-   2. Switch between mainsail and fluidd `moonraker.conf` files inside `~/klipper_config`. Find them inside my repo under `moonraker` directory. 
+   1. switch between `mainsail.conf`and `fluidd.conf` file inside `/etc/nginx/conf.d` (make sure the other one gets renamed to a different `extension`. eg: `*.conf_off` or moved to a different folder.)
+   2. Switch between mainsail and fluidd `moonraker.conf` files inside `~/klipper_config`. Find them inside my repo under `moonraker` directory.
    3. Restart moonraker and nginx services: `service moonraker restart` and `service nginx restart`
 </details>
  
@@ -738,7 +636,7 @@ Enable it: `/etc/init.d/dwc enable`
  
 - If enabling the services returns an error, do: `ls -l` inside `/etc/init.d/` and check if the service has executable permissions (x flag). If not do: `chmod 755 service` - replace `service` accordingly.
 
-- I didn't manage to get the printer to communicate on 250000 baudrate (Official version of pyserial is unable to set a custom nonstandard baudrate - I found a fix by [ckielstra](https://github.com/pyserial/pyserial/pull/496) in a PR that is not yet merged. I've added his changes to my [forked](https://github.com/shivajiva101/pyserial) pyserial as well which is updated more often. If you don't want to use 250k baudrate I solved this issue by using 230400 instead (you need to change this both while building the mcu klipper firmware AND inside printer.cfg under [mcu]:  
+- I didn't manage to get the printer to communicate on 250000 baudrate (Official version of pyserial is unable to set a custom nonstandard baudrate - I found the fix by [ckielstra](https://github.com/pyserial/pyserial/pull/496) has been merged but isn't currently being used by pip. Use [forked](https://github.com/pyserial/pyserial) pyserial as well which is updated more often. If you don't want to use 250k baudrate you can solve this issue by using 230400 instead (you need to change this both while building the mcu klipper firmware AND inside printer.cfg under [mcu]:
 `[mcu]`  
 `baud: 230400`  
 
