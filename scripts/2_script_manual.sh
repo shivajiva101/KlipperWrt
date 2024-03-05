@@ -147,58 +147,58 @@ echo " "
 choose(){
 	echo " "
 	echo "Choose prefered Klipper client:"
-	echo "  1) fluidd"
+	echo "  1) Fluidd"
 	echo "  2) Mainsail"
 	echo "  3) Quit"
 	echo " "
-	read n
-	case $n in
-	  1) 
-	   echo "You chose fluidd"
-	   sleep 1
-	   echo "Installing fluidd..."
-	   sleep 1
-	   echo " "
-	   echo "***************************"
-	   echo "**     Downloading...    **"
-	   echo "***************************"
-	   echo " "
-	   mkdir /root/fluidd;
-	   wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
-	   wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/moonraker/fluidd_moonraker.conf;
-	   wget -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/nginx/fluidd.conf;
-       wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/klipper_config/fluidd.cfg -P /root/printer_data/config/
-     
-	   
-	   echo "***************************"
-	   echo "**         Done!         **"
-	   echo "***************************"
-	   echo -ne '\n'
-	   ;;
-	  2) 
-	   echo "You chose Mainsail"
-	   echo "Installing Mainsail..."
-	   echo " "
-	   echo "***************************"
-	   echo "**     Downloading...    **"
-	   echo "***************************"
-	   echo " "
-	   mkdir /root/mainsail;
-	   wget -q -O /root/mainsail/mainsail.zip https://github.com/mainsail-crew/mainsail/releases/latest/download/mainsail.zip && unzip /root/mainsail/mainsail.zip -d /root/mainsail/ && rm /root/mainsail/mainsail.zip;
-	   wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/moonraker/mainsail_moonraker.conf;
-	   wget -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/nginx/mainsail.conf;
-       wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/klipper_config/mainsail.cfg -P /root/printer_data/config/
-	   
-	   echo "***************************"
-	   echo "**         Done          **"
-	   echo "***************************"
-	   echo " "
-	   ;;
-	  3) 
-	   echo "Quitting...";;
-	  *) 
-	   echo "invalid option";;
-	esac
+	while true; do
+		read n
+		case $n in
+		1)
+    		echo "You chose Fluidd"
+		   	echo "Installing Fluidd..."
+		   	echo " "
+		   	echo "***************************"
+		   	echo "**     Downloading...    **"
+		   	echo "***************************"
+		   	echo " "
+		   	mkdir /root/fluidd;
+		   	wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
+		  	wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/moonraker/fluidd_moonraker.conf;
+		   	wget -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/nginx/fluidd.conf;
+			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/klipper_config/fluidd.cfg -P /root/printer_data/config/
+	     	echo "***************************"
+			echo "**         Done!         **"
+			echo "***************************"
+			echo " "
+     		break
+			;;
+		2) 
+			echo "You chose Mainsail"
+			echo "Installing Mainsail..."
+			echo " "
+			echo "***************************"
+			echo "**     Downloading...    **"
+			echo "***************************"
+			echo " "
+			mkdir /root/mainsail;
+			wget -q -O /root/mainsail/mainsail.zip https://github.com/mainsail-crew/mainsail/releases/latest/download/mainsail.zip && unzip /root/mainsail/mainsail.zip -d /root/mainsail/ && rm /root/mainsail/mainsail.zip;
+			wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/moonraker/mainsail_moonraker.conf;
+			wget -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/nginx/mainsail.conf;
+			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.0/klipper_config/mainsail.cfg -P /root/printer_data/config/
+			echo "***************************"
+			echo "**         Done          **"
+			echo "***************************"
+			echo " "
+     		break
+			;;
+		3) 
+			echo "Quitting..."
+     		exit;
+			;;
+		*) echo "Choose a valid option!";;
+		esac
+  	done
 }
 
 choose;
