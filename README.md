@@ -155,7 +155,7 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
     cd ~
     wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.3/scripts/2_script_manual.sh
     chmod +x 2_script_manual.sh
-    ./2_script_manual.sh
+    ./2_script_manual.sh 2>&1 | tee install.log 
     
 - Follow the prompted instructions and wait for everything to be installed
 - remove the scripts when done: `rm -rf /root/*.sh`
@@ -325,7 +325,7 @@ EOF
     pip install --upgrade setuptools;
     pip install python-can configparser;
     opkg install python3-tornado python3-pillow python3-distro python3-curl python3-zeroconf python3-paho-mqtt python3-yaml python3-requests ip-full libsodium;
-    pip install pyserial-asyncio lmdb streaming-form-data inotify-simple libnacl preprocess-cancellation apprise ldap3 dbus-next;
+    pip install pyserial-asyncio lmdb streaming-form-data inotify-simple libnacl preprocess-cancellation apprise ldap3 dbus-next importlib-metadata;
 
 * Install nginx with `opkg install nginx-ssl`
 
