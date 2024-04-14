@@ -61,6 +61,9 @@ mount -o remount,size=256M /tmp
 exit 0
 EOF
 
+echo "Store opkg lists in extroot overlay to preserve memory"
+sed -i -e "/^lists_dir\s/s:/var/opkg-lists$:/usr/lib/opkg/lists:" /etc/opkg.conf;
+
 echo " "
 echo "   ############################"
 echo "   ### Klipper dependencies ###"
