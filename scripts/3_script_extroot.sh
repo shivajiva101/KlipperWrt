@@ -49,3 +49,4 @@ extroot(){
 
 extroot;
 read -p "Press [ENTER] to reboot"
+reboot;
