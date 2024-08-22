@@ -16,7 +16,7 @@ echo "   ## Make sure extroot is enabled... ##"
 echo "   #####################################"
 echo " "
 read -p "Press [ENTER] to check if extroot is enabled ...or [ctrl+c] to exit"
-
+echo " "
 df -h;
 
 echo " "
