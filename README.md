@@ -248,9 +248,9 @@ Flashing:
 opkg update && opkg install block-mount kmod-fs-ext4 kmod-usb-storage kmod-usb-ohci kmod-usb-uhci e2fsprogs fdisk
 DEVICE="$(sed -n -e "/\s\/overlay\s.*$/s///p" /etc/mtab)"
 uci -q delete fstab.rwm
-uci set fstab.rwm="mount
-uci set fstab.rwm.device="${DEVICE}
-uci set fstab.rwm.target="/rwm
+uci set fstab.rwm="mount"
+uci set fstab.rwm.device="${DEVICE}"
+uci set fstab.rwm.target="/rwm"
 uci commit fstab
 mkfs.ext4 /dev/mmcblk0p1
 DEVICE="/dev/mmcblk0p1"
@@ -384,7 +384,7 @@ EOF
 
 >
 	mkdir ~/fluidd
-	wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip
+	wget -q -O /root/fluidd/fluidd.zip https://github.com/fluidd-core/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip
 	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4/moonraker/fluidd_moonraker.conf
 	wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4/nginx/fluidd.conf
 	
