@@ -1,30 +1,10 @@
 #!/bin/sh
 
-echo " "
-echo "   ################################################"
-echo "   ## Did you execute 1_format_extroot.sh first? ##"
-echo "   ################################################"
-echo " "
-read -p "Press [ENTER] if YES ...or [ctrl+c] to exit"
-
+if mount | grep "/dev/mmcblk0p1 on /overlay type ext4" > /dev/null; then
 
 echo " "
 echo "This script will download and install all packages from the internet"
 echo " "
-echo "   #####################################"
-echo "   ## Make sure extroot is enabled... ##"
-echo "   #####################################"
-echo " "
-read -p "Press [ENTER] to check if extroot is enabled ...or [ctrl+c] to exit"
-echo " "
-df -h;
-
-echo " "
-echo "   ############################################"
-echo "   ## Is /dev/mmcblk0p1 mounted on /overlay? ##"
-echo "   ############################################"
-echo " "
-read -p "Press [ENTER] if YES... or [ctrl+c] to exit"
 
 echo " "
 echo "   ######################################################"
@@ -163,7 +143,7 @@ choose(){
 		  echo "   ***************************"
 		  echo " "
 		  mkdir /root/fluidd;
-		  wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
+		  wget -q -O /root/fluidd/fluidd.zip https://github.com/fluidd-core/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
 		  wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4/moonraker/fluidd_moonraker.conf;
 		  wget -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4/nginx/fluidd.conf;
 			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4/klipper_config/fluidd.cfg -P /root/printer_data/config/
@@ -365,5 +345,12 @@ echo "   ###   Done!   ###"
 echo "   #################"
 echo " "
 
-echo "Please reboot for changes to take effect...";
-echo "...then proceed configuring your printer.cfg!";
+echo "Please reboot and wait a while for the changes to take effect.";
+echo "You can then proceed to configuring a printer.cfg file!";
+read -p "Press [ENTER] to reboot...or [ctrl+c] to exit"
+
+reboot
+
+else
+echo "Please run the first script before this one!"
+fi
