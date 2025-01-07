@@ -1,5 +1,7 @@
 #!/bin/sh
 
+DEVICE="/dev/mmcblk0p1";
+
 echo " "
 echo "This script will format your sd card and make it extroot"
 echo " "
@@ -21,40 +23,38 @@ format(){
 	
 	umount /dev/mmcblk0p1;
 
-	yes | mkfs.ext4 /dev/mmcblk0p1;
+	mkfs.ext4 /dev/mmcblk0p1;
 
 }
 
 extroot(){
 	echo " "
 	sleep 1
-	echo -ne 'Making extroot...     [=>                                ](6%)\r'
-	DEVICE=$(awk '$2 == "/overlay" {print $1}' /etc/mtab);
-	echo -ne 'Making extroot...     [===>                              ](12%)\r'
+	echo -ne 'Making extroot...     [=>                                ](7%)\r'
 	uci -q delete fstab.rwm;
-	echo -ne 'Making extroot...     [=====>                            ](18%)\r'
+	echo -ne 'Making extroot...     [====>                             ](14%)\r'
 	uci set fstab.rwm="mount";
-	echo -ne 'Making extroot...     [=======>                          ](25%)\r'
+	echo -ne 'Making extroot...     [=======>                          ](21%)\r'
 	uci set fstab.rwm.device="${DEVICE}";
-	echo -ne 'Making extroot...     [=========>                        ](31%)\r'
+	echo -ne 'Making extroot...     [=========>                        ](28%)\r'
 	uci set fstab.rwm.target="/rwm";
-	echo -ne 'Making extroot...     [===========>                      ](37%)\r'
+	echo -ne 'Making extroot...     [===========>                      ](35%)\r'
 	uci commit fstab;
-	echo -ne 'Making extroot...     [===============>                  ](50%)\r'
-	UUID=$(block info "${DEVICE}" | grep -o -e 'UUID="[^"]*"' | sed 's/UUID=//g' | tr -d '"')
-	echo -ne 'Making extroot...     [=================>                ](56%)\r'
+	echo -ne 'Making extroot...     [===============>                  ](42%)\r'
+	eval $(block info "${DEVICE}" | grep -o -e "UUID=\S*")
+	echo -ne 'Making extroot...     [=================>                ](50%)\r'
 	uci -q delete fstab.overlay;
-	echo -ne 'Making extroot...     [===================>              ](62%)\r'
+	echo -ne 'Making extroot...     [===================>              ](57%)\r'
 	uci set fstab.overlay="mount";
-	echo -ne 'Making extroot...     [=====================>            ](68%)\r'
+	echo -ne 'Making extroot...     [=====================>            ](64%)\r'
 	uci set fstab.overlay.uuid="${UUID}";
-	echo -ne 'Making extroot...     [=======================>          ](75%)\r'
+	echo -ne 'Making extroot...     [=======================>          ](71%)\r'
 	uci set fstab.overlay.target="/overlay";
-	echo -ne 'Making extroot...     [=========================>        ](81%)\r'
+	echo -ne 'Making extroot...     [=========================>        ](78%)\r'
 	uci commit fstab;
-	echo -ne 'Making extroot...     [===========================>      ](87%)\r'
-	mount /dev/mmcblk0p1 /mnt;
-	echo -ne 'Making extroot...     [=============================>    ](93%)\r'
+	echo -ne 'Making extroot...     [===========================>      ](85%)\r'
+	mount S{DEVICE} /mnt;
+	echo -ne 'Making extroot...     [=============================>    ](92%)\r'
 	cp -f -a /overlay/. /mnt;
 	echo -ne 'Making extroot...     [===============================>  ](98%)\r'
 	umount /mnt;
