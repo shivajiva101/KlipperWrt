@@ -29,7 +29,7 @@ extroot(){
 	echo " "
 	sleep 1
 	echo -ne 'Making extroot...     [=>                                ](6%)\r'
-	DEVICE="$(sed -n -e "/\s\/overlay\s.*$/s///p" /etc/mtab)";
+	DEVICE=$(awk '$2 == "/overlay" {print $1}' /etc/mtab);
 	echo -ne 'Making extroot...     [===>                              ](12%)\r'
 	uci -q delete fstab.rwm;
 	echo -ne 'Making extroot...     [=====>                            ](18%)\r'
@@ -40,10 +40,8 @@ extroot(){
 	uci set fstab.rwm.target="/rwm";
 	echo -ne 'Making extroot...     [===========>                      ](37%)\r'
 	uci commit fstab;
-	echo -ne 'Making extroot...     [=============>                    ](43%)\r'
-	DEVICE="/dev/mmcblk0p1";
 	echo -ne 'Making extroot...     [===============>                  ](50%)\r'
-	eval $(block info "${DEVICE}" | grep -o -e "UUID=\S*");
+	UUID=$(block info "${DEVICE}" | grep -o -e 'UUID="[^"]*"' | sed 's/UUID=//g' | tr -d '"')
 	echo -ne 'Making extroot...     [=================>                ](56%)\r'
 	uci -q delete fstab.overlay;
 	echo -ne 'Making extroot...     [===================>              ](62%)\r'
