@@ -77,7 +77,7 @@ echo " "
 echo "Installing moonraker dependencies..."
 opkg install python3-tornado python3-pillow python3-distro python3-curl python3-zeroconf python3-paho-mqtt python3-yaml python3-requests ip-full libsodium;
 
-pip install pyserial-asyncio lmdb streaming-form-data inotify-simple libnacl preprocess-cancellation apprise ldap3 dbus-next python-periphery importlib-metadata;
+pip install pyserial-asyncio lmdb streaming-form-data==1.17.0 inotify-simple libnacl preprocess-cancellation apprise ldap3 dbus-next python-periphery importlib-metadata;
 
 echo " "
 echo "   ###############"
