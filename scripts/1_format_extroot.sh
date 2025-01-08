@@ -21,9 +21,10 @@ format(){
 	    esac
 	done
 	
-	umount /dev/mmcblk0p1;
+	umount ${DEVICE};
 
-	mkfs.ext4 /dev/mmcblk0p1;
+	#mkfs.ext4 /dev/mmcblk0p1;
+ 	mkfs.ext4 -L extroot ${DEVICE}
 
 }
 
@@ -31,33 +32,48 @@ extroot(){
 	echo " "
 	sleep 1
 	echo -ne 'Making extroot...     [=>                                ](7%)\r'
-	uci -q delete fstab.rwm;
+ 	eval $(block info ${DEVICE} | grep -o -e 'UUID="\S*"')
+	#uci -q delete fstab.rwm;
 	echo -ne 'Making extroot...     [====>                             ](14%)\r'
-	uci set fstab.rwm="mount";
+	eval $(block info | grep -o -e 'MOUNT="\S*/overlay"')
+ 	#uci set fstab.rwm="mount";
 	echo -ne 'Making extroot...     [=======>                          ](21%)\r'
-	uci set fstab.rwm.device="${DEVICE}";
+	uci -q delete fstab.extroot
+ 	#uci set fstab.rwm.device="${DEVICE}";
 	echo -ne 'Making extroot...     [=========>                        ](28%)\r'
-	uci set fstab.rwm.target="/rwm";
+	uci set fstab.extroot="mount"
+ 	#uci set fstab.rwm.target="/rwm";
 	echo -ne 'Making extroot...     [===========>                      ](35%)\r'
-	uci commit fstab;
+	uci set fstab.extroot.uuid="${UUID}"
+ 	#uci commit fstab;
 	echo -ne 'Making extroot...     [===============>                  ](42%)\r'
-	eval $(block info "${DEVICE}" | grep -o -e "UUID=\S*")
+	uci set fstab.extroot.target="${MOUNT}"
+ 	#eval $(block info "${DEVICE}" | grep -o -e "UUID=\S*")
 	echo -ne 'Making extroot...     [=================>                ](50%)\r'
-	uci -q delete fstab.overlay;
+	uci commit fstab
+ 	#uci -q delete fstab.overlay;
 	echo -ne 'Making extroot...     [===================>              ](57%)\r'
-	uci set fstab.overlay="mount";
+	ORIG="$(block info | sed -n -e '/MOUNT="\S*\/overlay"/s/:\s.*$//p')"
+ 	#uci set fstab.overlay="mount";
 	echo -ne 'Making extroot...     [=====================>            ](64%)\r'
-	uci set fstab.overlay.uuid="${UUID}";
+	uci -q delete fstab.rwm
+ 	#uci set fstab.overlay.uuid="${UUID}";
 	echo -ne 'Making extroot...     [=======================>          ](71%)\r'
-	uci set fstab.overlay.target="/overlay";
+	uci set fstab.rwm="mount"
+ 	#uci set fstab.overlay.target="/overlay";
 	echo -ne 'Making extroot...     [=========================>        ](78%)\r'
-	uci commit fstab;
+	uci set fstab.rwm.device="${ORIG}"
+ 	#uci commit fstab;
 	echo -ne 'Making extroot...     [===========================>      ](85%)\r'
-	mount S{DEVICE} /mnt;
+	uci set fstab.rwm.target="/rwm"
+ 	#mount S{DEVICE} /mnt;
 	echo -ne 'Making extroot...     [=============================>    ](92%)\r'
-	cp -f -a /overlay/. /mnt;
+	uci commit fstab
+ 	#cp -f -a /overlay/. /mnt;
 	echo -ne 'Making extroot...     [===============================>  ](98%)\r'
-	umount /mnt;
+	mount ${DEVICE} /mnt
+ 	tar -C ${MOUNT} -cvf - . | tar -C /mnt -xf -
+ 	#umount /mnt;
 	echo -ne 'Making extroot...     [=================================>](100%)\r'
 	echo -ne '\n'
 
