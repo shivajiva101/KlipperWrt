@@ -76,10 +76,10 @@ opkg update && opkg install git-http unzip htop;
 opkg install --force-overwrite gcc;
 opkg install patch;
 
-opkg install python3 python3-pip python3-cffi python3-dev python3-greenlet python3-jinja2 python3-markupsafe python3-msgpack;
+opkg install python3 python3-pip python3-cffi python3-dev;
 pip install --upgrade pip;
 pip install --upgrade setuptools;
-pip install python-can configparser
+pip install -r klippy-requirements.txt
 
 echo "Cloning 250k baud pyserial"
 git clone https://github.com/pyserial/pyserial /root/pyserial;
@@ -95,9 +95,7 @@ echo "   ##############################"
 echo " "
 
 echo "Installing moonraker dependencies..."
-opkg install python3-tornado python3-pillow python3-distro python3-curl python3-zeroconf python3-paho-mqtt python3-yaml python3-requests ip-full libsodium;
-
-pip install pyserial-asyncio lmdb streaming-form-data==1.15.0 inotify-simple libnacl preprocess-cancellation apprise ldap3 dbus-next python-periphery importlib-metadata;
+pip install -r moonraker-requirements.txt
 
 echo " "
 echo "   ###############"
