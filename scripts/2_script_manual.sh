@@ -79,7 +79,7 @@ opkg install patch;
 opkg install python3 python3-pip python3-cffi python3-dev;
 pip install --upgrade pip;
 pip install --upgrade setuptools;
-pip install -r klippy-requirements.txt
+pip install -r klippy-requirements.txt;
 
 echo "Cloning 250k baud pyserial"
 git clone https://github.com/pyserial/pyserial /root/pyserial;
@@ -95,7 +95,8 @@ echo "   ##############################"
 echo " "
 
 echo "Installing moonraker dependencies..."
-pip install -r moonraker-requirements.txt
+pip install python3-zeroconf;
+pip install -r moonraker-requirements.txt;
 
 echo " "
 echo "   ###############"
