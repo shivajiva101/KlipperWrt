@@ -2,9 +2,7 @@
 
 if mount | grep "/dev/mmcblk0p1 on /overlay type ext4" > /dev/null; then
 
-echo " "
-echo "This script will download and install all packages from the internet"
-echo " "
+set -e
 
 echo " "
 echo "   ######################################################"
@@ -32,10 +30,10 @@ cat << "EOF" > /etc/rc.local
 # Put your custom commands here that should be executed once
 # the system init finished. By default this file does nothing.
 
-###activate the swap file on the SD card  
-swapon /overlay/swap.page  
+###activate the swap file on the SD card
+swapon /overlay/swap.page
 
-###expand /tmp space  
+###expand /tmp space
 mount -o remount,size=256M /tmp
 
 exit 0
@@ -56,10 +54,10 @@ opkg update && opkg install git-http unzip htop;
 opkg install --force-overwrite gcc;
 opkg install patch;
 
-opkg install python3 python3-pip python3-cffi python3-dev python3-greenlet python3-jinja2 python3-markupsafe python3-msgpack;
+opkg install python3 python3-pip python3-cffi python3-dev python3-greenlet;
 pip install --upgrade pip;
 pip install --upgrade setuptools;
-pip install python-can configparser
+pip install -r klippy-requirements.txt;
 
 echo "Cloning 250k baud pyserial"
 git clone https://github.com/pyserial/pyserial /root/pyserial;
@@ -75,9 +73,8 @@ echo "   ##############################"
 echo " "
 
 echo "Installing moonraker dependencies..."
-opkg install python3-tornado python3-pillow python3-distro python3-curl python3-zeroconf python3-paho-mqtt python3-yaml python3-requests ip-full libsodium;
-
-pip install pyserial-asyncio lmdb streaming-form-data inotify-simple libnacl preprocess-cancellation apprise ldap3 dbus-next python-periphery importlib-metadata;
+opkg install python3-zeroconf python3-yaml python3-pillow;
+pip install -r moonraker-requirements.txt;
 
 echo " "
 echo "   ###############"
@@ -98,7 +95,7 @@ echo "Cloning Klipper..."
 git clone --depth 1 https://github.com/Klipper3d/klipper.git /root/klipper;
 
 echo "Creating klipper service..."
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4/Services/klipper -P /etc/init.d/;
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4.1/Services/klipper -P /etc/init.d/;
 chmod 755 /etc/init.d/klipper;
 /etc/init.d/klipper enable;
 
@@ -111,11 +108,11 @@ echo "   #################"
 echo " "
 
 git clone https://github.com/Arksine/moonraker.git /root/moonraker;
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4/Services/moonraker -P /etc/init.d/
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4.1/Services/moonraker -P /etc/init.d/
 chmod 755 /etc/init.d/moonraker
 /etc/init.d/moonraker enable
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4/nginx/upstreams.conf -P /etc/nginx/conf.d/
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4/nginx/common_vars.conf -P /etc/nginx/conf.d/
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4.1/nginx/upstreams.conf -P /etc/nginx/conf.d/
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4.1/nginx/common_vars.conf -P /etc/nginx/conf.d/
 /etc/init.d/nginx enable
 
 echo " "
@@ -143,17 +140,17 @@ choose(){
 		  echo "   ***************************"
 		  echo " "
 		  mkdir /root/fluidd;
-		  wget -q -O /root/fluidd/fluidd.zip https://github.com/fluidd-core/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
-		  wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4/moonraker/fluidd_moonraker.conf;
-		  wget -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4/nginx/fluidd.conf;
-			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4/klipper_config/fluidd.cfg -P /root/printer_data/config/
+		  wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
+		  wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4.1/moonraker/fluidd_moonraker.conf;
+		  wget -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4.1/nginx/fluidd.conf;
+			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4.1/klipper_config/fluidd.cfg -P /root/printer_data/config/
 	    echo "   ***************************"
 			echo "   **         Done!         **"
 			echo "   ***************************"
 			echo " "
      	break
 			;;
-		2) 
+		2)
 			echo "You chose Mainsail"
 			echo "Installing Mainsail..."
 			echo " "
@@ -163,16 +160,16 @@ choose(){
 			echo " "
 			mkdir /root/mainsail;
 			wget -q -O /root/mainsail/mainsail.zip https://github.com/mainsail-crew/mainsail/releases/latest/download/mainsail.zip && unzip /root/mainsail/mainsail.zip -d /root/mainsail/ && rm /root/mainsail/mainsail.zip;
-			wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4/moonraker/mainsail_moonraker.conf;
-			wget -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4/nginx/mainsail.conf;
-			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4/klipper_config/mainsail.cfg -P /root/printer_data/config/
+			wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4.1/moonraker/mainsail_moonraker.conf;
+			wget -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4.1/nginx/mainsail.conf;
+			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.4.1/klipper_config/mainsail.cfg -P /root/printer_data/config/
 			echo "   ***************************"
 			echo "   **         Done          **"
 			echo "   ***************************"
 			echo " "
      	break
 			;;
-		3) 
+		3)
 		  echo "Quitting..."
      	exit
 			;;
@@ -190,7 +187,7 @@ echo "   #################"
 echo " "
 
 echo "Installing mjpg-streamer..."
-opkg install v4l-utils;
+opkg install v4l-utils kmod-video-uvc;
 opkg install mjpg-streamer-input-uvc mjpg-streamer-output-http mjpg-streamer-www ffmpeg;
 
 rm /etc/config/mjpg-streamer;
@@ -246,7 +243,7 @@ echo "Install tty hotplug rule..."
 opkg install usbutils;
 cat << "EOF" > /etc/hotplug.d/usb/22-tty-symlink
 # Description: Action executed on boot (bind) and with the system on the fly
-PRODID="1a86/7523/264" #change here according to "PRODUCT=" from grep command 
+PRODID="1a86/7523/264" #change here according to "PRODUCT=" from grep command
 SYMLINK="ttyPrinter" #you can change this to whatever you want just don't use spaces. Use this inside printer.cfg as serial port path
 if [ "${ACTION}" = "bind" ] ; then
   case "${PRODUCT}" in
