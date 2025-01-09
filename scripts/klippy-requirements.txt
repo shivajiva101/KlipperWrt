@@ -3,9 +3,9 @@
 # typically installed via the command:
 #   pip install -r klippy-requirements.txt
 #cffi==1.14.6 - FAILS
-#pyserial==3.4
+#pyserial==3.4 - not reqd if building 3.5
 #greenlet==2.0.2 ; python_version < '3.12' - FAILS
 #greenlet==3.0.3 ; python_version >= '3.12'
-#Jinja2==2.11.3
+#Jinja2==2.11.3 - superceded by moonraker dep
 python-can==3.3.4
 markupsafe==1.1.1
