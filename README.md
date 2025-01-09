@@ -144,6 +144,8 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
 >
     cd ~
     wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/test/scripts/1_format_extroot.sh
+    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/test/scripts/klippy-requirements.txt
+    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/test/scripts/moonraker-requirements.txt
     chmod +x 1_format_extroot.sh
     ./1_format_extroot.sh
 
