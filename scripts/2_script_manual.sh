@@ -76,7 +76,7 @@ opkg update && opkg install git-http unzip htop;
 opkg install --force-overwrite gcc;
 opkg install patch;
 
-opkg install python3 python3-pip python3-cffi python3-dev;
+opkg install python3 python3-pip python3-cffi python3-dev python3-greenlet;
 pip install --upgrade pip;
 pip install --upgrade setuptools;
 pip install -r klippy-requirements.txt;
