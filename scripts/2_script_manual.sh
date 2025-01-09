@@ -95,7 +95,7 @@ echo "   ##############################"
 echo " "
 
 echo "Installing moonraker dependencies..."
-opkg install python3-zeroconf python3-yaml zlib-dev;
+opkg install python3-zeroconf python3-yaml python3-pillow;
 pip install -r moonraker-requirements.txt;
 
 echo " "
