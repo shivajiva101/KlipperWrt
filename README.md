@@ -248,7 +248,7 @@ Flashing:
 - **Extroot**
 ```
 opkg update && opkg install block-mount kmod-fs-ext4 kmod-usb-storage kmod-usb-ohci kmod-usb-uhci e2fsprogs fdisk
-DEVICE="$(sed -n -e "/\s\/overlay\s.*$/s///p" /etc/mtab)"
+DEVICE=$(awk '$2 == "/overlay" {print $1}' /etc/mtab)
 uci -q delete fstab.rwm
 uci set fstab.rwm="mount
 uci set fstab.rwm.device="${DEVICE}
@@ -327,7 +327,7 @@ EOF
     pip install --upgrade setuptools;
     pip install python-can configparser;
     opkg install python3-tornado python3-pillow python3-distro python3-curl python3-zeroconf python3-paho-mqtt python3-yaml python3-requests ip-full libsodium;
-    pip install pyserial-asyncio lmdb streaming-form-data inotify-simple libnacl preprocess-cancellation apprise ldap3 dbus-next importlib-metadata;
+    pip install pyserial-asyncio lmdb streaming-form-data==1.15.0 inotify-simple libnacl preprocess-cancellation apprise ldap3 dbus-next importlib-metadata;
 
 * Install nginx with `opkg install nginx-ssl`
 
