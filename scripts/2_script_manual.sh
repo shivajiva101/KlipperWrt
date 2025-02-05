@@ -73,7 +73,7 @@ echo "   ##############################"
 echo " "
 
 echo "Installing moonraker dependencies..."
-opkg install python3-zeroconf python3-yaml python3-pillow libsodium;
+opkg install python3-zeroconf python3-yaml python3-pillow libsodium python3-dbus-fast;
 pip install -r moonraker-requirements.txt;
 
 echo " "
