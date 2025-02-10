@@ -11,6 +11,9 @@ echo "   ######################################################"
 echo " "
 read -p "Press [ENTER] to Continue ...or [ctrl+c] to exit"
 
+FILE=/overlay/swap.page
+
+if [ ! -f "$FILE" ]; then
 echo " "
 echo "   #################"
 echo "   ###   SWAP    ###"
@@ -38,6 +41,8 @@ mount -o remount,size=256M /tmp
 
 exit 0
 EOF
+
+fi
 
 echo "Store opkg lists in extroot overlay to preserve memory"
 sed -i -e "/^lists_dir\s/s:/var/opkg-lists$:/usr/lib/opkg/lists:" /etc/opkg.conf;
