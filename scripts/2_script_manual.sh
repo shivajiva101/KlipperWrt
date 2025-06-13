@@ -100,7 +100,7 @@ echo "Cloning Klipper..."
 git clone --depth 1 https://github.com/Klipper3d/klipper.git /root/klipper;
 
 echo "Creating klipper service..."
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.5/Services/klipper -P /etc/init.d/;
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/4.0/Services/klipper -P /etc/init.d/;
 chmod 755 /etc/init.d/klipper;
 /etc/init.d/klipper enable;
 
@@ -113,11 +113,11 @@ echo "   #################"
 echo " "
 
 git clone https://github.com/Arksine/moonraker.git /root/moonraker;
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.5/Services/moonraker -P /etc/init.d/
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/4.0/Services/moonraker -P /etc/init.d/
 chmod 755 /etc/init.d/moonraker
 /etc/init.d/moonraker enable
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.5/nginx/upstreams.conf -P /etc/nginx/conf.d/
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.5/nginx/common_vars.conf -P /etc/nginx/conf.d/
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/4.0/nginx/upstreams.conf -P /etc/nginx/conf.d/
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/4.0/nginx/common_vars.conf -P /etc/nginx/conf.d/
 /etc/init.d/nginx enable
 
 echo " "
@@ -146,9 +146,9 @@ choose(){
 		  echo " "
 		  mkdir /root/fluidd;
 		  wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
-		  wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.5/moonraker/fluidd_moonraker.conf;
-		  wget -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.5/nginx/fluidd.conf;
-			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.5/klipper_config/fluidd.cfg -P /root/printer_data/config/
+		  wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/4.0/moonraker/fluidd_moonraker.conf;
+		  wget -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/4.0/nginx/fluidd.conf;
+			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/4.0/klipper_config/fluidd.cfg -P /root/printer_data/config/
 	    echo "   ***************************"
 			echo "   **         Done!         **"
 			echo "   ***************************"
@@ -165,9 +165,9 @@ choose(){
 			echo " "
 			mkdir /root/mainsail;
 			wget -q -O /root/mainsail/mainsail.zip https://github.com/mainsail-crew/mainsail/releases/latest/download/mainsail.zip && unzip /root/mainsail/mainsail.zip -d /root/mainsail/ && rm /root/mainsail/mainsail.zip;
-			wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.5/moonraker/mainsail_moonraker.conf;
-			wget -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.5/nginx/mainsail.conf;
-			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.5/klipper_config/mainsail.cfg -P /root/printer_data/config/
+			wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/4.0/moonraker/mainsail_moonraker.conf;
+			wget -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/4.0/nginx/mainsail.conf;
+			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/4.0/klipper_config/mainsail.cfg -P /root/printer_data/config/
 			echo "   ***************************"
 			echo "   **         Done          **"
 			echo "   ***************************"
