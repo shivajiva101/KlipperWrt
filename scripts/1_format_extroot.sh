@@ -1,5 +1,8 @@
 #!/bin/sh
 
+exec > >(tee -i /root/format_extroot.log)
+exec 2>&1
+
 echo " "
 echo "This script will format your sd card and make it extroot"
 echo " "
