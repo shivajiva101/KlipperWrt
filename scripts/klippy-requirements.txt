@@ -9,3 +9,4 @@
 #Jinja2==2.11.3 - superceded by moonraker dep
 python-can==3.3.4
 #markupsafe==1.1.1 - superceded by moonraker dep
+msgspec==0.19.0 ; python_version >= '3.9'

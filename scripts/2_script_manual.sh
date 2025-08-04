@@ -100,7 +100,7 @@ echo "   ###############"
 echo " "
 
 echo "Cloning Klipper..."
-git clone --depth 1 https://github.com/Klipper3d/klipper.git /root/klipper;
+git clone --depth 1 --branch v0.13.0 https://github.com/Klipper3d/klipper.git /root/klipper;
 
 echo "Creating klipper service..."
 wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2/Services/klipper -P /etc/init.d/;
@@ -115,7 +115,7 @@ echo "   ### Moonraker ###"
 echo "   #################"
 echo " "
 
-git clone https://github.com/Arksine/moonraker.git /root/moonraker;
+git clone --branch v0.9.3 https://github.com/Arksine/moonraker.git /root/moonraker;
 wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2/Services/moonraker -P /etc/init.d/
 chmod 755 /etc/init.d/moonraker
 /etc/init.d/moonraker enable
@@ -248,7 +248,7 @@ echo "   ########################"
 echo " "
 
 echo "Install tty hotplug rule..."
-opkg install usbutils;
+opkg install --force-overwrite usbutils;
 cat << "EOF" > /etc/hotplug.d/usb/22-tty-symlink
 # Description: Action executed on boot (bind) and with the system on the fly
 PRODID="1a86/7523/264" #change here according to "PRODUCT=" from grep command
