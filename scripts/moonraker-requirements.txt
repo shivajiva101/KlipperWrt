@@ -1,4 +1,4 @@
-# Python dependencies for Moonraker
+# KlipperWrt use only!
 --find-links=python_wheels
 tornado==6.4.1 ; python_version>='3.8'
 #pyserial==3.4

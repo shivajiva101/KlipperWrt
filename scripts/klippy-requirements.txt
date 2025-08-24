@@ -1,7 +1,5 @@
-# This file describes the Python virtualenv package requirements for
-# the Klipper host software (Klippy).  These package requirements are
-# typically installed via the command:
-#   pip install -r klippy-requirements.txt
+# KlipperWrt use only!
+--find-links=python_wheels
 #cffi==1.14.6 - FAILS
 #pyserial==3.4 - not reqd if building 3.5
 #greenlet==2.0.2 ; python_version < '3.12' - FAILS
