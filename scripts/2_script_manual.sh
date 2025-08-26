@@ -5,8 +5,6 @@ exec 2>&1
 
 if mount | grep "/dev/mmcblk0p1 on /overlay type ext4" > /dev/null; then
 
-set -e
-
 echo " "
 echo "   ######################################################"
 echo "   ## Make sure you have a stable Internet connection! ##"
@@ -46,6 +44,8 @@ exit 0
 EOF
 
 fi
+
+set -e
 
 echo "Store opkg lists in extroot overlay to preserve memory"
 sed -i -e "/^lists_dir\s/s:/var/opkg-lists$:/usr/lib/opkg/lists:" /etc/opkg.conf;
