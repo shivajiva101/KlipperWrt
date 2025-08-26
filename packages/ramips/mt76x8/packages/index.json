@@ -924,6 +924,7 @@
     "libgcc": "13.3.0-r4",
     "libpthread": "1.2.5-r4",
     "librt": "1.2.5-r4",
+    "libstdcpp": "13.3.0-r4",
     "libxtables": "1.8.10-r1",
     "mtd": "26"
   }

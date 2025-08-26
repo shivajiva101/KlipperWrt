@@ -10,8 +10,8 @@ URL: http://openwrt.org/
 Architecture: mipsel_24kc
 Installed-Size: 276480
 Filename: base-files_1660~d9340319c6_mipsel_24kc.ipk
-Size: 53116
-SHA256sum: 981a435014b31f0727ef2219ed490863d6a2e5c4f1638f814dae7cc09ae131a8
+Size: 53111
+SHA256sum: e5d5c7fc73eaf114fd3747df5abf7e720ee56e0c3150f55ed7b021af810421af
 Description:  This package contains a base filesystem and system scripts for OpenWrt.
 
 Package: block-mount
@@ -15448,6 +15448,26 @@ Filename: librt_1.2.5-r4_mipsel_24kc.ipk
 Size: 920
 SHA256sum: 6f705f650d335d6efbc6a9666a22b417df3f01d4a95b65f646df4f6f05904844
 Description:  POSIX.1b RealTime extension library
+
+Package: libstdcpp6
+Version: 13.3.0-r4
+Provides: libstdcpp
+Source: feeds/base/libs/toolchain
+SourceName: toolchain
+License: GPL-3.0-with-GCC-exception
+Section: libs
+SourceDateEpoch: 1718622749
+URL: http://gcc.gnu.org/
+ABIVersion: 6
+Status: unknown hold not-installed
+Essential: yes
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: mipsel_24kc
+Installed-Size: 2119680
+Filename: libstdcpp6_13.3.0-r4_mipsel_24kc.ipk
+Size: 667297
+SHA256sum: b9cdd2826d32c93b6ca0afc632e34cc5638bc44794999b200d5f09e33d856e9a
+Description:  GNU Standard C++ Library v3
 
 Package: libxtables12
 Version: 1.8.10-r1
