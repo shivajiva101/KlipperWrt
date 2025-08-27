@@ -109,10 +109,8 @@ echo " "
 
 echo "Fetching Klipper..."
 #git clone --depth 1 --branch v0.13.0 https://github.com/Klipper3d/klipper.git /root/klipper;
-mkdir klipper
-cd klipper
 wget https://github.com/Klipper3d/klipper/archive/refs/tags/v0.13.0.zip
-unzip v0.13.0
+unzip -q v0.13.0
 mv klipper-0.13.0 klipper
 rm v0.13.0
 
