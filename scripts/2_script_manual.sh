@@ -71,6 +71,7 @@ mkdir python_wheels
 cd python_wheels
 wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/scripts/python_wheels/Archive.tar.gz
 tar -xzf Archive.tar.gz
+rm Archive.tar.gz
 cd ~
 pip install -r klippy-requirements.txt;
 
@@ -106,8 +107,14 @@ echo "   ### Klipper ###"
 echo "   ###############"
 echo " "
 
-echo "Cloning Klipper..."
-git clone --depth 1 --branch v0.13.0 https://github.com/Klipper3d/klipper.git /root/klipper;
+echo "Fetching Klipper..."
+#git clone --depth 1 --branch v0.13.0 https://github.com/Klipper3d/klipper.git /root/klipper;
+mkdir klipper
+cd klipper
+wget https://github.com/Klipper3d/klipper/archive/refs/tags/v0.13.0.zip
+unzip v0.13.0
+mv klipper-0.13.0 klipper
+rm v0.13.0
 
 echo "Creating klipper service..."
 wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/Services/klipper -P /etc/init.d/;
@@ -350,6 +357,8 @@ cat << "EOF" > /etc/logrotate.d/moonraker
     sharedscripts
 }
 EOF
+
+rm -r python_wheels
 
 echo " "
 echo "   #################"
