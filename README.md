@@ -3,7 +3,7 @@
 
  A guide to get _**Klipper**_ with _**fluidd**,_ _**Mainsail**_ or _**Duet-Web-Control**_ on OpenWrt embeded devices like the _Creality Wi-Fi Box_.
 
- **IMPORTANT: Switch to the tag of the version you want to install BEFORE downloading the firmware to ensure you are syncronised to the core packages, scripts and instructions!**
+ **IMPORTANT: Switch to the tag of the version you want to install BEFORE using the information in this document to ensure you are syncronised to the core packages, scripts and instructions!**
 
  ---------------------------------------------------------------------------------
 ### Before starting...
@@ -122,11 +122,11 @@
   <summary>Click to expand!</summary>
 
 ### Installing Script method
-Installs everything fresh and current. Possibly unstable if a new dependency is added to the applications stack before the script is updated.
+Fresh installation of the chosen firmware release using stable releases of Klipper & Moonraker
 <details>
   <summary>Click for STEPS!</summary>
 
-This method uses 2 scripts to foramt an sd card and make it extroot and another one that installs everything from the internet.
+This method uses 2 scripts to foramt a sd card and make it extroot and another one that installs everything from the internet.
 
 #### STEPS:
 
@@ -141,18 +141,20 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
 - ❗  Access the terminal tab (`Services` -> `Terminal`) ❗ If terminal tab is not working go to `Config` tab and change `Interface` to the interface you are connecting through the box (your wireless router SSID for example) -> `Save & Apply`.
 - Download and execute the `1_format_extroot.sh` script:
 
->
+
+	```
     cd ~
     wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/scripts/1_format_extroot.sh
     chmod +x 1_format_extroot.sh
     ./1_format_extroot.sh
     
-
+	```
+ 
 - You'll be prompted to reboot: type `reboot`
 
 - Download and execute the `2_script_manual.sh` script:
 
->
+	```
     cd ~
     wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/scripts/2_script_manual.sh
     wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/scripts/klippy-requirements.txt
@@ -160,6 +162,7 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
     chmod +x 2_script_manual.sh
     ./2_script_manual.sh
   
+	```
 
 - Follow the prompted instructions and wait for everything to be installed
 - remove the scripts when done: `rm -rf /root/*.sh`
