@@ -139,7 +139,7 @@ This method uses 2 scripts to foramt a sd card and make it extroot and another o
 - Connect as a client to your Internet router: `Network` -> `Wireless` -> `SCAN` -> `Join Network` -> check `Lock to BSSID` -> `Create/Assign Firewall zone` then under `custom` type `wwan` enter -> `Submit` -> `Save` -> `Save & Apply`
 - Connect back to your router and either find the new box's ip inside the `DHCP` list.
 - ❗  Access the terminal tab (`Services` -> `Terminal`) ❗ If terminal tab is not working go to `Config` tab and change `Interface` to the interface you are connecting through the box (your wireless router SSID for example) -> `Save & Apply`.
-- Use these commands to download and execute the `1_format_extroot.sh` script:
+- Use these commands to download and run the `1_format_extroot.sh` script:
 
 
 	```
@@ -152,7 +152,7 @@ This method uses 2 scripts to foramt a sd card and make it extroot and another o
  
 - You'll be prompted to reboot: type `reboot`
 
-- Use these commands to download and execute the `2_script_manual.sh` script:
+- Use these commands to download and run the `2_script_manual.sh` script:
 
 	```
     cd ~
@@ -163,12 +163,9 @@ This method uses 2 scripts to foramt a sd card and make it extroot and another o
 	```
 
 - Follow the prompted instructions and wait for everything to be installed
-- remove the scripts when done: `rm -rf /root/*.sh`
-- Done!
+- You can remove the scripts, if you want, when done: `rm -rf /root/*.sh`
 
-- When done and rebooted use `http://openwrt.local` or `http://box-ip`to access the Klipper client
-- Done!
-
+- When done and rebooted use `http://openwrt.local` or `http://<your-box-ip>` to access the Klipper client
 
 #### Setting up your `printer.cfg`
 - put your `printer.cfg` inside `/root/klipper_config`
