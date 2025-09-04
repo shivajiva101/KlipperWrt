@@ -95,19 +95,16 @@ opkg install python3 python3-pip python3-cffi python3-dev python3-greenlet;
 pip install --upgrade pip;
 pip install --upgrade setuptools;
 
-echo "Fetching python wheels..."
-mkdir python_wheels
-cd python_wheels
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/scripts/python_wheels/Archive.tar.gz
-tar -xzf Archive.tar.gz
-cd ~
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/scripts/python_wheels.tar.gz
+tar -xzf python_wheels.tar.gz
+wget https://github.com/shivajiva101/KlipperWrt/blob/dev/scripts/klippy-requirements.txt
 pip install -r klippy-requirements.txt;
 
 echo "Cloning 250k baud pyserial..."
 git clone https://github.com/pyserial/pyserial /root/pyserial;
 cd /root/pyserial
 python /root/pyserial/setup.py install;
-cd /root/
+cd /root
 rm -rf /root/pyserial;
 
 echo " "
@@ -118,6 +115,7 @@ echo " "
 
 echo "Installing moonraker dependencies..."
 opkg install python3-zeroconf python3-yaml python3-pillow libsodium python3-dbus-fast;
+wget https://github.com/shivajiva101/KlipperWrt/blob/v4.2.1/scripts/moonraker-requirements.txt
 pip install -r moonraker-requirements.txt;
 
 echo " "
