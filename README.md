@@ -139,7 +139,7 @@ This method uses 2 scripts to format a sd card and make it extroot and another o
 - Connect as a client to your Internet router: `Network` -> `Wireless` -> `SCAN` -> `Join Network` -> check `Lock to BSSID` -> `Create/Assign Firewall zone` then under `custom` type `wwan` enter -> `Submit` -> `Save` -> `Save & Apply`
 - Connect back to your router and either find the new box's ip inside the `DHCP` list.
 - ❗  Access the terminal tab (`Services` -> `Terminal`) ❗ If terminal tab is not working go to `Config` tab and change `Interface` to the interface you are connecting through the box (your wireless router SSID for example) -> `Save & Apply`.
-- Download and execute the `1_format_extroot.sh` script:
+- Use these commands to download and execute the `1_format_extroot.sh` script:
 
 
 	```
@@ -152,13 +152,11 @@ This method uses 2 scripts to format a sd card and make it extroot and another o
  
 - You'll be prompted to reboot: type `reboot`
 
-- Download and execute the `2_script_manual.sh` script:
+- Use these commands to download and execute the `2_script_manual.sh` script:
 
 	```
     cd ~
     wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/scripts/2_script_manual.sh
-    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/scripts/klippy-requirements.txt
-    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/scripts/moonraker-requirements.txt
     chmod +x 2_script_manual.sh
     ./2_script_manual.sh
   
