@@ -10,35 +10,20 @@
 
 :clapper: [video](https://youtu.be/LCJYF-7xleM) tutorial by [Kruze17](https://github.com/Kruze17) on his [Hyper Makes](https://www.youtube.com/channel/UCrCxVyN2idCxPNOwCwK6qtQ) YouTube channel.
 
-🏳️ [<img align="center" width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/discord.png" alt="discord_icon">](https://discord.gg/ZGrCMVs35H) [server](https://discord.gg/ZGrCMVs35H) for extra support.
+[<img align="center" width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/discord.png" alt="discord_icon">](https://discord.gg/ZGrCMVs35H) [server](https://discord.gg/ZGrCMVs35H) for extra support.
 
 --------------------------------------------------------------------------
 
-# Automatic Steps:
-
-<details>
-  <summary>Click to expand!</summary>
-
 ### Installation by Script
 Fresh installation of the chosen firmware release using stable releases of Klipper & Moonraker
-<details>
-  <summary>Click for STEPS!</summary>
 
 This method uses 2 scripts, one to foramt the sd card and make it extroot and another to install everything from the web.
 
 #### STEPS:
 
-- Make sure you've flahsed/sysupgraded latest `.bin` file from `/Firmware/OpenWrt_snapshot/` or from latest release.
-- Connect to the `OpenWrt` access point
-- Access LuCi web interface and log in on `192.168.1.1:81`
-- _(**optional** but recommended)_ Add a password to the `OpenWrt` access point: `Wireless` -> Under wireless overview `EDIT` the `OpenWrt` interface -> `Wireless Security` -> Choose an encryption -> set a password -> `Save` -> `Save & Apply`
-- _(**optional** but recommended)_ Add a password: `System` -> `Administration` -> `Router Password`
-- ❗If your home network subnet is on 1 (192.168.1.x), in order to avoid any ip conflicts, change the static ip of the box LAN from 192.168.1.1 to something like 192.168.3.1. To do that access the luci webinterface -> `Network` -> `Interfaces` and edit the static ip -> `Save` -> press the down arow on the Save&Apply button -> `Apply Unchecked`. You can now access luci on the new ip and continue configureing Client setup.
-- Connect as a client to your Internet router: `Network` -> `Wireless` -> `SCAN` -> `Join Network` -> check `Lock to BSSID` -> `Create/Assign Firewall zone` then under `custom` type `wwan` enter -> `Submit` -> `Save` -> `Save & Apply`
-- Connect back to your router and either find the new box's ip inside the `DHCP` list.
-- ❗  Access the terminal tab (`Services` -> `Terminal`) ❗ If terminal tab is not working go to `Config` tab and change `Interface` to the interface you are connecting through the box (your wireless router SSID for example) -> `Save & Apply`.
+- Make sure you're on the latest firmware.
+- Use a terminal to SSH into the device.
 - Use these commands to download and run the `1_format_extroot.sh` script:
-
 
 	```
     cd ~
@@ -85,10 +70,8 @@ This method uses 2 scripts, one to foramt the sd card and make it extroot and an
 - Done
 _____________________________________________
 *Notes:*
--  If the box doesn't connect back to your router wirelessly connect to it with an ethernet cable and setup/troubleshoot wifi.
 -  Check [here](https://github.com/mainsail-crew/moonraker-timelapse/blob/main/docs/configuration.md#slicer-setup) for how to set your `TIMELAPSE_TAKE_FRAME` macro inside your slicer layer change.
 
-</details>
 </details>
 --------------------------------------------------------------------------
 
@@ -103,19 +86,9 @@ _____________________________________________
 <details>
   <summary>Click for STEPS!</summary>
 
-:exclamation: Although this is an OpenWrt snapshot (Device is not officially supported) it works seamlessly, as long as the core package feed points at the correct tag for the firmware version.
-#### 1. Build OpenWrt image(optional)
+:exclamation: Although this is an OpenWrt snapshot it works seamlessly, as long as the core package feed points at the correct tag for the firmware version.
 
-<details>
-  <summary>Click to expand!</summary>
-
-* Only neccesary until the [port](https://github.com/openwrt/openwrt/pull/3802) gets merged and officially supported.
-  * I recommend following figgyc's [post](https://github.com/figgyc/figgyc.github.io/blob/source/posts.org#compiling-openwrt-for-the-creality-wb-01-tips-and-tricks). You'll find there his experience and a guide to compile OpenWrt. Here is his OpenWrt [branch](https://github.com/figgyc/openwrt/tree/wb01) with support for the Creality Wi-Fi Box and the [PR](https://github.com/openwrt/openwrt/pull/3802) pending to merge to main OpenWrt.
-
-
-
-  </details>
-#### 2. Install OpenWrt to the device
+#### 1. Install OpenWrt to the device
 
 <details>
   <summary>Click to expand!</summary>
@@ -127,7 +100,7 @@ Flashing:
 
 </details>
 
-#### 3. Setup Wi-Fi
+#### 2. Setup Wi-Fi
 
 <details>
   <summary>Click to expand!</summary>
@@ -138,7 +111,7 @@ Flashing:
 
 </details>
 
-#### 4. Enable [extroot](https://openwrt.org/docs/guide-user/additional-software/extroot_configuration) _(to expand the storage on the TF card)_ and enable swap.
+#### 3. Enable [extroot](https://openwrt.org/docs/guide-user/additional-software/extroot_configuration) _(to expand the storage on the TF card)_ and enable swap.
 
 <details>
      <summary>Click to expand!</summary>
@@ -210,7 +183,7 @@ EOF
 <details>
   <summary>Click for STEPS!</summary>
 
-#### 5. Install dependencies
+#### 4. Install dependencies
 
 <details>
   <summary>Click to expand!</summary>
@@ -233,25 +206,25 @@ EOF
 
 </details>
 
-#### 6. Install Klipper
+#### 5. Install Klipper
 
 <details>
   <summary>Click to expand!</summary>
 
-- **6.1 Clone Klipper inside** `~/`
+- **5.1 Clone Klipper inside** `~/`
            - `git clone --depth 1 https://github.com/Klipper3D/klipper.git`.
-- **6.2 Use provided klipper service and place inside `/etc/init.d/`**
+- **5.2 Use provided klipper service and place inside `/etc/init.d/`**
 
 >
 	wget -q -O /etc/init.d/klipper https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/Services/klipper
 	chmod 755 /etc/init.d/klipper
 
-- **6.3 Enable klipper service:**
+- **5.3 Enable klipper service:**
 
 >
 	/etc/init.d/klipper enable
 
-- **6.4 Prepare your `printer.cfg` file:**
+- **5.4 Prepare your `printer.cfg` file:**
 
 >
 	mkdir ~/klipper_config ~/klipper_logs ~/gcode_files
@@ -263,23 +236,23 @@ EOF
 
 - Add either `[include mainsail.cfg]` or `[include fluidd.cfg]` to the top of the `printer.cfg` file depending on which front end you chose
 
-- **6.5 Restart klipper** - do `service klipper restart` or `/etc/init.d/klipper restart`
-- **6.6 Build `klipper.bin` file**
+- **5.5 Restart klipper** - do `service klipper restart` or `/etc/init.d/klipper restart`
+- **5.6 Build `klipper.bin` file**
             - Building is not mandatory to be done on the device that hosts klippy. To build it on this box you would need a lot of dependencies that are not available for OpenWrt so I just used my pc running ubuntu: On a different computer running linux (or VM or live USB) -> Clone klipper just like you did before -> `cd klipper` -> `make menuconfig` -> use the configurations specific to your mainboard (Check the header inside your `printer.cfg` file for details).
 :exclamation: use custom baud: `230400`. By default 250000 is selected. If you want/need that baud, remove the `python-pyserial` package and install this version of [pyserial](https://github.com/pyserial/pyserial) instead - check `Requirements` directory for details about installation process.
 -> once configured run `make` -> if succesfull the firmware will be inside `./out/klipper.bin` -> flash the mainboard:(check header of `printer.cfg` again - some mainboards need the `.bin` file renamed a certain way) copy the `.bin` file on a sd card -> plug the card with the printer off -> turn printer on and wait a minute -> Done (Depending on your mainboard/printer/lcd you will probably not have a sign that the mainboard got flashed so don't worry) - if at the end of this guide the client cannot connect to the klipper firmware usually the problem is with the `.bin` file building or flashing process.
 </details>
 
-#### 7. Install moonraker + fluidd/mainsail
+#### 6. Install moonraker + fluidd/mainsail
 <details>
   <summary>Click to expand!</summary>
 
-- **7.1 Clone Moonraker**
+- **6.1 Clone Moonraker**
 >
     cd ~
     git clone https://github.com/Arksine/moonraker.git
 
-- **7.2 Use provided moonraker.conf file and download chosen client**
+- **6.2 Use provided moonraker.conf file and download chosen client**
 
 **For fluidd:**
 
@@ -301,7 +274,7 @@ EOF
 Note: _The `[update_manager]` plugin was commented out since this is curently only supported for `debian` distros only. For now, updating `moonraker`, `klipper`, `fluidd` or `mainsail` should be done manaully._
 
 Don't forget to edit(if necessary) the `moonraker.conf` file you copied inside `~/klipper_config` under `trusted_clients:` with your client ip or ip range (_client meaning the device you want to access fluidd/mainsail from_). Check the moonraker [configuration](https://github.com/Arksine/moonraker/blob/master/docs/configuration.md#authorization) doc for details.
-- **7.3 Use provided moonraker service and place inside `/etc/init.d/`**
+- **6.3 Use provided moonraker service and place inside `/etc/init.d/`**
 
 >
 	wget -q -O /etc/init.d/moonraker https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/Services/moonraker
@@ -309,7 +282,7 @@ Don't forget to edit(if necessary) the `moonraker.conf` file you copied inside `
 	/etc/init.d/moonraker enable
 	/etc/init.d/moonraker restart
 
-- **7.4 Download the rest of the nginx files inside `/etc/nginx/conf.d`***
+- **6.4 Download the rest of the nginx files inside `/etc/nginx/conf.d`***
 
 >
 	wget -q -O /etc/nginx/conf.d/upstreams.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/nginx/upstreams.conf
@@ -324,7 +297,7 @@ You need to use either `fluidd.conf` or `mainsail.conf` file depending on your c
 **Note!**
 It's ok to keep both client directories inside `/root/` as these are static files. Careful with the `.conf` file inside `/etc/nginx/conf.d`.
 
-- **7.6 Restart nginx** with `service nginx restart` and check browser if `http://your-ip` brings you the client interface (fluidd or mainsail).
+- **6.6 Restart nginx** with `service nginx restart` and check browser if `http://your-ip` brings you the client interface (fluidd or mainsail).
 
 :exclamation: **How to switch between fluidd and mainsail:**
    1. switch between `mainsail.conf`and `fluidd.conf` file inside `/etc/nginx/conf.d` (make sure the other one gets renamed to a different `extension`. eg: `*.conf_off` or moved to a different folder.)
@@ -333,7 +306,7 @@ It's ok to keep both client directories inside `/root/` as these are static file
 </details>
 
 
-#### 8. Install mjpg-streamer - for webcam stream
+#### 7. Install mjpg-streamer - for webcam stream
 
 <details>
   <summary>Click to expand!</summary>
@@ -347,7 +320,7 @@ It's ok to keep both client directories inside `/root/` as these are static file
 
 </details>
 
- #### 9. (Optional) Use hostname instead of ip
+ #### 8. (Optional) Use hostname instead of ip
 
 <details>
   <summary>Click to expand!</summary>
@@ -362,7 +335,7 @@ It's ok to keep both client directories inside `/root/` as these are static file
 * Instead of `http://your-ip` use `http://your_hostname.local`
 </details>
 
-#### 10. Enjoy
+#### 9. Enjoy
 
 </details>
 
@@ -372,7 +345,7 @@ It's ok to keep both client directories inside `/root/` as these are static file
 <details>
   <summary>Click for STEPS!</summary>
 
-#### 5. Install dependencies
+#### 1. Install dependencies
 
 <details>
   <summary>Click to expand!</summary>
@@ -382,7 +355,7 @@ It's ok to keep both client directories inside `/root/` as these are static file
 
  </details>
 
-#### 6. Install Klipper
+#### 2. Install Klipper
 
 <details>
   <summary>Click to expand!</summary>
@@ -402,7 +375,7 @@ It's ok to keep both client directories inside `/root/` as these are static file
 
 </details>
 
-#### 7. Get dwc socket for klipper
+#### 3. Get dwc socket for klipper
 
 <details>
   <summary>Click to expand!</summary>
@@ -420,7 +393,7 @@ Enable it: `/etc/init.d/dwc enable`
 
 </details>
 
-#### 8. Get dwc
+#### 4. Get dwc
 
 <details>
   <summary>Click to expand!</summary>
@@ -441,7 +414,7 @@ Enable it: `/etc/init.d/dwc enable`
 
 </details>
 
-#### 9. (Optional) Use hostname instead of ip
+#### 5. (Optional) Use hostname instead of ip
 
 <details>
   <summary>Click to expand!</summary>
@@ -456,7 +429,7 @@ Enable it: `/etc/init.d/dwc enable`
 * Instead of `http://your-ip` use `http://your_hostname.local`
 </details>
 
-#### 10. Enjoy
+#### 6. Enjoy
 
 </details>
 
