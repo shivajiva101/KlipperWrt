@@ -6,113 +6,11 @@
  **IMPORTANT: Switch to the tag of the version you want to install BEFORE using the information in this document to ensure you are syncronised to the core packages, scripts and instructions!**
 
  ---------------------------------------------------------------------------------
-### Before starting...
+### Before starting...Check out the [Wiki](https://github.com/shivajiva101/KlipperWrt/wiki)
 
-<details>
-  <summary>Click to expand!</summary>
+:clapper: [video](https://youtu.be/LCJYF-7xleM) tutorial by [Kruze17](https://github.com/Kruze17) on his [Hyper Makes](https://www.youtube.com/channel/UCrCxVyN2idCxPNOwCwK6qtQ) YouTube channel.
 
-#### Why Klipper on a Router :question:
-
-<details>
-  <summary> ( :red_circle: Click to expand!)</summary>
-
- - OpenWrt is so much more efficient than other linux distros.
- - On a single core 580MHz cpu (with moonraker, klippy, nginx and mjpg-streamer) I get ~20-25% cpu load while idle/not printing and max 35-40% cpu load while printing and watching stream (640x480 30fps mjpeg).
-
-![alt text](https://github.com/shivajiva101/KlipperWrt/blob/main/screenshots/top_idle_moonraker_klippy_nginx_mjpg_streamer.png)
-![alt text](https://github.com/shivajiva101/KlipperWrt/blob/main/screenshots/htop_idle.png)
-![alt text](https://github.com/shivajiva101/KlipperWrt/blob/main/screenshots/print.png)
-![alt text](https://github.com/shivajiva101/KlipperWrt/blob/main/screenshots/stream.png)
-![alt text](https://github.com/shivajiva101/KlipperWrt/blob/main/screenshots/print.jpg)
-  * I've tried octoprint on this box as well but unfortunately it was too resource intensive. Test prints speak for themselves.
-
-</details>
-
-#### What is the Creality [Wi-Fi Box](https://www.creality.com/goods-detail/creality-box-3d-printer)?
-
-<details>
-  <summary>(Click to expand!)</summary>
-
-[![creality_wb](img/creality_wb.jpg)](https://www.creality.com/goods-detail/creality-box-3d-printer)
-- A router box device released by Creality in 2020 meant to add cloud based remote control to your printer. Creality Cloud App is a contraption between social media and 3d printing that you have to use to be able to print and monitor.
-
-	Sounded like a good idea. Unfortunately, the unpolished idea was not very well received by the public. Creality recently (July 2021) added **Cura integration** and **custom gcode upload**. Webcam support finally got released but it seems to only work with their new **proprietary webcam**. Everything is still **cloud based** and you **can't use it offline**. This raised a lot of concerns in terms of privacy and transparency. Putting all your trust in a company is not necesarily the best idea and although they seemed to have improved the app and user experience the full control is not in the user's hands yet.
-
-	It's hard to please everybody when creating a product/service but actually listening to the public's feedback is a good start. People need privacy, full control and reliability to actually consider using the product over the alternatives. **Klipper** and it's UI clients come as **open source** and **100% transparent** alternatives to remote printing.
-
- <details>
-   <summary>Specifications (Click to expand!)</summary>
-
- *(taken form figgyc's commit)*
-
-- **SoC**: MediaTek MT7688AN @ 580 MHz
-- **Flash**: BoyaMicro BY25Q128AS (16 MiB, SPI NOR)
-- **RAM**: 128 MiB DDR2 (Winbond W971GG6SB-25)
-- **Peripheral**: Genesys Logic GL850G 2 port USB 2.0 hub
-- **I/O**: 1x 10/100 Ethernet port, microSD SD-XC Class 10 slot, 4x LEDs, 2x USB 2.0 ports, micro USB input (for power only), reset button
-- **FCC ID**: 2AXH6CREALITY-BOX
-- **UART**: test pads: (square on silkscreen) 3V3, TX, RX, GND; default baudrate: 57600
-
-   </details>
- </details>
-
-#### What is [OpenWrt](https://github.com/openwrt/openwrt)?
-
-<details>
-  <summary>(Click to expand!)</summary>
-
-[![OpenWrt](img/OpenWrt.png)](https://openwrt.org)
-
-- A Linux OS built for embeded devices, routers especially. Light, Open Source  with a great community and <br> packages that gives your device the freedom it deserves.
-
- </details>
-
-#### What is [Klipper](https://github.com/KevinOConnor/klipper)?
-
-<details>
-  <summary>(Click to expand!)</summary>
-
-[![Klipper](img/klipper.png)](https://www.klipper3d.org/)
-
-- A 3d-printer firmware. It runs on any kind of computer taking advantage of the host cpu. Extremely light on cpu, lots of feautres
-</details>
-
-#### What is [fluidd](https://github.com/cadriel/fluidd) / [mainsail](https://github.com/meteyou/mainsail)?
-
-<details>
-  <summary>(Click to expand!)</summary>
-
-[![fluidd](img/fluidd.png)](https://docs.fluidd.xyz)  [![mainsail](img/mainsail.png)](https://docs.mainsail.xyz)
-- These are free and open-source Klipper web interface clients for managing your 3d printer.
-</details>
-
-#### What is [Moonraker](https://github.com/Arksine/moonraker)?
-
-<details>
-  <summary>(Click to expand!)</summary>
-
-[![Moonraker](img/moonraker.png)](https://moonraker.readthedocs.io/en/latest/)
-- A Python 3 based web server that exposes APIs with which client applications (fluidd or mainsail) may use to interact with Klipper. Communcation between the Klippy host and Moonraker is done over a Unix Domain Socket. Tornado is used to provide Moonraker's server functionality.
-</details>
-
-#### What is [duet-web-control](https://github.com/Duet3D/DuetWebControl)
-
-
-<details>
-  <summary>(Click to expand!)</summary>
-
-[![dwc](img/dwc.png)](https://duet3d.dozuki.com/Wiki/Duet_Web_Control_v2_and_v3_%28DWC%29_Manual)
-- Duet Web Control is a fully-responsive HTML5-based web interface for RepRapFirmware. [Stephan3](https://github.com/Stephan3/dwc2-for-klipper-socket) built a socket to make it communicate with klipper as well (klipper is not a RepRapFirmware). This is a standalone webserver and client interface - so no need for moonraker or nginx.
-</details>
-
-</details>
-
---------------------------------------------------------------------------
-
-###  :clapper: Check out the latest [video](https://youtu.be/LCJYF-7xleM) tutorial by [Kruze17](https://github.com/Kruze17) on his [Hyper Makes](https://www.youtube.com/channel/UCrCxVyN2idCxPNOwCwK6qtQ) YouTube channel.
-
-### :exclamation: Open issues or join the [<img align="center" width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/discord.png" alt="discord_icon">](https://discord.gg/ZGrCMVs35H) [server](https://discord.gg/ZGrCMVs35H) for extra support.
-
+🏳️ [<img align="center" width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/main/img/discord.png" alt="discord_icon">](https://discord.gg/ZGrCMVs35H) [server](https://discord.gg/ZGrCMVs35H) for extra support.
 
 --------------------------------------------------------------------------
 
@@ -121,12 +19,12 @@
 <details>
   <summary>Click to expand!</summary>
 
-### Installing Script method
+### Installation by Script
 Fresh installation of the chosen firmware release using stable releases of Klipper & Moonraker
 <details>
   <summary>Click for STEPS!</summary>
 
-This method uses 2 scripts to foramt a sd card and make it extroot and another one that installs everything from the internet.
+This method uses 2 scripts, one to foramt the sd card and make it extroot and another to install everything from the web.
 
 #### STEPS:
 
@@ -163,9 +61,10 @@ This method uses 2 scripts to foramt a sd card and make it extroot and another o
 	```
 
 - Follow the prompted instructions and wait for everything to be installed
-- You can remove the scripts, if you want, when done: `rm -rf /root/*.sh`
-
+  
 - When done and rebooted use `http://openwrt.local` or `http://<your-box-ip>` to access the Klipper client
+  
+- You can remove the scripts, if you want, when done: `rm -rf /root/*.sh`
 
 #### Setting up your `printer.cfg`
 - put your `printer.cfg` inside `/root/klipper_config`
