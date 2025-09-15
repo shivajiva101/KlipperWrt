@@ -126,7 +126,7 @@ Fresh installation of the chosen firmware release using stable releases of Klipp
 <details>
   <summary>Click for STEPS!</summary>
 
-This method uses 2 scripts to foramt a sd card and make it extroot and another one that installs everything from the internet.
+This method uses 2 scripts to format a sd card and make it extroot and another one that installs everything from the internet.
 
 #### STEPS:
 
