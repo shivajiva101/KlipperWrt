@@ -255,9 +255,9 @@ Flashing:
 opkg update && opkg install block-mount kmod-fs-ext4 kmod-usb-storage kmod-usb-ohci kmod-usb-uhci e2fsprogs fdisk
 DEVICE=$(awk '$2 == "/overlay" {print $1}' /etc/mtab)
 uci -q delete fstab.rwm
-uci set fstab.rwm="mount
-uci set fstab.rwm.device="${DEVICE}
-uci set fstab.rwm.target="/rwm
+uci set fstab.rwm="mount"
+uci set fstab.rwm.device="${DEVICE}"
+uci set fstab.rwm.target="/rwm"
 uci commit fstab
 mkfs.ext4 /dev/mmcblk0p1
 DEVICE="/dev/mmcblk0p1"
