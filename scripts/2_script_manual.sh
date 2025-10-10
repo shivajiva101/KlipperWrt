@@ -12,9 +12,7 @@ echo "   ######################################################"
 echo " "
 read -p "Press [ENTER] to Continue ...or [ctrl+c] to exit"
 
-FILE=/overlay/swap.page
-
-if [ ! -f "$FILE" ]; then
+if [ ! -f "/overlay/swap.page" ]; then
 echo " "
 echo "   ####################"
 echo "   ###   1. SWAP    ###"
@@ -49,7 +47,7 @@ if [ -f "/root/install.log" ]; then
 
 # clean up prev attempt
 echo ""
-echo "Previous installation detected, cleaning..."
+echo "Previous install detected, cleaning up..."
 echo ""
 
 [ -d "python_wheels" ] && rm -rf python_wheels
@@ -95,12 +93,14 @@ opkg install python3 python3-pip python3-cffi python3-dev python3-greenlet;
 pip install --upgrade pip;
 pip install --upgrade setuptools;
 
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/scripts/python_wheels.tar.gz
+echo "Installing python wheels..."
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/python/python_wheels.tar.gz
 tar -xzf python_wheels.tar.gz
-wget https://github.com/shivajiva101/KlipperWrt/blob/dev/scripts/klippy-requirements.txt
+rm -f python_wheels.tar.gz
+wget https://github.com/shivajiva101/KlipperWrt/blob/dev/requirements/klippy-requirements.txt
 pip install -r klippy-requirements.txt;
 
-echo "Cloning 250k baud pyserial..."
+echo "Cloning pyserial..."
 git clone https://github.com/pyserial/pyserial /root/pyserial;
 cd /root/pyserial
 python /root/pyserial/setup.py install;
@@ -115,7 +115,7 @@ echo " "
 
 echo "Installing moonraker dependencies..."
 opkg install python3-zeroconf python3-yaml python3-pillow libsodium python3-dbus-fast;
-wget https://github.com/shivajiva101/KlipperWrt/blob/v4.2.1/scripts/moonraker-requirements.txt
+wget https://github.com/shivajiva101/KlipperWrt/blob/v4.2.1/requirements/moonraker-requirements.txt
 pip install -r moonraker-requirements.txt;
 
 echo " "
@@ -326,7 +326,7 @@ EOF
 
 echo " "
 echo "   #######################"
-echo "   ### 11. Fixing logs ###"
+echo "   ### 12. Fixing logs ###"
 echo "   #######################"
 echo " "
 echo "Creating system.log..."
@@ -383,7 +383,7 @@ rm -r python_wheels
 
 echo " "
 echo "   ##################"
-echo "   ### 12. Reboot ###"
+echo "   ### 13. Reboot ###"
 echo "   ##################"
 echo " "
 
