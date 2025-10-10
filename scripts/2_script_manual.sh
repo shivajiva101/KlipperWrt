@@ -45,7 +45,36 @@ EOF
 
 fi
 
+if [ -f "/root/install.log" ]; then
+
+# clean up prev attempt
+echo ""
+echo "Previous installation detected, cleaning..."
+echo ""
+
+[ -d "python_wheels" ] && rm -rf python_wheels
+[ -d "klipper" ] && rm -rf klipper
+[ -d "klipper_logs" ] && rm -rf klipper_logs
+[ -d "fluid" ] && rm -rf fluid
+[ -d "mainsail" ] && rm -rf mainsail
+[ -d "moonraker-timelapse" ] && rm -rf moonraker-timelapse
+[ -d "moonraker" ] && rm -rf moonraker
+[ -d "printer_data" ] && rm -rf printer_data
+[ -d "timelapse" ] && rm -rf timelapse
+[ -d "pyserial" ] && rm -rf pyserial
+[ -f "Archive.tar.gz" ] && rm -f Archive.tar.gz
+[ -f "/etc/init.d/klipper" ] && rm -f /etc/init.d/klipper
+[ -f "/etc/init.d/moonraker" ] && rm -f /etc/init.d/moonraker
+[ -f "/etc/nginx/conf.d/mainsail.conf" ] && rm -f /etc/nginx/conf.d/mainsail.conf
+[ -f "/etc/nginx/conf.d/fluidd.conf" ] && rm -f /etc/nginx/conf.d/fluidd.conf
+[ -f "/etc/config/mjpg-streamer" ] && rm -f /etc/config/mjpg-streamer
+[ -f "/etc/init.d/webcamd" ] && rm -f /etc/init.d/webcamd
+
+fi
+
 set -e
+echo "Update package lists"
+opkg update
 
 echo "Store opkg lists in extroot overlay to preserve memory"
 sed -i -e "/^lists_dir\s/s:/var/opkg-lists$:/usr/lib/opkg/lists:" /etc/opkg.conf;
@@ -58,7 +87,7 @@ echo " "
 
 echo "Installing klipper dependencies..."
 
-opkg update && opkg install git-http unzip htop;
+opkg install git-http unzip htop;
 opkg install --force-overwrite gcc;
 opkg install patch;
 
@@ -108,9 +137,9 @@ echo " "
 
 echo "Fetching Klipper..."
 wget https://github.com/Klipper3d/klipper/archive/refs/tags/v0.13.0.zip
-unzip -q v0.13.0
+unzip -q v0.13.0.zip
 mv klipper-0.13.0 klipper
-rm v0.13.0
+rm v0.13.0.zip
 
 echo "Creating klipper service..."
 wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/Services/klipper -P /etc/init.d/;
@@ -141,7 +170,7 @@ echo " "
 
 choose(){
 	echo " "
-	echo "Choose prefered Klipper client:"
+	echo "Choose preferred Klipper client:"
 	echo "  1) Fluidd"
 	echo "  2) Mainsail"
 	echo "  3) Quit"
@@ -206,7 +235,7 @@ echo "Installing mjpg-streamer..."
 opkg install v4l-utils kmod-video-uvc;
 opkg install mjpg-streamer-input-uvc mjpg-streamer-output-http mjpg-streamer-www ffmpeg;
 
-rm /etc/config/mjpg-streamer;
+[ -f "/etc/config/mjpg-streamer" ] && rm -f /etc/config/mjpg-streamer;
 cat << "EOF" > /etc/config/mjpg-streamer
 config mjpg-streamer 'core'
         option enabled '0'
@@ -356,7 +385,7 @@ rm -r python_wheels
 
 echo " "
 echo "   ##################"
-echo "   ### 12. Rebbot ###"
+echo "   ### 12. Reboot ###"
 echo "   ##################"
 echo " "
 
