@@ -97,7 +97,8 @@ echo "Installing python wheels..."
 wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/python/python_wheels.tar.gz
 tar -xzf python_wheels.tar.gz
 rm -f python_wheels.tar.gz
-wget https://github.com/shivajiva101/KlipperWrt/blob/dev/requirements/klippy-requirements.txt
+
+wget https://github.com/shivajiva101/KlipperWrt/blob/v4.2.1/requirements/klippy-requirements.txt
 pip install -r klippy-requirements.txt;
 
 echo "Cloning pyserial..."
