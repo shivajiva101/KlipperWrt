@@ -145,11 +145,8 @@ echo "   ### 5. Klipper ###"
 echo "   ##################"
 echo " "
 
-echo "Fetching Klipper..."
-wget https://github.com/Klipper3d/klipper/archive/refs/tags/v0.13.0.zip
-unzip -q v0.13.0.zip
-mv klipper-0.13.0 klipper
-rm v0.13.0.zip
+echo "Cloning Klipper..."
+git clone --depth 1 https://github.com/Klipper3d/klipper.git /root/klipper;
 
 echo "Creating klipper service..."
 wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/Services/klipper -P /etc/init.d/;
@@ -164,7 +161,7 @@ echo "   ### 6. Moonraker ###"
 echo "   ####################"
 echo " "
 
-git clone --branch v0.9.3 https://github.com/Arksine/moonraker.git /root/moonraker;
+git clone https://github.com/Arksine/moonraker.git /root/moonraker;
 wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/Services/moonraker -P /etc/init.d/
 chmod 755 /etc/init.d/moonraker
 /etc/init.d/moonraker enable
