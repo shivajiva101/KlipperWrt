@@ -126,7 +126,7 @@ Fresh installation of the chosen firmware release using stable releases of Klipp
 <details>
   <summary>Click for STEPS!</summary>
 
-This method uses 2 scripts to format a sd card and make it extroot and another one that installs everything from the internet.
+This method uses 2 scripts to format a micro sd card and make it extroot, and another one that installs everything from the internet.
 
 #### STEPS:
 
@@ -135,7 +135,7 @@ This method uses 2 scripts to format a sd card and make it extroot and another o
 - Access LuCi web interface and log in on `192.168.1.1:81`
 - _(**optional** but recommended)_ Add a password to the `OpenWrt` access point: `Wireless` -> Under wireless overview `EDIT` the `OpenWrt` interface -> `Wireless Security` -> Choose an encryption -> set a password -> `Save` -> `Save & Apply`
 - _(**optional** but recommended)_ Add a password: `System` -> `Administration` -> `Router Password`
-- ❗If your home network subnet is on 1 (192.168.1.x), in order to avoid any ip conflicts, change the static ip of the box LAN from 192.168.1.1 to something like 192.168.3.1. To do that access the luci webinterface -> `Network` -> `Interfaces` and edit the static ip -> `Save` -> press the down arow on the Save&Apply button -> `Apply Unchecked`. You can now access luci on the new ip and continue configureing Client setup.
+- ❗If your home network subnet is on 1 (192.168.1.x), in order to avoid any ip conflicts, change the static ip of the box LAN from 192.168.1.1 to something like 192.168.3.1. To do that access the luci webinterface -> `Network` -> `Interfaces` and edit the static ip -> `Save` -> press the down arow on the Save&Apply button -> `Apply Unchecked`. You can now access luci on the new ip and continue configuring Client setup.
 - Connect as a client to your Internet router: `Network` -> `Wireless` -> `SCAN` -> `Join Network` -> check `Lock to BSSID` -> `Create/Assign Firewall zone` then under `custom` type `wwan` enter -> `Submit` -> `Save` -> `Save & Apply`
 - Connect back to your router and either find the new box's ip inside the `DHCP` list.
 - ❗  Access the terminal tab (`Services` -> `Terminal`) ❗ If terminal tab is not working go to `Config` tab and change `Interface` to the interface you are connecting through the box (your wireless router SSID for example) -> `Save & Apply`.
@@ -144,7 +144,7 @@ This method uses 2 scripts to format a sd card and make it extroot and another o
 
 	```
     cd ~
-    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/scripts/1_format_extroot.sh
+    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/scripts/1_format_extroot.sh
     chmod +x 1_format_extroot.sh
     ./1_format_extroot.sh
     
@@ -156,7 +156,7 @@ This method uses 2 scripts to format a sd card and make it extroot and another o
 
 	```
     cd ~
-    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/scripts/2_script_manual.sh
+    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/scripts/2_script_manual.sh
     chmod +x 2_script_manual.sh
     ./2_script_manual.sh
   
@@ -165,7 +165,7 @@ This method uses 2 scripts to format a sd card and make it extroot and another o
 - Follow the prompted instructions and wait for everything to be installed
 - You can remove the scripts, if you want, when done: `rm -rf /root/*.sh`
 
-- When done and rebooted use `http://openwrt.local` or `http://<your-box-ip>` to access the Klipper client
+- When done and rebooted use `http://openwrt.local` or `http://<your-box-ip>` to access the Klipper client. Depending on your network configuration the no-ip may work, but the ip will always connect, providing nginx is up and running!
 
 #### Setting up your `printer.cfg`
 - put your `printer.cfg` inside `/root/klipper_config`
@@ -199,19 +199,19 @@ _____________________________________________
   <summary>Click to expand!</summary>
 
 
-### OpenWrt <img align="left" width="30" height="34" src="https://github.com/shivajiva101/KlipperWrt/blob/v4.2.1/img/OpenWrt.png" alt="openwrt_icon">
+### OpenWrt <img align="left" width="30" height="34" src="https://github.com/shivajiva101/KlipperWrt/blob/v4.2.2/img/OpenWrt.png" alt="openwrt_icon">
 
 <details>
   <summary>Click for STEPS!</summary>
 
-:exclamation: Although this is an OpenWrt snapshot (Device is not officially supported) it works seamlessly, as long as the core package feed points at the correct tag for the firmware version.
+:exclamation: Although this is an OpenWrt snapshot it works seamlessly, as long as the core package feed points at the correct tag for the firmware version.
 #### 1. Build OpenWrt image(optional)
 
 <details>
   <summary>Click to expand!</summary>
 
 * Only neccesary until the [port](https://github.com/openwrt/openwrt/pull/3802) gets merged and officially supported.
-  * I recommend following figgyc's [post](https://github.com/figgyc/figgyc.github.io/blob/source/posts.org#compiling-openwrt-for-the-creality-wb-01-tips-and-tricks). You'll find there his experience and a guide to compile OpenWrt. Here is his OpenWrt [branch](https://github.com/figgyc/openwrt/tree/wb01) with support for the Creality Wi-Fi Box and the [PR](https://github.com/openwrt/openwrt/pull/3802) pending to merge to main OpenWrt.
+  * I recommend following figgyc's [post](https://github.com/figgyc/figgyc.github.io/blob/source/posts.org#compiling-openwrt-for-the-creality-wb-01-tips-and-tricks). You'll find there his experience and a guide to compile OpenWrt. Here is his OpenWrt [branch](https://github.com/figgyc/openwrt/tree/wb01) with support for the Creality Wi-Fi Box and the [PR](https://github.com/openwrt/openwrt/pull/3802) pending to merge to main OpenWrt. UPDATE: Creality WB-01 was merged in this commit [PR](https://github.com/openwrt/openwrt/commit/f29bc8736aacf36fc4f339182b74a20489096a2b) to main. It should be available in the OpenWrt v25 release, when that eventually comes.
 
 
 
@@ -222,7 +222,7 @@ _____________________________________________
   <summary>Click to expand!</summary>
 
 Flashing:
-1) Rename factory.bin to cxsw_update.tar.bz2
+1) Rename factory.bin to cxsw_update.tar.bz2 if it isn't already
 2) Copy it to the root of a FAT32 formatted microSD card.
 3) Turn on the device, wait for it to start, then insert the card. The stock firmware reads the install.sh script from this archive, the build script I added creates one that works in a similar way. Web firmware update didn't work in my testing.
 
@@ -250,9 +250,9 @@ Flashing:
 opkg update && opkg install block-mount kmod-fs-ext4 kmod-usb-storage kmod-usb-ohci kmod-usb-uhci e2fsprogs fdisk
 DEVICE=$(awk '$2 == "/overlay" {print $1}' /etc/mtab)
 uci -q delete fstab.rwm
-uci set fstab.rwm="mount
-uci set fstab.rwm.device="${DEVICE}
-uci set fstab.rwm.target="/rwm
+uci set fstab.rwm="mount"
+uci set fstab.rwm.device="${DEVICE}"
+uci set fstab.rwm.target="/rwm"
 uci commit fstab
 mkfs.ext4 /dev/mmcblk0p1
 DEVICE="/dev/mmcblk0p1"
@@ -306,7 +306,7 @@ EOF
 </details>
 
 
-### fluidd <img align="left" width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/v4.2.1/img/fluidd.png" alt="fluidd_icon"> / <img width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/v4.2.1/img/mainsail.png" alt="mainsail_icon"> Mainsail
+### fluidd <img align="left" width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/v4.2.2/img/fluidd.png" alt="fluidd_icon"> / <img width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/v4.2.2/img/mainsail.png" alt="mainsail_icon"> Mainsail
 
 <details>
   <summary>Click for STEPS!</summary>
@@ -344,7 +344,7 @@ EOF
 - **6.2 Use provided klipper service and place inside `/etc/init.d/`**
 
 >
-	wget -q -O /etc/init.d/klipper https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/Services/klipper
+	wget -q -O /etc/init.d/klipper https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/Services/klipper
 	chmod 755 /etc/init.d/klipper
 
 - **6.3 Enable klipper service:**
@@ -387,8 +387,8 @@ EOF
 >
 	mkdir ~/fluidd
 	wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip
-	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/moonraker/fluidd_moonraker.conf
-	wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/nginx/fluidd.conf
+	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/moonraker/fluidd_moonraker.conf
+	wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/nginx/fluidd.conf
 
 
 **For Mainsail:**
@@ -396,8 +396,8 @@ EOF
 >
 	mkdir ~/mainsail
 	wget -q -O /root/mainsail/mainsail.zip https://github.com/meteyou/mainsail/releases/latest/download/mainsail.zip && unzip /root/mainsail/mainsail.zip -d /root/mainsail/ && rm /root/mainsail/mainsail.zip
-	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/moonraker/mainsail_moonraker.conf
-	wget -q -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/nginx/mainsail.conf
+	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/moonraker/mainsail_moonraker.conf
+	wget -q -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/nginx/mainsail.conf
 
 Note: _The `[update_manager]` plugin was commented out since this is curently only supported for `debian` distros only. For now, updating `moonraker`, `klipper`, `fluidd` or `mainsail` should be done manaully._
 
@@ -405,7 +405,7 @@ Don't forget to edit(if necessary) the `moonraker.conf` file you copied inside `
 - **7.3 Use provided moonraker service and place inside `/etc/init.d/`**
 
 >
-	wget -q -O /etc/init.d/moonraker https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/Services/moonraker
+	wget -q -O /etc/init.d/moonraker https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/Services/moonraker
 	chmod 755 /etc/init.d/moonraker
 	/etc/init.d/moonraker enable
 	/etc/init.d/moonraker restart
@@ -413,8 +413,8 @@ Don't forget to edit(if necessary) the `moonraker.conf` file you copied inside `
 - **7.4 Download the rest of the nginx files inside `/etc/nginx/conf.d`***
 
 >
-	wget -q -O /etc/nginx/conf.d/upstreams.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/nginx/upstreams.conf
-	wget -q -O /etc/nginx/conf.d/common_vars.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.1/nginx/common_vars.conf
+	wget -q -O /etc/nginx/conf.d/upstreams.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/nginx/upstreams.conf
+	wget -q -O /etc/nginx/conf.d/common_vars.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/nginx/common_vars.conf
 
  Inside `/etc/nginx/conf.d` you should have `fluidd.conf` OR `mainsail.conf` alongside `common_vars.conf` AND `upstreams.conf` (those 2 files are common for mainsail and fluidd)
 
@@ -689,5 +689,5 @@ Enable it: `/etc/init.d/dwc enable`
   - Stephan3 - for [dwc socket](https://github.com/Stephan3/dwc2-for-klipper-socket)
   - Duet3D - for [DuetWebControl](https://github.com/Duet3D/DuetWebControl)
 * the fine tuning: andryblack - for the OpenWrt Klipper [service](https://github.com/andryblack/openwrt-build/tree/master/packages/klipper/files)
-* the encouragement: [Tom Hensel](https://github.com/gretel)- for supporting Ihrapsa into creating this
+* the encouragement: [Tom Hensel](https://github.com/gretel)- for supporting Ihrapsa in creating this
 --------------------------------------------------------------------------

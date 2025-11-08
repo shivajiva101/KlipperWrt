@@ -371,10 +371,10 @@ License: GPL-2.0
 Section: base
 URL: http://openwrt.org/
 Architecture: mipsel_24kc
-Installed-Size: 276480
+Installed-Size: 286720
 Filename: base-files_1659~fc236f3b3c_mipsel_24kc.ipk
-Size: 53127
-SHA256sum: 97ef1229d82fd82afba140dbe6f968b243c54de2b3fd485323f5e5ac9ab72dd1
+Size: 59285
+SHA256sum: 57d4c671be020c3609518d976ca07a71c3b151af01236ed22d8bb9f5876ec379
 Description:  This package contains a base filesystem and system scripts for OpenWrt.
 
 Package: block-mount
@@ -1724,16 +1724,16 @@ SHA256sum: ff610ea6243c96232095cdce6c45a9e5607bdf45603d22c1555c2a7a98627cee
 Description:  Kernel modules for Broadcom 44xx Ethernet adapters.
 
 Package: kmod-batman-adv
-Version: 6.6.93.2024.3-r6
+Version: 6.6.93.2024.3-r7
 Depends: kernel (=6.6.93~4f9e1b750eb95e2daa6c45ce1fa3f698-r1), kmod-lib-crc16, kmod-lib-crc32c, kmod-cfg80211, batctl
 License: GPL-2.0-only MIT
 Section: kernel
 URL: https://www.open-mesh.org/
 Architecture: mipsel_24kc
 Installed-Size: 215040
-Filename: kmod-batman-adv_6.6.93.2024.3-r6_mipsel_24kc.ipk
-Size: 80674
-SHA256sum: 3a1d7d3015613dbc6edcc76655f169e896c1e4748b785c2b88d338191979ea07
+Filename: kmod-batman-adv_6.6.93.2024.3-r7_mipsel_24kc.ipk
+Size: 80678
+SHA256sum: 68d5d6b55e84bac785daf3e3187922af294d97cf9e6212d6e479673cd10530a0
 Description:  B.A.T.M.A.N. (better approach to mobile ad-hoc networking) is
  a routing protocol for multi-hop ad-hoc mesh networks. The
  networks may be wired or wireless. See
@@ -5201,8 +5201,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 51200
 Filename: kmod-ikconfig_6.6.93-r1_mipsel_24kc.ipk
-Size: 42980
-SHA256sum: 372210f79b762b6a915eeaf061df484571f3b9fea1f10242902627c907190dd8
+Size: 43016
+SHA256sum: 30d7f8b5f3a378e2577b0ba64577654c99361aabbdcf3a62a74e4e59d11d2fa1
 Description:  Kernel configuration via /proc/config.gz
 
 Package: kmod-imx2-wdt
@@ -5575,8 +5575,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 30720
 Filename: kmod-ipt-account_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 8292
-SHA256sum: cd56e6dab08357d144530300f41588ef026890ab2107e8f9ed8b2c1ff3c1b567
+Size: 8296
+SHA256sum: d669ddc641fcf5c2f1dc07fec84a6f665942a199270dfa39896ad7cc90ffd27a
 Description:  ACCOUNT netfilter module
 
 Package: kmod-ipt-asn
@@ -5588,7 +5588,7 @@ Architecture: mipsel_24kc
 Installed-Size: 20480
 Filename: kmod-ipt-asn_6.6.93.3.26-r1_mipsel_24kc.ipk
 Size: 3691
-SHA256sum: d43267ee7cb16e9c053183fe150600be16ca875c064c062a8227d96f002896c2
+SHA256sum: fe7c6eb1d5f81a8aa2d0847098b09ecd5e0c573662e215240d2b4674857cd22a
 Description:  asn netfilter module
 
 Package: kmod-ipt-chaos
@@ -5599,8 +5599,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 20480
 Filename: kmod-ipt-chaos_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 3180
-SHA256sum: 5491a5be943742eefab390c7292bfec5989729966ce62c755ab98775ff1b99cf
+Size: 3181
+SHA256sum: d619c7b8c18fffa89ac00e17546b0a376f46809813d0da49bb1c2eddfce62d39
 Description:  CHAOS netfilter module
 
 Package: kmod-ipt-checksum
@@ -5648,8 +5648,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 10240
 Filename: kmod-ipt-compat-xtables_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 1676
-SHA256sum: 1038e112078ff29be5f554effff8263f1b63b668d36de591025df3370ffb8450
+Size: 1678
+SHA256sum: 57bc5a56c727db52605e023c1bf79af404f675c3d5c562615b12064d47850526
 Description:  API compatibilty layer netfilter module
 
 Package: kmod-ipt-condition
@@ -5660,8 +5660,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 20480
 Filename: kmod-ipt-condition_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 3441
-SHA256sum: fba6b6b4f95ca25cb4cdc43817f46c3a5163554a69e8cf43b03310186bc1964d
+Size: 3443
+SHA256sum: 58f2b01ffe763a3f661aa23e286800308dc5b2d75890f91cf4dc3bb83c3a1374
 Description:  Condition netfilter module
 
 Package: kmod-ipt-conntrack-extra
@@ -5723,8 +5723,8 @@ URL: http://www.coova.org/CoovaChilli
 Architecture: mipsel_24kc
 Installed-Size: 20480
 Filename: kmod-ipt-coova_6.6.93.1.6-r12_mipsel_24kc.ipk
-Size: 6287
-SHA256sum: 9fc53d716419d6086ec3ada4cb7a03da529bc65a6c8ebdb42b59bdf9f3cb3370
+Size: 6290
+SHA256sum: 7c856bdf0a7875d0a3cf46cad6f73e60fb0b5bc3c4ae39f8fea3f545e80f7fa9
 Description:  Netfilter kernel module for CoovaChilli
 
 Package: kmod-ipt-core
@@ -5769,8 +5769,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 10240
 Filename: kmod-ipt-delude_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 2861
-SHA256sum: fb34ca271daafb8d66b853cfdbac69c47f7a10160c66c5da12fc94e4b8a6aafb
+Size: 2879
+SHA256sum: edc0b2ce812ddd190cd8df0a47a4b63706b231f97c5bacfaa431af211f55af6e
 Description:  DELUDE netfilter module
 
 Package: kmod-ipt-dhcpmac
@@ -5781,8 +5781,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 10240
 Filename: kmod-ipt-dhcpmac_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 2643
-SHA256sum: 8772baa4e19b06da85716694d56dd1628dfe3d55f079cafb6b9c58dc3fa2352e
+Size: 2645
+SHA256sum: ebf5ee0cff1018ba0069c739d164932fdbb3dd6b5d3522f466c4d49ab79fca5c
 Description:  DHCPMAC netfilter module
 
 Package: kmod-ipt-dnetmap
@@ -5793,8 +5793,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 10240
 Filename: kmod-ipt-dnetmap_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 1712
-SHA256sum: 133c48aac05f6e8ff0506e18c7353dbb41cfc2510b651ff6116f13e791ca33dc
+Size: 1718
+SHA256sum: 33b3c8d93bec50836d1e6d104c854eed57c2bcf48925600d06d6a9b3703cebff
 Description:  DNETMAP netfilter module
 
 Package: kmod-ipt-extra
@@ -5837,8 +5837,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 10240
 Filename: kmod-ipt-fuzzy_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 2146
-SHA256sum: b66318e05368bf391b28ae4e303e60fd51aaf088d686e9f08fd0c68cd58742d6
+Size: 2151
+SHA256sum: 3e9a0cbe41e59d5fd05dd58fe737a110fc27e40669907a4cf96a5a34612f1bb5
 Description:  fuzzy netfilter module
 
 Package: kmod-ipt-geoip
@@ -5849,8 +5849,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 20480
 Filename: kmod-ipt-geoip_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 3754
-SHA256sum: ac15e43d47feda6dbac1cb73c1c256f649875fc983b51316c1c1502e117a576d
+Size: 3759
+SHA256sum: 08599fb1ae35002219d679906df772f0875bd9481f7309f58e684c5660a0fb1a
 Description:  geoip netfilter module
 
 Package: kmod-ipt-hashlimit
@@ -5873,8 +5873,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 10240
 Filename: kmod-ipt-iface_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 2026
-SHA256sum: 49e7b6df99563247e50946ae6c4fa66fe32ad331fcc44b849feb7970c4f6e5ea
+Size: 2029
+SHA256sum: 5d3be1d53c1e9aec1a639edd29950c4ca4a50aa1da46b17ad0ae2cecefca4d9d
 Description:  iface netfilter module
 
 Package: kmod-ipt-ipmark
@@ -5885,8 +5885,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 10240
 Filename: kmod-ipt-ipmark_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 2006
-SHA256sum: c042ee6eaca073df29699247194dc0b3c0fdbef06b48c0ab90a4d984b878e0e3
+Size: 2008
+SHA256sum: a574a8c17f69945e545196a83b584c540821208fa7e5c58d9e47649cc378a38c
 Description:  IPMARK netfilter module
 
 Package: kmod-ipt-ipopt
@@ -5921,8 +5921,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 30720
 Filename: kmod-ipt-ipp2p_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 7928
-SHA256sum: 31ac15ae962535821806ac331bc716f747a17d6ef93d6c20bc9d42adfd473a87
+Size: 7929
+SHA256sum: 1a08ffa6a651c57d4d54b3d462ca98550ce030641790ccdd57d71c0e31a2b04d
 Description:  IPP2P netfilter module
 
 Package: kmod-ipt-iprange
@@ -5976,7 +5976,7 @@ Architecture: mipsel_24kc
 Installed-Size: 10240
 Filename: kmod-ipt-ipv4options_6.6.93.3.26-r1_mipsel_24kc.ipk
 Size: 1834
-SHA256sum: 8db54fa3417687fe17accb2cdf048d2c8ae109fcd35cfa63a8eff0f7621934d9
+SHA256sum: 790eb01d4f60d88829f2eea956d8f4d467b4b1cf17d7ee87f83ae622f1c89dee
 Description:  ipv4options netfilter module
 
 Package: kmod-ipt-led
@@ -5999,8 +5999,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 10240
 Filename: kmod-ipt-length2_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 2697
-SHA256sum: d266ff9987e40b2ce1e7d3005a6fa8fe448648423fd64757e0c72477a42e1fbc
+Size: 2701
+SHA256sum: cc74c69604bc4a5bf9acedfc05e4deb702ed808de52ca74b9077d051954d2e8b
 Description:  length2 netfilter module
 
 Package: kmod-ipt-logmark
@@ -6011,8 +6011,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 10240
 Filename: kmod-ipt-logmark_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 2828
-SHA256sum: e4bb368fa736c7a95a081f1d318db99b8f685399420be202986133cccab36d76
+Size: 2843
+SHA256sum: d0ac4653bb9c0a810f5530017376cefe89d39728e251e092150e271b4c4f9961
 Description:  LOGMARK netfilter module
 
 Package: kmod-ipt-lscan
@@ -6023,8 +6023,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 20480
 Filename: kmod-ipt-lscan_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 3050
-SHA256sum: 6a3c23acb6443fba26e6217567871bccb11c2b9c3941226ea26356756c87224a
+Size: 3056
+SHA256sum: b895a510b2b86257bf68511a56b5789489b7ef0efa88c303c5ef5cea6bc13086
 Description:  lscan netfilter module
 
 Package: kmod-ipt-lua
@@ -6035,8 +6035,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 174080
 Filename: kmod-ipt-lua_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 68294
-SHA256sum: 7bc33baa7faebcba51230d059233064e251288d4c8ddddcf02db505b205492ad
+Size: 68303
+SHA256sum: 9c790c0346b7e78122d3e91299634956208ed21d347467bdf3bb8198f4fde6e3
 Description:  Lua PacketScript netfilter module
 
 Package: kmod-ipt-nat-extra
@@ -6088,8 +6088,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 30720
 Filename: kmod-ipt-nathelper-rtsp_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 9216
-SHA256sum: d6361eab12718a670022172df2283c129e8f20528bc6081bf93d41eb04cd1a8e
+Size: 9215
+SHA256sum: af7d1040400efe6ef3f2419d5fdfec8e06b5ab0796a1b584b4dfa53cdec12eff
 Description:  RTSP Conntrack and NAT netfilter module
 
 Package: kmod-ipt-nflog
@@ -6152,8 +6152,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 10240
 Filename: kmod-ipt-proto_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 2651
-SHA256sum: a685bf3338941a8e1453db66100f88f03e9927666e43b654ea2736055983961d
+Size: 2656
+SHA256sum: e5e1f1e9df7f3959c6d01491e5b7ceb2ee7a9b06f22aec9e6e29d00e478fcc70
 Description:  PROTO netfilter module
 
 Package: kmod-ipt-psd
@@ -6164,8 +6164,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 20480
 Filename: kmod-ipt-psd_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 3508
-SHA256sum: 85a670df04459432cfd947e5c471cd3b0104594e085df7efed7edfacce477521
+Size: 3518
+SHA256sum: ef097a2dd78b04714f19319f9f191436f40f0ddf88e5a77ce83eece975f62ab1
 Description:  psd netfilter module
 
 Package: kmod-ipt-quota2
@@ -6177,7 +6177,7 @@ Architecture: mipsel_24kc
 Installed-Size: 20480
 Filename: kmod-ipt-quota2_6.6.93.3.26-r1_mipsel_24kc.ipk
 Size: 4243
-SHA256sum: c9924c4cb188d829fa7005a1641fab9ed822009e59450a82f18a8d871fdaf6ba
+SHA256sum: aea656e3ed23746f4ee684e675facd9235ade2d0516165ff1aa14cfd8fc9f15d
 Description:  quota2 netfilter module
 
 Package: kmod-ipt-raw6
@@ -6250,8 +6250,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 20480
 Filename: kmod-ipt-sysrq_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 4315
-SHA256sum: e4986bec51972388493d61fe0e21c5c6253aea7acb9d30ce1661ec95496774fa
+Size: 4313
+SHA256sum: 2963bf311cc1f9e0d9d4db54d92c03ced106b567c7476d0a06cd1006cd71e3f1
 Description:  SYSRQ netfilter module
 
 Package: kmod-ipt-tarpit
@@ -6262,8 +6262,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 20480
 Filename: kmod-ipt-tarpit_6.6.93.3.26-r1_mipsel_24kc.ipk
-Size: 4356
-SHA256sum: 0c165fbb9316885e6ab65bfeb467ff880d810778097d9ca6ebe752b62ba9251a
+Size: 4363
+SHA256sum: bb09996259a708190d6ff57f527c999f4f27320d6820fc7c4a80bf2df4999a5a
 Description:  TARPIT netfilter module
 
 Package: kmod-ipt-tee
@@ -6425,8 +6425,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 235520
 Filename: kmod-jool-netfilter_6.6.93.4.1.14-r1_mipsel_24kc.ipk
-Size: 87872
-SHA256sum: 0930fe1b2ffc892ee938097e2bb406ec67c7c61c876812bfd461d8bc2c965c8a
+Size: 87882
+SHA256sum: 21f3f438d5e26e3720e2aaae64e42d4fab61786bf5500392c3a870c275202714
 Description:  Jool is an Open Source SIIT and NAT64 for Linux.
  
  This package provides the kernel module for Jool with netfilter API Only.
@@ -7037,8 +7037,8 @@ URL: https://www.edgewaterwireless.com
 Architecture: mipsel_24kc
 Installed-Size: 30720
 Filename: kmod-macremapper_6.6.93.1.1.0-r2_mipsel_24kc.ipk
-Size: 9543
-SHA256sum: c07a406caf74b3424e4196ecd359130be416f7ec85dc1f652810a0d00dd35950
+Size: 9541
+SHA256sum: 00acf47e74b036aa022bae08fa26aa30fa31cb48f7d637997bcd8ef645666221
 Description:  Linux kernel module for implementation the DCW filtering mechanism
 
 Package: kmod-macsec
@@ -7195,7 +7195,7 @@ Architecture: mipsel_24kc
 Installed-Size: 20480
 Filename: kmod-mdio-netlink_6.6.93.1.3.1-r2_mipsel_24kc.ipk
 Size: 3705
-SHA256sum: fe0cc0a075335a6f67265863ccc170515193c246e915e482d19fd460145d2f89
+SHA256sum: 6803db92c221240df39d1cf2f52df3079c3640d73a3ab9a7b13cfef2c193cb4f
 Description:  mdio-netlink Linux MDIO netlink kernel module
 
 Package: kmod-mdio
@@ -7980,8 +7980,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 10240
 Filename: kmod-mtd-rw_6.6.93.2021.02.28~e8776739-r1_mipsel_24kc.ipk
-Size: 2349
-SHA256sum: b2490896ef5ccda9a499804f0c48865f1a40bd4731d835e4b5da58af44a81de5
+Size: 2352
+SHA256sum: a3eeaefd6749e0497475ba811f88795b83d9b3a21febc38bf8f7a1b5afb0bb2c
 Description:  A kernel module that temporarily makes all MTD partitions writeable.
 
 Package: kmod-mtdoops
@@ -8165,8 +8165,8 @@ URL: https://www.atoptool.nl/
 Architecture: mipsel_24kc
 Installed-Size: 30720
 Filename: kmod-netatop_6.6.93.3.1-r1_mipsel_24kc.ipk
-Size: 8346
-SHA256sum: 28c51bc0174bdc1b1dbd56ea85c157153ef7336ff8dc8746a6fbae792a80bebf
+Size: 8354
+SHA256sum: 1cbc2205b198f83884d0cec485450f2a898edc865a8a2fc0636263d6a501e401
 Description:  The optional kernel module netatop can be loaded to gather statistics about
  the TCP and UDP packets that have been transmitted/received per process and
  per thread. As soon as atop discovers that this module is active, it shows
@@ -9051,8 +9051,8 @@ CPE-ID: cpe:/a:openvswitch:openvswitch
 Architecture: mipsel_24kc
 Installed-Size: 10240
 Filename: kmod-openvswitch-geneve_6.6.93.2.17.9-r1_mipsel_24kc.ipk
-Size: 2266
-SHA256sum: 06607b24e6b4143559488b92e48eee541cf82b46e9ab076ec1e00481040b6890
+Size: 2268
+SHA256sum: b9c0389ca1b2ce3179af4cb46975a9b7c10cc45d7e8dbcfa6706ddb7e8869426
 Description:  Open vSwitch Geneve tunneling support (upstream)
 
 Package: kmod-openvswitch-gre
@@ -9064,8 +9064,8 @@ CPE-ID: cpe:/a:openvswitch:openvswitch
 Architecture: mipsel_24kc
 Installed-Size: 10240
 Filename: kmod-openvswitch-gre_6.6.93.2.17.9-r1_mipsel_24kc.ipk
-Size: 2114
-SHA256sum: 7e0685194b585e2cb4e47fd933164c8b83197ac1b4f5e73601ae95bccdc09f67
+Size: 2122
+SHA256sum: a608f07db7689549818175bd72da1897acc3c0dac08459343abe842711b57aef
 Description:  Open vSwitch GRE tunneling support (upstream)
 
 Package: kmod-openvswitch-vxlan
@@ -9077,8 +9077,8 @@ CPE-ID: cpe:/a:openvswitch:openvswitch
 Architecture: mipsel_24kc
 Installed-Size: 10240
 Filename: kmod-openvswitch-vxlan_6.6.93.2.17.9-r1_mipsel_24kc.ipk
-Size: 2628
-SHA256sum: 3e11b2cfe7feb5893bf9e67af9ba2e372d31d7e303e2fd1a7e9e24be00dbd23c
+Size: 2634
+SHA256sum: 7df01faab68fc58b2d39c41ffb2ac5bdf97a528036175ac9299c792ba79ff004
 Description:  Open vSwitch VXLAN tunneling support (upstream)
 
 Package: kmod-openvswitch
@@ -9090,8 +9090,8 @@ CPE-ID: cpe:/a:openvswitch:openvswitch
 Architecture: mipsel_24kc
 Installed-Size: 143360
 Filename: kmod-openvswitch_6.6.93.2.17.9-r1_mipsel_24kc.ipk
-Size: 63015
-SHA256sum: 9e2547ccdc3f9bde6302a682790d9d9e3b6d4b864597c60d61227fd0fa54535b
+Size: 62999
+SHA256sum: b0f362c192982b66fd9e36b52bf26010bd9256425e0a0799179a0ba7608fcaf7
 Description:  Open vSwitch kernel datapath (upstream)
 
 Package: kmod-ovpn-dco-v2
@@ -9102,8 +9102,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 61440
 Filename: kmod-ovpn-dco-v2_6.6.93.0.2.20240320-r1_mipsel_24kc.ipk
-Size: 23876
-SHA256sum: a61af9e326aac3209b6089ca8da6efcb95eb65a16bf08a07698f1a2b9bad4957
+Size: 23870
+SHA256sum: 8256091ffeeac540a979caf43f78d70240097bce7a471edcf21cd8c60a85af44
 Description:  This module enhances the performance of the OpenVPN userspace software
  by offloading the data channel processing to kernelspace.
 
@@ -9158,7 +9158,7 @@ Architecture: mipsel_24kc
 Installed-Size: 143360
 Filename: kmod-pf-ring_6.6.93.8.6.1-r1_mipsel_24kc.ipk
 Size: 56502
-SHA256sum: 314b327b4e7ec650477f5b80ea0c33acaa23223355d97c057efe427881c1ebeb
+SHA256sum: 2eececd88c0111f56298477a08493c8d74f187eeff290fd34984a7bba93b3ee3
 Description:  Kernel module for libpf-ring package
 
 Package: kmod-phy-airoha-en8811h
@@ -11356,8 +11356,8 @@ Section: kernel
 Architecture: mipsel_24kc
 Installed-Size: 20480
 Filename: kmod-siit_6.6.93.1.2-r4_mipsel_24kc.ipk
-Size: 5635
-SHA256sum: 7ac53834d31a52ae87043a0a88464c266b5b6734ca5a2a0ad5130f7bc1d069e4
+Size: 5632
+SHA256sum: b809a74443e86d0be3ee85eb0c345b0e680e5bd709526cf09880f7c527d709fe
 Description:  Stateless IP ICMP Translation Algorithm
 
 Package: kmod-sis190
@@ -12868,8 +12868,8 @@ URL: http://www.erwinrol.com/open-dmx-usb-linux-driver/
 Architecture: mipsel_24kc
 Installed-Size: 20480
 Filename: kmod-usb-serial-dmx_usb_module_6.6.93.19.12.1-r2_mipsel_24kc.ipk
-Size: 5869
-SHA256sum: 8744bb233e1d84644ec1c0834bcd78f3b54bbb0e6fe62a16253cc95d0c0a07eb
+Size: 5880
+SHA256sum: a5b8f49359ea7c78878ed2ab1c0f1c3025c581349f392fa9a957846f16c1d33b
 Description:  Open DMX USB is an open USB to DMX dongle hardware design developed by Enttec.
  The Open in Open DMX USB refers to the fact that everybody is free to use the
  design and produce its own USB DMX Dongle without paying any licenses.
@@ -13116,8 +13116,8 @@ URL: https://www.exar.com/content/document.ashx?id=21651
 Architecture: mipsel_24kc
 Installed-Size: 30720
 Filename: kmod-usb-serial-xr_usb_serial_common_6.6.93.2023.03.21~90ad5301-r3_mipsel_24kc.ipk
-Size: 12178
-SHA256sum: c87db676c2e77f4eb0fd30680591f34b20d20c54bd715bcb94f0407c3e97e4a4
+Size: 12186
+SHA256sum: 0cfbf5aaff6862d2e4bb51a53acf7f362dfaff35bfd85849f1be2b327ff305e5
 Description:  Support for Exar USB to RS-485/RS-422
 
 Package: kmod-usb-serial
@@ -13171,6 +13171,19 @@ Filename: kmod-usb-storage_6.6.93-r1_mipsel_24kc.ipk
 Size: 24314
 SHA256sum: 157ae024719d7e5d395cc3f88419795d0ba3219489f1f52c3af0d6dc28d0a509
 Description:  Kernel support for USB Mass Storage devices
+
+Package: kmod-usb-test
+Version: 6.6.110-r1
+Depends: kernel (=6.6.110~d6b4a896a3ae4840db1dae05dfab2c92-r1), kmod-usb-core
+License: GPL-2.0-only
+Section: kernel
+CPE-ID: cpe:/o:linux:linux_kernel
+Architecture: mipsel_24kc
+Installed-Size: 40960
+Filename: kmod-usb-test_6.6.110-r1_mipsel_24kc.ipk
+Size: 16223
+SHA256sum: a63273928425213326195261d323414ef64addb0bdd8694973f94b4f8195e464
+Description:  Kernel support for testing USB Host Controller software
 
 Package: kmod-usb-uhci
 Version: 6.6.93-r1
@@ -13313,8 +13326,8 @@ CPE-ID: cpe:/o:v4l2loopback_project:v4l2loopback
 Architecture: mipsel_24kc
 Installed-Size: 51200
 Filename: kmod-v4l2loopback_6.6.93.0.13.2-r1_mipsel_24kc.ipk
-Size: 20200
-SHA256sum: 1d31797b257bfd033eb1915bb290d14a3141845738917f0d23aae87a8597f5fc
+Size: 20195
+SHA256sum: 9cd620320b9aa4d201f1d59a5a440039976baac2e9ffa9072e95a76e4067f922
 Description:  This module allows you to create "virtual video devices".
  Normal (v4l2) applications will read these devices as if
  they were ordinary video devices, but the video will not be
@@ -14324,8 +14337,8 @@ ABIVersion: 143
 Architecture: mipsel_24kc
 Installed-Size: 501760
 Filename: libxdp143_1.4.3-r1_mipsel_24kc.ipk
-Size: 137623
-SHA256sum: 4ff4b0345fa487440923c4983d88ac25ad25350e4e67f26424687cca2cfb1a1c
+Size: 137553
+SHA256sum: 35fb648997340a6fcdb0466d566de5a2e73e358a0c0a921bcbd1e0dd63086177
 Description:  libxdp - library for attaching XDP programs and using AF_XDP sockets
 
 Package: libxtables12
@@ -14416,8 +14429,8 @@ Section: net
 Architecture: mipsel_24kc
 Installed-Size: 81920
 Filename: umbim_2022.08.13~146bc77c-r25_mipsel_24kc.ipk
-Size: 14663
-SHA256sum: b8ffb46bbd3471747fb16078748aa1ff5f024cb7b425590636b815dbd1124210
+Size: 14665
+SHA256sum: 3e8d31f2f44f2166cc17490152cc1e5eabb4cc86f38bdbd5f5fbff8a23cd59da
 Description:  umbim is a command line tool for controlling mobile broadband modems using
  the MBIM-protocol.
 
@@ -14429,8 +14442,8 @@ Section: net
 Architecture: mipsel_24kc
 Installed-Size: 153600
 Filename: uqmi_2024.08.25~28b48a10-r2_mipsel_24kc.ipk
-Size: 41632
-SHA256sum: 80cad9206c28d99e1a84df3f0b4fee354ace4cf9859fc4bdd991a55dcb38e284
+Size: 41626
+SHA256sum: 47aea05bbd351a2c8ddabd8f1d8d0873d8eebf88d469294f87df396ea27f3229
 Description:  uqmi is a command line tool for controlling mobile broadband modems using
  the QMI-protocol.
 
@@ -14443,8 +14456,8 @@ URL: https://github.com/xdp-project/xdp-tools/
 Architecture: mipsel_24kc
 Installed-Size: 143360
 Filename: xdp-filter_1.4.3-r1_mipsel_24kc.ipk
-Size: 37631
-SHA256sum: 83e4d1858cc62066db1c6e9f4ddc0f1dc82909b650bfeb0cd315b3ca04ba1738
+Size: 37634
+SHA256sum: b68614291393eb18066fd8e38a6bc0250739c5ac138e27ebdd6f7851663d0d90
 Description:  xdp-filter is a packet filtering utility powered by XDP. It is deliberately
  simple and so does not have the same matching capabilities as, e.g.,
  netfilter. Instead, thanks to XDP, it can achieve very high drop rates:
@@ -14459,8 +14472,8 @@ URL: https://github.com/xdp-project/xdp-tools/
 Architecture: mipsel_24kc
 Installed-Size: 143360
 Filename: xdp-loader_1.4.3-r1_mipsel_24kc.ipk
-Size: 35122
-SHA256sum: a4ce5e67ba1eff7db05b79e7cb1289ca99adf5b953e1a2d7de54a6f58047ed0a
+Size: 35131
+SHA256sum: 7231ec8b8efa48df6c03bf8b34263dfbcd05c758df400056c6a82b5ac8c9fea8
 Description:  xdp-loader is a simple loader for XDP programs with support for attaching
  multiple programs to the same interface. To achieve this it exposes the same
  load and unload semantics exposed by the libxdp library.
@@ -14474,8 +14487,8 @@ URL: https://github.com/xdp-project/xdp-tools/
 Architecture: mipsel_24kc
 Installed-Size: 143360
 Filename: xdpdump_1.4.3-r1_mipsel_24kc.ipk
-Size: 40372
-SHA256sum: 706a1ae23cb240efd5abe74ca1630ceadff3c50feb17d1a8374b654feec2ee39
+Size: 40348
+SHA256sum: 6a2c694e61f534385cb9b44d7b10c4ffbcbc0222e74b8fadaaf15a43086f1380
 Description:  xdpdump - a simple tcpdump like tool for capturing packets at the XDP layer
 
 Package: xtables-legacy
