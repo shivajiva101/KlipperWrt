@@ -19,14 +19,14 @@ echo "   ###   1. SWAP    ###"
 echo "   ####################"
 echo " "
 
-echo "Creating swap file"
+echo "Creating the swap file..."
 dd if=/dev/zero of=/overlay/swap.page bs=1M count=512;
-echo "Enabling swap file"
+echo "Enabling the swap file..."
 mkswap /overlay/swap.page;
 swapon /overlay/swap.page;
 mount -o remount,size=256M /tmp;
 
-echo "Updating rc.local for swap"
+echo "Updating rc.local to initiate the swap on boot..."
 rm /etc/rc.local;
 cat << "EOF" > /etc/rc.local
 # Put your custom commands here that should be executed once
@@ -47,7 +47,7 @@ if [ -f "/root/install.log" ]; then
 
 # clean up prev attempt
 echo ""
-echo "Previous install detected, cleaning up..."
+echo "Previous install detected, cleaning that up for you..."
 echo ""
 
 [ -d "python_wheels" ] && rm -rf python_wheels
@@ -76,7 +76,7 @@ echo ""
 fi
 
 set -e
-echo "Update package lists"
+echo "Update package lists from feeds..."
 opkg update
 
 echo "Store opkg lists in extroot overlay to preserve memory"
@@ -89,17 +89,17 @@ echo "   ###############################"
 echo " "
 
 echo "Installing klipper dependencies..."
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/python/python3-greenlet_3.0.2-r1_mipsel_24kc.ipk
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/python/python3-pillow_10.1.0-r1_mipsel_24kc.ipk
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/python/python3-yaml_6.0.1-r2_mipsel_24kc.ipk
-opkg install /root/python3-greenlet_3.0.2-r1_mipsel_24kc.ipk
-opkg install /root/python3-pillow_10.1.0-r1_mipsel_24kc.ipk
-opkg install /root/python3-yaml_6.0.1-r2_mipsel_24kc.ipk
 opkg install git-http unzip htop;
 opkg install --force-overwrite gcc;
 opkg install patch;
 
 opkg install python3 python3-pip python3-cffi python3-dev;
+wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/python/python3-greenlet_3.0.2-r1_mipsel_24kc.ipk
+wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/python/python3-pillow_10.1.0-r1_mipsel_24kc.ipk
+wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/python/python3-yaml_6.0.1-r2_mipsel_24kc.ipk
+opkg install /root/python3-greenlet_3.0.2-r1_mipsel_24kc.ipk
+opkg install /root/python3-pillow_10.1.0-r1_mipsel_24kc.ipk
+opkg install /root/python3-yaml_6.0.1-r2_mipsel_24kc.ipk
 
 pip install --upgrade pip;
 pip install --upgrade setuptools;
@@ -109,7 +109,7 @@ wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/python/pyt
 tar -xzf python_wheels.tar.gz
 rm -f python_wheels.tar.gz
 
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/requirements/klippy-requirements.txt
+wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/requirements/klippy-requirements.txt
 pip install -r klippy-requirements.txt;
 
 echo "Cloning pyserial..."
@@ -127,7 +127,7 @@ echo " "
 
 echo "Installing moonraker dependencies..."
 opkg install python3-zeroconf libsodium python3-dbus-fast;
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/requirements/moonraker-requirements.txt
+wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/requirements/moonraker-requirements.txt
 pip install -r moonraker-requirements.txt;
 
 echo " "
@@ -161,7 +161,10 @@ echo "   ### 6. Moonraker ###"
 echo "   ####################"
 echo " "
 
+echo "Cloning moonraker repo..."
 git clone https://github.com/Arksine/moonraker.git /root/moonraker;
+
+echo "Creating moonraker service..."
 wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/Services/moonraker -P /etc/init.d/
 chmod 755 /etc/init.d/moonraker
 /etc/init.d/moonraker enable
