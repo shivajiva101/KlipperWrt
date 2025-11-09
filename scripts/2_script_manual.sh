@@ -94,9 +94,9 @@ opkg install --force-overwrite gcc;
 opkg install patch;
 
 opkg install python3 python3-pip python3-cffi python3-dev;
-wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/python/python3-greenlet_3.0.2-r1_mipsel_24kc.ipk
-wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/python/python3-pillow_10.1.0-r1_mipsel_24kc.ipk
-wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/python/python3-yaml_6.0.1-r2_mipsel_24kc.ipk
+wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/python/python3-greenlet_3.0.2-r1_mipsel_24kc.ipk
+wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/python/python3-pillow_10.1.0-r1_mipsel_24kc.ipk
+wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/python/python3-yaml_6.0.1-r2_mipsel_24kc.ipk
 opkg install /root/python3-greenlet_3.0.2-r1_mipsel_24kc.ipk
 opkg install /root/python3-pillow_10.1.0-r1_mipsel_24kc.ipk
 opkg install /root/python3-yaml_6.0.1-r2_mipsel_24kc.ipk
@@ -105,11 +105,11 @@ pip install --upgrade pip;
 pip install --upgrade setuptools;
 
 echo "Installing python wheels..."
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/python/python_wheels.tar.gz
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/python/python_wheels.tar.gz
 tar -xzf python_wheels.tar.gz
 rm -f python_wheels.tar.gz
 
-wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/requirements/klippy-requirements.txt
+wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/requirements/klippy-requirements.txt
 pip install -r klippy-requirements.txt;
 
 echo "Cloning pyserial..."
@@ -127,7 +127,7 @@ echo " "
 
 echo "Installing moonraker dependencies..."
 opkg install python3-zeroconf libsodium python3-dbus-fast;
-wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/requirements/moonraker-requirements.txt
+wget -q https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/requirements/moonraker-requirements.txt
 pip install -r moonraker-requirements.txt;
 
 echo " "
@@ -149,7 +149,7 @@ echo "Cloning Klipper..."
 git clone --depth 1 https://github.com/Klipper3d/klipper.git /root/klipper;
 
 echo "Creating klipper service..."
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/Services/klipper -P /etc/init.d/;
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/Services/klipper -P /etc/init.d/;
 chmod 755 /etc/init.d/klipper;
 /etc/init.d/klipper enable;
 
@@ -165,11 +165,11 @@ echo "Cloning moonraker repo..."
 git clone https://github.com/Arksine/moonraker.git /root/moonraker;
 
 echo "Creating moonraker service..."
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/Services/moonraker -P /etc/init.d/
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/Services/moonraker -P /etc/init.d/
 chmod 755 /etc/init.d/moonraker
 /etc/init.d/moonraker enable
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/nginx/upstreams.conf -P /etc/nginx/conf.d/
-wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/nginx/common_vars.conf -P /etc/nginx/conf.d/
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/nginx/upstreams.conf -P /etc/nginx/conf.d/
+wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/nginx/common_vars.conf -P /etc/nginx/conf.d/
 /etc/init.d/nginx enable
 
 echo " "
@@ -197,9 +197,9 @@ choose(){
 		  echo " "
 		  mkdir /root/fluidd;
 		  wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
-		  wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/moonraker/fluidd_moonraker.conf;
-		  wget -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/nginx/fluidd.conf;
-			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/klipper_config/fluidd.cfg -P /root/printer_data/config/
+		  wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/moonraker/fluidd_moonraker.conf;
+		  wget -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/nginx/fluidd.conf;
+			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/klipper_config/fluidd.cfg -P /root/printer_data/config/
 	    echo "   ***************************"
 			echo "   **         Done!         **"
 			echo "   ***************************"
@@ -215,9 +215,9 @@ choose(){
 			echo " "
 			mkdir /root/mainsail;
 			wget -q -O /root/mainsail/mainsail.zip https://github.com/mainsail-crew/mainsail/releases/latest/download/mainsail.zip && unzip /root/mainsail/mainsail.zip -d /root/mainsail/ && rm /root/mainsail/mainsail.zip;
-			wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/moonraker/mainsail_moonraker.conf;
-			wget -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/nginx/mainsail.conf;
-			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/klipper_config/mainsail.cfg -P /root/printer_data/config/
+			wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/moonraker/mainsail_moonraker.conf;
+			wget -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/nginx/mainsail.conf;
+			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/klipper_config/mainsail.cfg -P /root/printer_data/config/
 			echo "   ***************************"
 			echo "   **         Done          **"
 			echo "   ***************************"

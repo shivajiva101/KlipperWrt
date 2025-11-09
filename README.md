@@ -144,7 +144,7 @@ This method uses 2 scripts to format a micro sd card and make it extroot, and an
 
 	```
     cd ~
-    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/scripts/1_format_extroot.sh
+    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/scripts/1_format_extroot.sh
     chmod +x 1_format_extroot.sh
     ./1_format_extroot.sh
     
@@ -156,7 +156,7 @@ This method uses 2 scripts to format a micro sd card and make it extroot, and an
 
 	```
     cd ~
-    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/scripts/2_script_manual.sh
+    wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/scripts/2_script_manual.sh
     chmod +x 2_script_manual.sh
     ./2_script_manual.sh
   
@@ -199,7 +199,7 @@ _____________________________________________
   <summary>Click to expand!</summary>
 
 
-### OpenWrt <img align="left" width="30" height="34" src="https://github.com/shivajiva101/KlipperWrt/blob/v4.2.2/img/OpenWrt.png" alt="openwrt_icon">
+### OpenWrt <img align="left" width="30" height="34" src="https://github.com/shivajiva101/KlipperWrt/blob/v4.4/img/OpenWrt.png" alt="openwrt_icon">
 
 <details>
   <summary>Click for STEPS!</summary>
@@ -306,7 +306,7 @@ EOF
 </details>
 
 
-### fluidd <img align="left" width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/v4.2.2/img/fluidd.png" alt="fluidd_icon"> / <img width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/v4.2.2/img/mainsail.png" alt="mainsail_icon"> Mainsail
+### fluidd <img align="left" width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/v4.4/img/fluidd.png" alt="fluidd_icon"> / <img width="30" height="30" src="https://github.com/shivajiva101/KlipperWrt/blob/v4.4/img/mainsail.png" alt="mainsail_icon"> Mainsail
 
 <details>
   <summary>Click for STEPS!</summary>
@@ -344,7 +344,7 @@ EOF
 - **6.2 Use provided klipper service and place inside `/etc/init.d/`**
 
 >
-	wget -q -O /etc/init.d/klipper https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/Services/klipper
+	wget -q -O /etc/init.d/klipper https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/Services/klipper
 	chmod 755 /etc/init.d/klipper
 
 - **6.3 Enable klipper service:**
@@ -387,8 +387,8 @@ EOF
 >
 	mkdir ~/fluidd
 	wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip
-	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/moonraker/fluidd_moonraker.conf
-	wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/nginx/fluidd.conf
+	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/moonraker/fluidd_moonraker.conf
+	wget -q -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/nginx/fluidd.conf
 
 
 **For Mainsail:**
@@ -396,8 +396,8 @@ EOF
 >
 	mkdir ~/mainsail
 	wget -q -O /root/mainsail/mainsail.zip https://github.com/meteyou/mainsail/releases/latest/download/mainsail.zip && unzip /root/mainsail/mainsail.zip -d /root/mainsail/ && rm /root/mainsail/mainsail.zip
-	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/moonraker/mainsail_moonraker.conf
-	wget -q -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/nginx/mainsail.conf
+	wget -q -O /root/klipper_config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/moonraker/mainsail_moonraker.conf
+	wget -q -O /etc/nginx/conf.d/mainsail.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/nginx/mainsail.conf
 
 Note: _The `[update_manager]` plugin was commented out since this is curently only supported for `debian` distros only. For now, updating `moonraker`, `klipper`, `fluidd` or `mainsail` should be done manaully._
 
@@ -405,7 +405,7 @@ Don't forget to edit(if necessary) the `moonraker.conf` file you copied inside `
 - **7.3 Use provided moonraker service and place inside `/etc/init.d/`**
 
 >
-	wget -q -O /etc/init.d/moonraker https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/Services/moonraker
+	wget -q -O /etc/init.d/moonraker https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/Services/moonraker
 	chmod 755 /etc/init.d/moonraker
 	/etc/init.d/moonraker enable
 	/etc/init.d/moonraker restart
@@ -413,8 +413,8 @@ Don't forget to edit(if necessary) the `moonraker.conf` file you copied inside `
 - **7.4 Download the rest of the nginx files inside `/etc/nginx/conf.d`***
 
 >
-	wget -q -O /etc/nginx/conf.d/upstreams.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/nginx/upstreams.conf
-	wget -q -O /etc/nginx/conf.d/common_vars.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.2.2/nginx/common_vars.conf
+	wget -q -O /etc/nginx/conf.d/upstreams.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/nginx/upstreams.conf
+	wget -q -O /etc/nginx/conf.d/common_vars.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v4.4/nginx/common_vars.conf
 
  Inside `/etc/nginx/conf.d` you should have `fluidd.conf` OR `mainsail.conf` alongside `common_vars.conf` AND `upstreams.conf` (those 2 files are common for mainsail and fluidd)
 
