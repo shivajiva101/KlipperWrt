@@ -6,9 +6,9 @@ exec 2>&1
 echo " "
 echo "This script will format your sd card and make it extroot"
 echo " "
-echo "   ###################################################"
-echo "   ## Make sure you've got a microSD card plugged!  ##"
-echo "   ###################################################"
+echo "   ##########################################################"
+echo "   ## Make sure you've got a microSD card <=8GB inserted!  ##"
+echo "   ##########################################################"
 echo " "
 read -p "Press [ENTER] to continue...or [ctrl+c] to exit"
 
