@@ -3,6 +3,8 @@
 
  A guide to get _**Klipper**_ with _**fluidd**,_ _**Mainsail**_ or _**Duet-Web-Control**_ on OpenWrt embeded devices like the _Creality Wi-Fi Box_.
 
+ If you are new to all this, you should checkout the [Wiki](https://github.com/shivajiva101/KlipperWrt/wiki)
+
  **IMPORTANT: Switch to the tag of the version you want to install BEFORE using the information in this document to ensure you are syncronised to the core packages, scripts and instructions!**
 
  ---------------------------------------------------------------------------------
@@ -74,7 +76,7 @@
 
 [![Klipper](img/klipper.png)](https://www.klipper3d.org/)
 
-- A 3d-printer firmware. It runs on any kind of computer taking advantage of the host cpu. Extremely light on cpu, lots of feautres
+- A 3d-printer firmware. It runs on any kind of computer taking advantage of the host cpu. Extremely light on cpu, lots of features
 </details>
 
 #### What is [fluidd](https://github.com/cadriel/fluidd) / [mainsail](https://github.com/meteyou/mainsail)?
@@ -116,17 +118,17 @@
 
 --------------------------------------------------------------------------
 
-# Automatic Steps:
+# Installation Script Steps:
 
 <details>
   <summary>Click to expand!</summary>
 
-### Installing Script method
-Fresh installation of the chosen firmware release using stable releases of Klipper & Moonraker
+### Script method
+Fresh installation of the chosen firmware release using latest releases of Klipper & Moonraker. Inevitably, because of this, it is a potential point of failure
 <details>
   <summary>Click for STEPS!</summary>
 
-This method uses 2 scripts to format a micro sd card and make it extroot, and another one that installs everything from the internet.
+This method uses 2 scripts, one to format a micro sd card <= 8GB and make it extroot, and another one that installs everything from the internet.
 
 #### STEPS:
 
@@ -162,13 +164,13 @@ This method uses 2 scripts to format a micro sd card and make it extroot, and an
   
 	```
 
-- Follow the prompted instructions and wait for everything to be installed
+- Follow the prompted instructions and wait for everything to be installed. If the script exits before installation is complete, complaining about missing resources, try running it again.
 - You can remove the scripts, if you want, when done: `rm -rf /root/*.sh`
 
 - When done and rebooted use `http://openwrt.local` or `http://<your-box-ip>` to access the Klipper client. Depending on your network configuration the no-ip may work, but the ip will always connect, providing nginx is up and running!
 
 #### Setting up your `printer.cfg`
-- put your `printer.cfg` inside `/root/klipper_config`
+- Use Mainsail or Fluidd to upload your `printer.cfg` Or use your method of choice to place it in `/root/printer_data/config`
 - delete these blocks from your `printer.cfg`: `[virtual_sdcard]`, `[display_status]`, `[pause_resume]` since they're included inside `fluidd.cfg`/ `mainsail.cfg`
 - add these lines inside your `printer.cfg` depending on your klipper client (mainsail/fluidd):
 - **Fluidd:**
@@ -180,7 +182,7 @@ This method uses 2 scripts to format a micro sd card and make it extroot, and an
 `[include timelapse.cfg]`
 
 - Under `[mcu]` block change your serial port path according to [this](https://github.com/ihrapsa/KlipperWrt/issues/8)[Optional]
-- Build your `klippper.bin` mainboard firmware using a linux desktop/VM (follow `printer.cfg` header for instructions)
+- Build your `klippper.bin` mainboard firmware using a linux operating system. It cannot be built using OpenWrt on the box (follow `printer.cfg` header for instructions)
 - Flash your mainboard according to the `printer.cfg` header
 - Do a `FIRMWARE RESTART` inside fluidd/Mainsail
 - Done
@@ -193,7 +195,7 @@ _____________________________________________
 </details>
 --------------------------------------------------------------------------
 
-# Manual Steps:
+# Manual Installation Steps:
 
 <details>
   <summary>Click to expand!</summary>
@@ -204,16 +206,14 @@ _____________________________________________
 <details>
   <summary>Click for STEPS!</summary>
 
-:exclamation: Although this is an OpenWrt snapshot it works seamlessly, as long as the core package feed points at the correct tag for the firmware version.
-#### 1. Build OpenWrt image(optional)
+:exclamation: Although this is an OpenWrt snapshot, it works seamlessly as long as the core package feed points at the correct tag for the firmware version in this repo.
+#### 1. Build OpenWrt image(uneccessary)
 
 <details>
   <summary>Click to expand!</summary>
 
-* Only neccesary until the [port](https://github.com/openwrt/openwrt/pull/3802) gets merged and officially supported.
-  * I recommend following figgyc's [post](https://github.com/figgyc/figgyc.github.io/blob/source/posts.org#compiling-openwrt-for-the-creality-wb-01-tips-and-tricks). You'll find there his experience and a guide to compile OpenWrt. Here is his OpenWrt [branch](https://github.com/figgyc/openwrt/tree/wb01) with support for the Creality Wi-Fi Box and the [PR](https://github.com/openwrt/openwrt/pull/3802) pending to merge to main OpenWrt. UPDATE: Creality WB-01 was merged in this commit [PR](https://github.com/openwrt/openwrt/commit/f29bc8736aacf36fc4f339182b74a20489096a2b) to main. It should be available in the OpenWrt v25 release, when that eventually comes.
-
-
+* Creality WB-01 was merged in this commit [PR](https://github.com/openwrt/openwrt/commit/f29bc8736aacf36fc4f339182b74a20489096a2b) to main. It should be available in the OpenWrt v25 release, when that eventually comes.
+* Until then I strongly advise you to use the firmware releases available in this repo. They are built to use the signed kernel modules provided for these tags, and everything else comes from OpenWrt servers. This means you can install any kernel module I made available, without disabling signature checking. This results in fewer problems and smaller firmware binaries, no need to worry about missing drivers.
 
   </details>
 #### 2. Install OpenWrt to the device
@@ -224,7 +224,7 @@ _____________________________________________
 Flashing:
 1) Rename factory.bin to cxsw_update.tar.bz2 if it isn't already
 2) Copy it to the root of a FAT32 formatted microSD card.
-3) Turn on the device, wait for it to start, then insert the card. The stock firmware reads the install.sh script from this archive, the build script I added creates one that works in a similar way. Web firmware update didn't work in my testing.
+3) Turn on the device, wait for it to start, then insert the card. The stock firmware reads the install.sh script from this archive, the build script added creates one that works in a similar way. Web firmware update didn't work in Ihrapsa's testing.
 
 </details>
 
@@ -269,7 +269,7 @@ reboot
 
 ```
 
-- **swap** (though the existing 128mb RAM seemed more than enough)
+- **swap**
 
 run this once:
 
