@@ -128,7 +128,7 @@ Fresh installation of the chosen firmware release using latest releases of Klipp
 <details>
   <summary>Click for STEPS!</summary>
 
-This method uses 2 scripts, one to format a micro sd card <= 8GB and make it extroot, and another one that installs everything from the internet.
+This method uses 2 scripts, one to format a micro sd card <= 8GB and make it extroot, and another one that fetches and installs everything from the internet.
 
 #### STEPS:
 
@@ -233,7 +233,7 @@ Flashing:
 <details>
   <summary>Click to expand!</summary>
 
-* If the flashing was successful you should be able to ssh into the box through ethernet. Plug it in your PC (prefered way) or router and do `ssh root@192.168.1.1` in `Windows PowerShell` or any `unix terminal` or use `putty`.
+* If flashing was successful you should be able to connect to the box via the OpenWrt wireless access point. Because the firmware runs a dhcp server by default, ethernet connections may clash with your router, depending on your setup. You can circumnavigate any issues by using an ethernet connection from the box to your computer. This convineantely means the radio is free to scan for the a wireless connection. Plug the cable in to the box and your PC and use `ssh root@192.168.1.1` in `Windows PowerShell` or any `unix terminal` or use `putty`.
 * Edit `/etc/config/network`, `/etc/config/wireless` and `/etc/config/firewall`. I've uploaded these to follow as a model (inside `Wi-Fi`).
 * Use `iw dev wlan0 scan` to scan for near wi-fi networks and look for the bssid specific to your 2.4Ghz SSID.
 
@@ -316,17 +316,20 @@ EOF
 <details>
   <summary>Click to expand!</summary>
 
-* for Klipper and moonraker - check the `requirements` folder.
+* for Klipper and moonraker - check the respective `requirements.txt` in the repository requirements folder.
 * Install`git-http` with `opkg update && opkg install git-http gcc unzip htop`
 
 </details>
 
  >
-    opkg install python3 python3-pip python3-cffi python3-dev python3-greenlet python3-jinja2 python3-markupsafe python3-msgpack;
-    pip install --upgrade pip;
+	opkg install git-http htop unzip;
+	opkg install --force-overwrite gcc;
+    opkg install patch;
+	opkg install python3 python3-pip python3-cffi python3-dev python3-greenlet python3-pillow python3-yaml;
+	pip install --upgrade pip;
     pip install --upgrade setuptools;
     pip install python-can configparser;
-    opkg install python3-tornado python3-pillow python3-distro python3-curl python3-zeroconf python3-paho-mqtt python3-yaml python3-requests ip-full libsodium;
+    opkg install python3-tornado python3-distro python3-curl python3-zeroconf python3-paho-mqtt python3-requests ip-full libsodium;
     pip install pyserial-asyncio lmdb streaming-form-data==1.15.0 inotify-simple libnacl preprocess-cancellation apprise ldap3 dbus-next importlib-metadata;
 
 * Install nginx with `opkg install nginx-ssl`
