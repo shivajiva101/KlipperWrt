@@ -12,6 +12,8 @@ echo "   ###########################################################"
 echo " "
 read -p "Press [ENTER] to continue...or [ctrl+c] to exit"
 
+apk add e2fsprogs;
+
 format(){
 	while true; do
 	    read -p "This script will format your sdcard. Are you sure about this? [y/n]: " yn
