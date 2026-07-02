@@ -1,6 +1,7 @@
-# KlipperWrt
+# KlipperWrt - Project status is archived and readonly
  ---------------------------------------------------------------------------------
-
+ Please note that I'm no longer maintaining this repo due to broken python modules in the ramips openwrt build and issues with the Creality box and its basic hardware performance inadequacy.
+ 
  A guide to get _**Klipper**_ with _**fluidd**,_ _**Mainsail**_ or _**Duet-Web-Control**_ on OpenWrt embeded devices like the _Creality Wi-Fi Box_.
 
  If you are new to all this, you should checkout the [Wiki](https://github.com/shivajiva101/KlipperWrt/wiki)
